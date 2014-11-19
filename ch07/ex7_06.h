@@ -1,14 +1,25 @@
 //
-//  ex7_26.cpp
-//  Exercise 7.26
+//  ex7_06.h
+//  Exercise 7.6
 //
-//  Created by pezy on 11/9/14.
+//  Created by pezy on 11/8/14.
 //  Copyright (c) 2014 pezy. All rights reserved.
 //
-//  @Brief implementation of class Sales_data
-//  @See ex7_26.h
 
-#include "ex7_26.h"
+#ifndef CP5_ex7_06_h
+#define CP5_ex7_06_h
+
+#include <string>
+#include <iostream>
+
+struct Sales_data {
+    std::string isbn() const { return bookNo; };
+    Sales_data& combine(const Sales_data&);
+    
+    std::string bookNo;
+    unsigned units_sold = 0;
+    double revenue = 0.0;
+};
 
 // member functions.
 Sales_data& Sales_data::combine(const Sales_data& rhs)
@@ -18,7 +29,7 @@ Sales_data& Sales_data::combine(const Sales_data& rhs)
     return *this;
 }
 
-// friend functions
+// nonmember functions
 std::istream &read(std::istream &is, Sales_data &item)
 {
     double price = 0;
@@ -39,3 +50,5 @@ Sales_data add(const Sales_data &lhs, const Sales_data &rhs)
     sum.combine(rhs);
     return sum;
 }
+
+#endif

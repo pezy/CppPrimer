@@ -1,4 +1,4 @@
-#C++ Primer (第5版) 习题答案
+#C++ Primer (第5版) 习题答案 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/pezy/cpp-primer/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 ##C++ Primer (5th Edition) exercise answers.
 
 ### Note
@@ -13,6 +13,7 @@
 - Please **fork**([How?](https://help.github.com/articles/fork-a-repo)) this repository first.
 - **commit**([How?](https://help.github.com/articles/create-a-repo#commit-your-first-change)) in your own repository.
 - Give me a **pull request**([How?](https://help.github.com/articles/using-pull-requests)).
+- Syncing with([How?](https://help.github.com/articles/syncing-a-fork/)) the origin repository. This is very **important** because we will fix bugs at any time, and you maybe miss it.
 
 ### Table of Contents
 
