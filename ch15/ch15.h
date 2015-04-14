@@ -18,6 +18,8 @@ If you have questions, try to connect with me: pezy<urbancpz@gmail.com>
 
 namespace ch15 {
 #include "ex15_03_Quote.h"
+#include "ex15_05_Bulk_quote.h"
+#include "ex15_07_Limit_quote.h"
 }
 
 #endif // CH15_H_
