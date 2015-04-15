@@ -46,3 +46,22 @@ class Base { ... };
 > Define a class that implements a limited discount strategy, which applies a discount to books purchased up to a given limit. If the number of copies exceeds that limit, the normal price applies to those purchased beyond the limit.
 
 [code](ex15_07_Limit_quote.h)
+
+## Exercise 15.8:
+> Define static type and dynamic type.
+
+- static type: Type with which a variable is defined or that an expression yields. Static type is known at **compile time**.
+
+- dynamic type: Type of an object at **run time**. The dynamic type of an object to which a reference refers or to which a pointer points may differ from the static type of the reference or pointer.
+
+## Exercise 15.9:
+> When is it possible for an expression’s static type to differ from its dynamic type? Give three examples in which the static and dynamic type differ.
+
+A pointer or reference to a base-class type can refer to an to object of derived type. In such cases the static type is reference (or pointer) to base, but the dynamic type is reference (or pointer) to derived.
+
+Anything like this can be an example.
+
+## Exercise 15.10:
+> Recalling the discussion from 8.1 (p. 311), explain how the program on page 317 that passed an `ifstream` to the `Sales_data` `read` function works.
+
+the function takes a `istream` from which `ifstream` is derived. Hence the `ifstream` object "is a" `istream` ,which is why it works.
