@@ -19,27 +19,30 @@ using std::string; using std::cout; using std::endl; using std::stack;
 
 int main()
 {
-    string expression{"This is (pezy)."};
-    bool bSeen = false;
-    stack<char> stk;
-    for (const auto &s : expression)
-    {
-        if (s == '(') { bSeen = true; continue; }
-        else if (s == ')') bSeen = false;
-        
-        if (bSeen) stk.push(s);
-    }
-    
-    string repstr;
-    while (!stk.empty())
-    {
-        repstr += stk.top();
-        stk.pop();
-    }
-    
-    expression.replace(expression.find("(")+1, repstr.size(), repstr);
-    
-    cout << expression << endl;
+	string expression{ "This is (pezy) and (ocxs) over" };
+	bool bSeen = false;
+	stack<char> stk;
+	int pos = 0, i = 0;
+	for (const auto &s : expression)
+	{
+		++i;
+		if (s == '(') { bSeen = true; pos = i; continue; }
+		else if (s == ')')
+		{
+			bSeen = false;
+			string repstr;
+			while (!stk.empty())
+			{
+				repstr += stk.top();
+				stk.pop();
+			}
+
+			expression.replace(pos, repstr.size(), repstr);
+		}
+		if (bSeen) stk.push(s);
+	}
+
+	cout << expression << endl;
     
     return 0;
 }
