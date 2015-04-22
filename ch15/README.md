@@ -71,3 +71,49 @@ the function takes a `istream` from which `ifstream` is derived. Hence the `ifst
 that displays the data members of the respective classes.
 
 [Quote](ex15_11_Quote.h) | [Bulk_quote](ex15_11_Bulk_quote.h) | [Limit_quote](ex15_11_Limit_quote.h)
+
+## Exercise 15.12:
+> Is it ever useful to declare a member function as both `override` and `final`? Why or why not?
+
+Sure. `override` means overriding the same name virtual function in base class. `final` means preventing any overriding this virtual function by any derived classes that are more lower at the hierarchy. (@Mooophy)
+
+## Exercise 15.13:
+> Given the following classes, explain each print function:
+```cpp
+class base {
+public:
+    string name() { return basename; }
+    virtual void print(ostream &os) { os << basename; }
+private:
+    string basename;
+};
+class derived : public base {
+public:
+    void print(ostream &os) { print(os); os << " " << i; }
+private:
+    int i;
+};
+```
+If there is a problem in this code, how would you fix it?
+
+The `print` in `derived::print` wanted to call the `print` from the base class. However, the class scope `base::` was omitted. As a result, it will cause an infinite recursion.
+
+**Fixed:**
+```cpp
+void print(ostream &os) { base::print(os); os << " " << i; }
+```
+
+## Exercise 15.14:
+> Given the classes from the previous exercise and the following objects, determine which function is called at run time:
+```cpp
+base bobj; base *bp1 = &bobj; base &br1 = bobj;
+derived dobj; base *bp2 = &dobj; base &br2 = dobj;
+(a) bobj.print();   // base::print()
+(b) dobj.print();   // derived::print()
+(c) bp1->name();    // base::name()
+(d) bp2->name();    // derived::name()
+(e) br1.print();    // base::print()
+(f) br2.print();    // derived::print()
+```
+
+e and f are called at run time.
