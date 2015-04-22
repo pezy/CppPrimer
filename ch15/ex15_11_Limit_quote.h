@@ -5,21 +5,22 @@ C++ Primer 5th Exercise Answer Source Code
 Copyright (C) 2014-2015 github.com/pezy/Cpp-Primer
 
 Limit_quote class
+added debug function
 
 If you have questions, try to connect with me: pezy<urbancpz@gmail.com>
 
 =================================================================================
 */
 
-#ifndef CP5_EX15_07_LIMIT_QUOTE_H_
-#define CP5_EX15_07_LIMIT_QUOTE_H_
+#ifndef CP5_EX15_11_LIMIT_QUOTE_H_
+#define CP5_EX15_11_LIMIT_QUOTE_H_
 
-#include "ex15_05_Bulk_quote.h"
+#include "ex15_11_Bulk_quote.h"
 #include <string>
 
-namespace EX07 {
-    using namespace EX05;
+namespace EX11 {
     using std::string;
+    using std::cout; using std::endl;
 
 class Limit_quote : public Bulk_quote {
 public:
@@ -32,9 +33,14 @@ public:
         else return cnt * price;
     }
 
+    virtual void debug() const final {
+        Bulk_quote::debug();
+        cout << "\tmax_qty: " << max_qty << endl;
+    }
+
 private:
     size_t max_qty = 0;
 };
 }
 
-#endif // LIMIT_QUOTE_H_
+#endif // CP5_EX15_11_LIMIT_QUOTE_H_

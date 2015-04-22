@@ -65,3 +65,9 @@ Anything like this can be an example.
 > Recalling the discussion from 8.1 (p. 311), explain how the program on page 317 that passed an `ifstream` to the `Sales_data` `read` function works.
 
 the function takes a `istream` from which `ifstream` is derived. Hence the `ifstream` object "is a" `istream` ,which is why it works.
+
+## Exercise 15.11:
+> Add a virtual `debug` function to your `Quote` class hierarchy
+that displays the data members of the respective classes.
+
+[Quote](ex15_11_Quote.h) | [Bulk_quote](ex15_11_Bulk_quote.h) | [Limit_quote](ex15_11_Limit_quote.h)
