@@ -23,6 +23,8 @@ namespace ch15 {
 #include "ex15_11_Quote.h"
 #include "ex15_11_Bulk_quote.h"
 #include "ex15_11_Limit_quote.h"
+#include "ex15_15_Disc_quote.h"
+#include "ex15_15_Bulk_quote.h"
 }
 
 #endif // CH15_H_

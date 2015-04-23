@@ -12,13 +12,13 @@ If you have questions, try to connect with me: pezy<urbancpz@gmail.com>
 =================================================================================
 */
 
-#ifndef CP5_EX15_11_LIMIT_QUOTE_H_
-#define CP5_EX15_11_LIMIT_QUOTE_H_
+#ifndef CP5_EX15_15_LIMIT_QUOTE_H_
+#define CP5_EX15_15_LIMIT_QUOTE_H_
 
-#include "ex15_11_Bulk_quote.h"
+#include "ex15_15_Bulk_quote.h"
 #include <string>
 
-namespace EX11 {
+namespace EX15 {
     using std::string;
     using std::cout; using std::endl;
 
@@ -43,4 +43,4 @@ private:
 };
 }
 
-#endif // CP5_EX15_11_LIMIT_QUOTE_H_
+#endif // CP5_EX15_15_LIMIT_QUOTE_H_

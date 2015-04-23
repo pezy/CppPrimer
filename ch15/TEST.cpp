@@ -27,4 +27,9 @@ int main()
     quote_11.debug();
     bulk_quote_11.debug();
     limit_quote_11.debug();
+
+    cout << "\n===== ex15 =====" << endl;
+
+    EX15::Bulk_quote bulk_quote_15("0-201-82470-1", 50, 5, .19);
+    EX03::print_total(std::cout, bulk_quote_15, 6);
 }

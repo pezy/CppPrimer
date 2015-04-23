@@ -117,3 +117,14 @@ derived dobj; base *bp2 = &dobj; base &br2 = dobj;
 ```
 
 e and f are called at run time.
+
+## Exercise 15.15:
+> Define your own versions of `Disc_quote` and `Bulk_quote`.
+
+[Disc_quote](ex15_15_Disc_quote.h) | [Bulk_quote](ex15_15_Bulk_quote.h)
+
+## Exercise 15.16:
+> Rewrite the class representing a limited discount strategy, which you wrote for the exercises in 15.2.2 (p. 601), to inherit from `Disc_quote`.
+
+## Exercise 15.17:
+> Try to define an object of type Disc_quote and see what errors you get from the compiler.
