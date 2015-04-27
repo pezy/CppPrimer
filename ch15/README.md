@@ -126,5 +126,13 @@ e and f are called at run time.
 ## Exercise 15.16:
 > Rewrite the class representing a limited discount strategy, which you wrote for the exercises in 15.2.2 (p. 601), to inherit from `Disc_quote`.
 
+[code](ex15_16_Limit_quote.h)
+
 ## Exercise 15.17:
 > Try to define an object of type Disc_quote and see what errors you get from the compiler.
+
+```sh
+note:   because the following virtual functions are pure within 'ch15::EX15::Disc_quote':
+    virtual double net_price(size_t) const = 0;
+                    ^
+```

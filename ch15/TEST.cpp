@@ -32,4 +32,10 @@ int main()
 
     EX15::Bulk_quote bulk_quote_15("0-201-82470-1", 50, 5, .19);
     EX03::print_total(std::cout, bulk_quote_15, 6);
+
+    cout << "\n===== ex16 =====" << endl;
+
+    EX16::Limit_quote limit_quote_16("0-201-82470-1", 50, 5, 10, .19);
+    EX03::print_total(std::cout, limit_quote_16, 14);
+    
 }
