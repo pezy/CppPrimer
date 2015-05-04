@@ -32,17 +32,30 @@ int main()
 {
     std::vector<std::string> exclude = {"aa","bb","cc"};
     std::string word;
-    while([&]()
-    {
-          std::cout << "enter:\n";
-          std::cin >> word;
-          return word != "@q";
-    }())
-    {
-        for(const auto &e : exclude)
-            if (e == word)  std::cout << "excluded!";
-    }
-
+	while ([&]()
+	{
+		std::cout << "enter:\n";
+		std::cin >> word;
+		return word != "@q";
+	}())
+	{
+		bool flag = false;
+		for (auto it = exclude.begin(); it != exclude.end(); ++it)
+		{
+			if (*it == word)
+			{
+				std::cout << "excluded!";
+				flag = true;
+				break;
+			}
+		}
+		if (!flag)
+		{
+			exclude.push_back(word);
+		}	
+	}
+	for (const auto &e : exclude)
+		cout << e << " ";
     return 0;
 }
 
