@@ -41,7 +41,6 @@ int main()
     {
         for(const auto &e : exclude)
             if (e == word)  std::cout << "excluded!";
-            else exclude.push_back(word);
     }
 
     return 0;
