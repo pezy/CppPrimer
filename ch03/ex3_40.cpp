@@ -5,19 +5,12 @@ using std::cout; using std::endl;
 
 int main()
 {
-    const char* cs1 = "Wangyue";
-    const char* cs2 = "Pezy";
-    
-    size_t size = strlen(cs1) + strlen(cs2) + 1;
-    char* cs3 = new char(size);
-    
-    strcpy(cs3, cs1);
-    strcat(cs3, " ");
-    strcat(cs3, cs2);
-    
-    cout << cs3 << endl;
-    
-    delete cs3;
+    constexpr size_t new_size = strlen(cstr1) + strlen(" ") + strlen(cstr2) +1;
+    char cstr3[new_size];
 
-    return 0;
+    strcpy(cstr3, cstr1);
+    strcat(cstr3, " ");
+    strcat(cstr3, cstr2);
+
+    std::cout << cstr3 << std::endl;
 }
