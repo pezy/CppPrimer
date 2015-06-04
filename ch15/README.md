@@ -140,21 +140,53 @@ note:   because the following virtual functions are pure within 'ch15::EX15::Dis
 ## Exercise 15.18:
 > Given the classes from page 612 and page 613, and assuming each object has the type specified in the comments, determine which of these assignments are legal. Explain why those that are illegal aren’t allowed:
 ```cpp
-Base *p = &d1;  // d1 has type Pub_Derv
-p = &d2;        // d2 has type Priv_Derv
-p = &d3;        // d3 has type Prot_Derv
-p = &dd1;       // dd1 has type Derived_from_Public
-p = &dd2;       // dd2 has type Derived_from_Private
-p = &dd3;       // dd3 has type Derived_from_Protected
+Base *p = &d1;  // d1 has type Pub_Derv     --  legal
+p = &d2;        // d2 has type Priv_Derv    --  illegal
+p = &d3;        // d3 has type Prot_Derv    --  illegal
+p = &dd1;       // dd1 has type Derived_from_Public     --  legal
+p = &dd2;       // dd2 has type Derived_from_Private    --  illegal
+p = &dd3;       // dd3 has type Derived_from_Protected  --  illegal
 ```
+
+-----
+
+> **Assuming `D` inherits from `B`**:
+
+> User code may use the derived-to-base conversion only if `D` inherits publicly from `B`. User code may not use the conversion if `D` inherits from `B` using either `protected` or `private`.
 
 ## Exercise 15.19:
 > Assume that each of the classes from page 612 and page 613 has a member function of the form:
-`void memfcn(Base &b) { b = *this; }`
-For each class, determine whether this function would be legal.
+
+>`void memfcn(Base &b) { b = *this; }`
+
+> For each class, determine whether this function would be legal.
+
+-----
+
+> **Assuming `D` inherits from `B`**:
+
+> Member functions and friends of `D` can use the conversion to `B` **regardless of how** `D` inherits from `B`. The derived-to-base conversion to a direct base class is **always accessible** to members and friends of a derived class.
+
+Hence, the 3 below are all legal:
+```cpp
+Pub_Derv  d1; // legal
+Priv_Derv d2; // legal
+Prot_Derv d3; // legal
+```
+
+> Member functions and friends of classes derived from `D` may use the derived-to-base conversion if `D` inherits from `B` using **either `public` or `protected`**. Such code may not use the conversion if `D` inherits privately from `B`.
+
+Hence:
+```cpp
+Derived_from_Public     dd1; // legal
+Derived_from_Private    dd2; // illegal
+Derived_from_Protected  dd3; // legal
+```
 
 ## Exercise 15.20:
 > Write code to test your answers to the previous two exercises.
+
+[code](ex15_20_Base.h)
 
 ## Exercise 15.21:
 > Choose one of the following general abstractions containing a family of types (or choose one of your own). Organize the types into an inheritance hierarchy:
@@ -162,8 +194,12 @@ For each class, determine whether this function would be legal.
 - (b) Geometric primitives (such as box, circle, sphere, cone)
 - (c) C++ language types (such as class, function, member function)
 
+(b): [code](ex15_21_GeomtricPrimitives.h)
+
 ## Exercise 15.22:
 > For the class you chose in the previous exercise, identify some of the likely virtual functions as well as public and protected members.
+
+such as `shape_name()`, `resize_by_percentage(float pct)`, `area()`, `volume()`, etc.
 
 ## Exercise 15.23:
 > Assuming class `D1` on page 620 had intended to override its inherited `fcn` function, how would you fix that class? Assuming you fixed the class so that `fcn` matched the definition in `Base`, how would the calls in that section be resolved?

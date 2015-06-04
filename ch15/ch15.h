@@ -26,6 +26,8 @@ namespace ch15 {
 #include "ex15_15_Disc_quote.h"
 #include "ex15_15_Bulk_quote.h"
 #include "ex15_16_Limit_quote.h"
+#include "ex15_20_Base.h"
+#include "ex15_21_GeomtricPrimitives.h"
 }
 
 #endif // CH15_H_
