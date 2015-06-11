@@ -278,3 +278,8 @@ The reason is that a constructor taking 4 parameters has been defined, which pre
 
 - [Quote](ex15_26_Quote.h)
 - [Bulk_quote](ex15_26_Bulk_quote.h)
+
+## Exercise 15.27:
+> Redefine your `Bulk_quote` class to inherit its constructors.
+
+[code](ex15_27_Bulk_quote.h)
