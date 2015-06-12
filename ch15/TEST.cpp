@@ -12,6 +12,7 @@
 #include "ex15_26_Quote.h"
 #include "ex15_26_Bulk_quote.h"
 #include "ex15_27_Bulk_quote.h"
+#include "ex15_30_Basket.h"
 
 int main()
 {
@@ -118,4 +119,15 @@ int main()
     cout << "\n===== ex27 =====" << endl;
     EX27::Bulk_quote bulk_quote_27("0-201-82470-1", 50, 5, .19);
     EX03::print_total(std::cout, bulk_quote_15, 6);
+
+    cout << "\n===== ex30 =====" << endl;
+    EX30::Basket bsk;
+
+    for (size_t i = 0; i != 10; ++i) {
+        bsk.add_item(EX30::Bulk_quote("Bible", 20.5, 5, 0.2));
+        bsk.add_item(EX30::Bulk_quote("CppPrimer", 30.5, 10, 0.5));
+        bsk.add_item(EX30::Quote("CLRS", 40.5));
+    }
+
+    bsk.total_receipt(std::cout);
 }

@@ -365,3 +365,9 @@ Because derived objects are "sliced down" when assigned to a base-type object. T
 If we want to holds objects related by inheritance, we should define the `vector` to hold pointers(preferable smart pointers) to the base class. So, the `vector` contains are dynamic type of the objects.
 
 Different from previous program, it can be found that 20% and 50% discount has been applied to the total price calculation.
+
+## Exercise 15.30:
+> Write your own version of the `Basket` class and use it to compute prices for the same transactions as you used in the previous exercises.
+
+- [Basket](ex15_30_Basket.h)
+- [Quote & Bulk_quote](ex15_30_Quote_Bulk_quote.h)
