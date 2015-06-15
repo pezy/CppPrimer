@@ -371,3 +371,13 @@ Different from previous program, it can be found that 20% and 50% discount has b
 
 - [Basket](ex15_30_Basket.h)
 - [Quote & Bulk_quote](ex15_30_Quote_Bulk_quote.h)
+
+## Exercise 15.31:
+> Given that `s1`, `s2`, `s3`, and `s4` are all `string`s, determine what objects are created in the following expressions:
+- (a) `Query(s1) | Query(s2) & ~ Query(s3);`
+- (b) `Query(s1) | (Query(s2) & ~ Query(s3));`
+- (c) `(Query(s1) & (Query(s2)) | (Query(s3) & Query(s4)));`
+
+- (a): `WordQuery` -> `NotQuery` -> `AndQuery` -> `OrQuery`
+- (b): `WordQuery` -> `NotQuery` -> `AndQuery` -> `OrQuery` (same as the previous one)
+- (c): `WordQuery` -> `AndQuery` -> `OrQuery`
