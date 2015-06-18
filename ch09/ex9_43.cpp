@@ -15,25 +15,36 @@
 #include <iostream>
 #include <string>
 
-using std::cout; using std::endl; using std::string; using std::prev;
+using std::cout;
+using std::endl;
+using std::string;
 
-void Replace(string &s, string const& oldVal, string const& newVal) {
+void Replace(string &s, string const& oldVal, string const& newVal)
+{
     auto val_size = oldVal.size();
     if (s.size() < val_size) return;
 
-    for (auto iter = s.begin(), end = prev(s.end(), val_size - 1); iter != end; ++iter) {
-        if (string{iter, iter + val_size} == oldVal) {
-            iter = s.earse(iter, iter + val_size);
-            iter = s.insert(iter, newVal.cbegin(), newVal.cend()); // gcc 4.9 bug (see http://stackoverflow.com/questions/29690369)
-            iter += newVal.size();
+    for (auto iter = s.begin(); iter != s.end(); ++iter)
+    {
+        if (string {iter, iter + val_size} == oldVal)
+        {
+//            iter = s.erase(iter, iter + val_size);
+//            iter = s.insert(iter, newVal.cbegin(), newVal.cend());
+            s.erase(iter, iter + val_size);
+            s.insert(iter, newVal.cbegin(), newVal.cend()); // gcc 4.9 bug (see http://stackoverflow.com/questions/29690369)
+            iter += newVal.size()-1;//do't forget "++iter", use "thruthru" can test this
         }
     }
 }
 
 int main()
 {
-    string str{"To drive straight thru is a foolish, tho courageous act."};
+    //two "thru" and two "tho"  to test
+    string str {"To drive straight thruthru is a foolish, thotho courageous act."};
+    str.reserve(2*str.size());//enough capacity to avoid allocating new memory while replacing
     Replace(str, "tho", "though");
     Replace(str, "thru", "through");
     cout << str << endl;
 }
+
+ 
