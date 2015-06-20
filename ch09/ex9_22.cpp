@@ -1,30 +1,30 @@
 #include <iostream>
 #include <vector>
-
-using namespace std;
+using std::vector;
 
 void insertDoubleValue(vector<int> &iv, int some_val)
 {
-    vector<int>::iterator iter = iv.begin(), mid = iv.begin() + iv.size()/2;
-    while (iter != mid)
-        if (*mid == some_val)
-            mid = iv.insert(mid, 2 * some_val);
-        else --mid;
+    auto iter = iv.begin(), mid = iv.begin() + iv.size()/2;
+    while (iter != mid) {
+        if (*iter == some_val) {
+            iter = iv.insert(iter, 2 * some_val);
+            ++iter;
+            mid = iv.begin() + iv.size()/2;
+        }
+        ++iter;
+    }
 }
 
 void print(const vector<int> &iv)
 {
     for (auto i : iv)
-        cout << i << " ";
-    cout << endl;
+        std::cout << i << " ";
+    std::cout << std::endl;
 }
 
 int main()
 {
-    vector<int> iv = {0,1,2,3,4,5,6,7,8,9};
-    iv.reserve(25);
-    cout << iv.capacity() << endl;
-    insertDoubleValue(iv, 4);
+    vector<int> iv = {1, 2, 1, 3, 1, 4, 1, 5};
+    insertDoubleValue(iv, 1);
     print(iv);
 }
-

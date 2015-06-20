@@ -182,22 +182,7 @@ while (iter != mid)
 
 **FIXED**:
 
-```cpp
-// cause the reallocation will lead the iterators and references
-// after the insertion point to invalid. Thus, we need to call reserver at first.
-
-vector<int> iv = {0,1,2,3,4,5,6,7,8,9}; // For example.
-iv.reserver(25); // make sure that enough
-
-vector<int>::iterator iter = iv.begin(), mid = iv.begin() + iv.size()/2;
-while (iter != mid)
-    if (*mid == some_val)
-        mid = iv.insert(mid, 2 * some_val);
-    else
-        --mid;
-```
-
-The complete test codes, check [this](ex9_22.cpp).
+check [this](ex9_22.cpp).
 
 ## Exercise 9.23:
 >In the first program in this section on page 346, what would
