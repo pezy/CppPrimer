@@ -4,12 +4,13 @@ using std::vector;
 
 void insertDoubleValue(vector<int> &iv, int some_val)
 {
-    auto iter = iv.begin(), mid = iv.begin() + iv.size()/2;
+    auto cursor = iv.size() / 2;
+    auto iter = iv.begin(), mid = iv.begin() + cursor;
     while (iter != mid) {
         if (*iter == some_val) {
             iter = iv.insert(iter, 2 * some_val);
-            ++iter;
-            mid = iv.begin() + iv.size()/2;
+            ++iter; ++cursor;
+            mid = iv.begin() + cursor;
         }
         ++iter;
     }
@@ -24,7 +25,7 @@ void print(const vector<int> &iv)
 
 int main()
 {
-    vector<int> iv = {1, 2, 1, 3, 1, 4, 1, 5};
+    vector<int> iv = {1, 1, 1, 1, 1, 7, 1, 9};
     insertDoubleValue(iv, 1);
     print(iv);
 }
