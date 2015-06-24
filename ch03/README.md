@@ -1,5 +1,5 @@
-##Exercise 3.1 : [part1](ex3_1a.cpp) | [part2](ex3_1b.cpp)
-##Exercise 3.2 : [part1](ex3_2a.cpp) | [part2](ex3_2b.cpp)
+##Exercise 3.1 : [part1](ex3_01a.cpp) | [part2](ex3_01b.cpp)
+##Exercise 3.2 : [part1](ex3_02a.cpp) | [part2](ex3_02b.cpp)
 ##Exercise 3.3
 >Explain how whitespace characters are handled in the string
 input operator and in the `getline` function.
@@ -22,9 +22,9 @@ read to termination and discard newline
 
 [Read more](http://www.cplusplus.com/reference/string/string/getline/)
 
-##Exercise 3.4 : [part1](ex3_4a.cpp) | [part2](ex3_4b.cpp)
-##Exercise 3.5 : [part1](ex3_5a.cpp) | [part2](ex3_5b.cpp)
-##[Exercise 3.6](ex3_6.cpp)
+##Exercise 3.4 : [part1](ex3_04a.cpp) | [part2](ex3_04b.cpp)
+##Exercise 3.5 : [part1](ex3_05a.cpp) | [part2](ex3_05b.cpp)
+##[Exercise 3.6](ex3_06.cpp)
 ##Exercise 3.7
 >What would happen if you define the loop control variable in the previous
 exercise as type char? Predict the results and then change your program
@@ -37,7 +37,7 @@ No different.
 We use `auto` to let the compiler determine the type of `c`.
 which in this case will be `char&`.
 
-##[Exercise 3.8](ex3_8.cpp)
+##[Exercise 3.8](ex3_08.cpp)
 ##Exercise 3.9
 >What does the following program do? Is it valid? If not, why not?
 ```cpp

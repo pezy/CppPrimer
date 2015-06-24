@@ -4,20 +4,21 @@
 
 int main()
 {
-    int val_small = 0, val_big = 0;
+    int small = 0, big = 0;
     std::cout << "please input two integers:";
-    std::cin >> val_small >> val_big;
+    std::cin >> small >> big;
 
-    if (val_small > val_big) {
-        int tmp = val_small;
-        val_small = val_big;
-        val_big = tmp;
+    if (small > big) {
+        int tmp = small;
+        small = big;
+        big = tmp;
     }
 
-    while (val_small <= val_big) {
-        std::cout << val_small << std::endl;
-        ++val_small;
+    while (small <= big) {
+        std::cout << small << " ";
+        ++small;
     }
+    std::cout << std::endl;
 
     return 0;
 }

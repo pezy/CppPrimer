@@ -1,14 +1,14 @@
 ##C++ Primer 5th Answers
 
-[![GitHub issues](https://img.shields.io/github/issues/Mooophy/Cpp-Primer.svg)](https://github.com/pezy/CppPrimer/issues)
+[![GitHub issues](https://img.shields.io/github/issues/pezy/CppPrimer.svg)](https://github.com/pezy/CppPrimer/issues)
 [![GitHub license](https://img.shields.io/badge/license-CC0-blue.svg)](https://raw.githubusercontent.com/pezy/Cpp-Primer/master/LICENSE)
 [![](https://img.shields.io/badge/%E4%B8%AD%E6%96%87-%E8%AE%A8%E8%AE%BA%E5%8C%BA-yellowgreen.svg)](https://github.com/ReadingLab/Discussion-for-Cpp)
 
 ### Notes
 
-- **g++** and **clang++** are recommended. Visual Studio 2013 may be used as well, but up to June 2015, Visual Studio has not implemented all c++11 features yet.
+- Use `GCC 4.9+`, `Clang 3.4+`, `MSVC 14+`, and [others](http://en.cppreference.com/w/cpp/compiler_support).
 - Use `-std=c++11`(recommend: `-pedantic -Wall`) flag for compiling.
-- If any bug caught, please [let me know](https://github.com/pezy/Cpp-Primer/issues/new), thanks.
+- Have you discovered incorrect information? [Submit](https://github.com/pezy/CppPrimer/issues/new).
 
 ### Contents
 

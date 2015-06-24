@@ -70,8 +70,8 @@ if (!status) {/* ... */}
 
 In fact, the judge `!status` is unnecessary. If the `status=false`, we leave the while, and `!status` is always true.
 
-##[Exercise 5.5](ex5_5.cpp)
-##[Exercise 5.6](ex5_6.cpp)
+##[Exercise 5.5](ex5_05.cpp)
+##[Exercise 5.6](ex5_06.cpp)
 ##Exercise 5.7
 >Correct the errors in each of the following code fragments:
 ```cpp
@@ -109,7 +109,7 @@ In fact, the judge `!status` is unnecessary. If the `status=false`, we leave the
 
 Colloquial term used to refer to the problem of how to process nested if statements in which there are more ifs than elses. In C++, an else is always paired with the closest preceding unmatched if.
 
-##[Exercise 5.9](ex5_9.cpp)
+##[Exercise 5.9](ex5_09.cpp)
 ##[Exercise 5.10](ex5_10.cpp)
 ##[Exercise 5.11](ex5_11.cpp)
 ##[Exercise 5.12](ex5_12.cpp)

@@ -1,7 +1,7 @@
-﻿##Exercise 2.1
-> What are the differences between int, long, long long,
-and short? Between an unsigned and a signed type? Between a float and
-a double?
+# Chapter 2. Variables and Basic Types
+
+## Exercise 2.1
+> What are the differences between `int`, `long`, `long long`, and `short`? Between an `unsigned` and a `signed` type? Between a `float` and a `double`?
 
 C++ guarantees `short` and `int` is **at least** 16 bits, `long` **at least** 32 bits, `long long` **at least** 64 bits.
 
@@ -36,8 +36,7 @@ Reference:
 - Advice: Deciding which Type to Use(This book.)
 
 ##Exercise 2.2
->To calculate a mortgage payment, what types would you use
-for the rate, principal, and payment? Explain why you selected each type.
+>To calculate a mortgage payment, what types would you use for the rate, principal, and payment? Explain why you selected each type.
 
 use `double`, or also `float`.
 
@@ -78,11 +77,10 @@ Output(g++ 4.8):
 > Write a program to check whether your predictions were
 correct. If not, study this section until you understand what the problem is.
 
-[Here](ex2_4.cpp) is the code, please test it in your computer.
+[Here](ex2_04.cpp) is the code, please test it in your computer.
 
 ##Exercise 2.5
-> Determine the type of each of the following literals. Explain
-the differences among the literals in each of the four examples:
+> Determine the type of each of the following literals. Explain the differences among the literals in each of the four examples:
 - (a) 'a', L'a', "a", L"a"
 - (b) 10, 10u, 10L, 10uL, 012, 0xC
 - (c) 3.14, 3.14f, 3.14L
