@@ -29,7 +29,7 @@ bool operator<(const Book &lhs, const Book &rhs)
 
 bool operator>(const Book &lhs, const Book &rhs)
 {
-    return rhs < lhs;
+    return lhs.no_>rhs.no_;
 }
 
 Book& Book::operator+=(const Book &rhs)
