@@ -1,23 +1,14 @@
-##C++ Primer 5 Answers
+##C++ Primer 5th Answers
 
-[![GitHub issues](https://img.shields.io/github/issues/Mooophy/Cpp-Primer.svg)](https://github.com/Mooophy/Cpp-Primer/issues)
-[![GitHub license](https://img.shields.io/badge/license-CC0-blue.svg)](https://raw.githubusercontent.com/Mooophy/Cpp-Primer/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/Mooophy/Cpp-Primer.svg)](https://github.com/pezy/CppPrimer/issues)
+[![GitHub license](https://img.shields.io/badge/license-CC0-blue.svg)](https://raw.githubusercontent.com/pezy/Cpp-Primer/master/LICENSE)
 [![](https://img.shields.io/badge/%E4%B8%AD%E6%96%87-%E8%AE%A8%E8%AE%BA%E5%8C%BA-yellowgreen.svg)](https://github.com/ReadingLab/Discussion-for-Cpp)
-[![](https://img.shields.io/badge/douban-%E5%B0%8F%E7%BB%84-green.svg)](http://www.douban.com/group/532124/)
 
-### Note
+### Notes
 
-- Use `-std=c++11`(optional: `-pedantic -Wall`) flag when compiling.(or you can use Visual Studio 2012+)
-- If you found any bug, please [let me know](https://github.com/Mooophy/Cpp-Primer/issues/new), thanks.
-- I have downloaded the headers from this book's [web site](http://www.informit.com/store/c-plus-plus-primer-9780321714114) and put them in the `include` folder.
-- In order to test the program in an efficient way, I also put the test data file in the `data` folder.
-
-### How to contribute
-
-- Please **fork**([How?](https://help.github.com/articles/fork-a-repo)) this repository first.
-- **Commit**([How?](https://help.github.com/articles/create-a-repo#commit-your-first-change)) in your own repository.
-- Give me a **pull request**([How?](https://help.github.com/articles/using-pull-requests)).
-- **Syncing** with([How?](https://help.github.com/articles/syncing-a-fork/)) the origin repository. This is very **important** because this repo updates frequently.
+- **g++** and **clang++** are recommended. Visual Studio 2013 may be used as well, but up to June 2015, Visual Studio has not implemented all c++11 features yet.
+- Use `-std=c++11`(recommend: `-pedantic -Wall`) flag for compiling.
+- If any bug caught, please [let me know](https://github.com/pezy/Cpp-Primer/issues/new), thanks.
 
 ### Contents
 
