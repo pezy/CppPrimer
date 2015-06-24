@@ -3,6 +3,8 @@
 std::istream& operator>>(std::istream &in, Book &book)
 {
     in >> book.no_ >> book.name_ >> book.author_ >> book.pubdate_;
+        if(!in)
+        item=Book();
     return in;
 }
 
