@@ -13,9 +13,9 @@
 #include <iostream>
 
 struct Person {
-    std::string getName() const { return name; }
-    std::string getAddress() const { return address; }
-    
+    const std::string& getName() const { return name; }
+    const std::string& getAddress() const { return address; }
+
     std::string name;
     std::string address;
 };
@@ -23,6 +23,7 @@ struct Person {
 std::istream &read(std::istream &is, Person &person)
 {
     is >> person.name >> person.address;
+    if (!is) person = Person();
     return is;
 }
 
