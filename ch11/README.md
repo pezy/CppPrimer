@@ -10,11 +10,11 @@ A `vector` is a collection of objects, and every object has an **associated inde
 ## Exercise 11.2:
 >Give an example of when each of list, vector, deque, map, and set might be most useful.
 
-- list : a to-do list. always need insert or delete the elements anywhere.
-- vector : save some important associated data, always need query elements by index.
-- deque : message handle. FIFO.
-- map : dictionary.
-- set : bad_checks.
+- `list` : a to-do list. always need insert or delete the elements anywhere.
+- `vector` : save some important associated data, always need query elements by index.
+- `deque` : message handle. FIFO.
+- `map` : dictionary.
+- `set` : bad_checks.
 
 ## [Exercise 11.3 and 11.4](ex11_3_4.cpp)
 
@@ -39,11 +39,11 @@ I use `set` when i just need to store the `key`, In other hand, I　would like u
 ## [Exercise 11.14](ex11_14.cpp)
 
 ## Exercise 11.15:
->What are the mapped_type, key_type, and value_type of a map from int to vector< int >?
+>What are the `mapped_type`, `key_type`, and `value_type` of a `map` from int to `vector<int>`?
 
-- mapped_type : vector< int >
-- key_type : int
-- value_type : std::pair< int, vector<int> >
+- `mapped_type` : `vector<int>`
+- `key_type` : `int`
+- `value_type` : `std::pair<const int, vector<int>>`
 
 ## Exercise 11.16:
 >Using a map iterator write an expression that assigns a value to an element.
