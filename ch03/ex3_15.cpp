@@ -12,10 +12,9 @@
 
 int main()
 {
-  std::vector<std::string> vec;
-  std::string str;
-  while (std::cin >> str)
-    vec.push_back(str);
+    std::vector<std::string> vec;
+    std::string str;
+    while (std::cin >> str) vec.push_back(str);
 
-  return 0;
+    return 0;
 }

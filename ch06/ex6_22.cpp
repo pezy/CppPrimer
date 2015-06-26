@@ -5,7 +5,7 @@
 //!
 #include <iostream>
 
-void swap(int*& lft, int*& rht)
+void swap(int *&lft, int *&rht)
 {
     auto tmp = lft;
     lft = rht;

@@ -10,7 +10,8 @@ int main()
             if (valItem.isbn() == currItem.isbn())
                 ++cnt;
             else {
-                std::cout << currItem << " occurs " << cnt << " times " << std::endl;
+                std::cout << currItem << " occurs " << cnt << " times "
+                          << std::endl;
                 currItem = valItem;
                 cnt = 1;
             }

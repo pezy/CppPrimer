@@ -9,9 +9,8 @@ using std::endl;
 
 int main()
 {
-  string word;
-  while (cin >> word)
-    cout << word << endl;
+    string word;
+    while (cin >> word) cout << word << endl;
 
-  return 0;
+    return 0;
 }

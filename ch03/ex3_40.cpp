@@ -1,11 +1,12 @@
 #include <iostream>
 #include <cstring>
 
-using std::cout; using std::endl;
+using std::cout;
+using std::endl;
 
 int main()
 {
-    constexpr size_t new_size = strlen(cstr1) + strlen(" ") + strlen(cstr2) +1;
+    constexpr size_t new_size = strlen(cstr1) + strlen(" ") + strlen(cstr2) + 1;
     char cstr3[new_size];
 
     strcpy(cstr3, cstr1);

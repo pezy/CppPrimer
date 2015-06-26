@@ -1,5 +1,6 @@
 #include <iostream>
-using std::cout; using std::endl;
+using std::cout;
+using std::endl;
 
 void f()
 {
@@ -27,6 +28,6 @@ int main()
     f(42);
     f(42, 0);
     f(2.56, 3.14);
-    
+
     return 0;
 }

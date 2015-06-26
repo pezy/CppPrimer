@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
 
-using std::cout; using std::endl; using std::string;
+using std::cout;
+using std::endl;
+using std::string;
 
 bool hasUppercase(const string &str)
 {
@@ -22,6 +24,6 @@ int main()
     cout << hasUppercase(str) << endl;
     makeLowercase(str);
     cout << str << endl;
-    
+
     return 0;
 }

@@ -11,10 +11,9 @@
 
 int main()
 {
-  std::vector<int> vec;
-  int i;
-  while (std::cin >> i)
-    vec.push_back(i);
+    std::vector<int> vec;
+    int i;
+    while (std::cin >> i) vec.push_back(i);
 
-  return 0;
+    return 0;
 }

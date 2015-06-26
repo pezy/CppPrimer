@@ -15,10 +15,11 @@ If you have questions, try to connect with me: pezy<urbancpz@gmail.com>
 
 #include <iostream>
 
-void factorial_with_interacts() {
+void factorial_with_interacts()
+{
     int num;
     std::cout << "Please input a positive number: ";
-    while ( std::cin >> num && num < 0 )
+    while (std::cin >> num && num < 0)
         std::cout << "Please input a positive number again: ";
     std::cout << num;
 
@@ -26,8 +27,10 @@ void factorial_with_interacts() {
     while (num > 1) result *= num--;
 
     std::cout << "! is ";
-    if ( result ) std::cout << result << std::endl;
-    else std::cout << "too big" << std::endl;
+    if (result)
+        std::cout << result << std::endl;
+    else
+        std::cout << "too big" << std::endl;
 }
 
 int main()

@@ -8,8 +8,7 @@
 #include <string>
 #include <stdexcept>
 
-
-void swap(int* lhs, int* rhs)
+void swap(int *lhs, int *rhs)
 {
     int tmp;
     tmp = *lhs;
@@ -19,8 +18,8 @@ void swap(int* lhs, int* rhs)
 
 int main()
 {
-    for (int lft, rht; std::cout << "Please Enter:\n", std::cin >> lft >> rht; )
-    {
+    for (int lft, rht;
+         std::cout << "Please Enter:\n", std::cin >> lft >> rht;) {
         swap(&lft, &rht);
         std::cout << lft << " " << rht << std::endl;
     }

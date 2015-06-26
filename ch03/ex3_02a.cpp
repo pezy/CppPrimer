@@ -10,9 +10,8 @@ using std::getline;
 
 int main()
 {
-  string input;
-  while (getline(cin, input))
-    cout << input << endl;
+    string input;
+    while (getline(cin, input)) cout << input << endl;
 
-  return 0;
+    return 0;
 }

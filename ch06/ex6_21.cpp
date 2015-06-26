@@ -7,7 +7,7 @@
 //!
 
 #include <iostream>
-using std::cout; 
+using std::cout;
 
 int LargerOne(const int i, const int *ip)
 {
@@ -21,5 +21,3 @@ int main()
 
     return 0;
 }
-
-

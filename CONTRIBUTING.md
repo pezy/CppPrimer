@@ -25,7 +25,10 @@ int main()
 }
 ```
 
-Thank you for your suggestions!
+If you intall **[ClangFormat](http://clang.llvm.org/docs/ClangFormat.html)**, You wouldn't care about the format, just run the command:
+```sh
+clang-format -i your-code.cpp
+```
 
 #### Tips for good commits and issues.
 
