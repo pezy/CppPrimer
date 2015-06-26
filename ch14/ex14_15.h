@@ -15,8 +15,13 @@ class Book {
 
 public:
     Book() = default;
-    Book(unsigned no, std::string name, std::string author, std::string pubdate, unsigned number):no_(no), name_(name), author_(author), pubdate_(pubdate), number_(number) { }
-    Book(std::istream &in) { in >> *this; }
+    Book(unsigned no, std::string name, std::string author, std::string pubdate,
+         unsigned number)
+        : no_(no), name_(name), author_(author), pubdate_(pubdate),
+          number_(number)
+    {
+    }
+    Book(std::istream& in) { in >> *this; }
 
     Book& operator+=(const Book&);
 

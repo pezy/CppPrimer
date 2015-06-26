@@ -9,7 +9,7 @@ using std::endl;
 using std::vector;
 
 // pb point to begin of the array, pe point to end of the array.
-bool compare(int *const pb1, int *const pe1, int *const pb2, int *const pe2)
+bool compare(int* const pb1, int* const pe1, int* const pb2, int* const pe2)
 {
     if ((pe1 - pb1) != (pe2 - pb2)) // have different size.
         return false;

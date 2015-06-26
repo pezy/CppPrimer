@@ -5,8 +5,8 @@
 //  Created by pezy on 12/13/14.
 //  Copyright (c) 2014 pezy. All rights reserved.
 //
-//  Write a program using stream iterators to read a text file into a vector of strings.
-
+//  Write a program using stream iterators to read a text file into a vector of
+//  strings.
 
 #include <iostream>
 #include <fstream>
@@ -22,7 +22,8 @@ int main()
     std::istream_iterator<string> in(ifs), eof;
     std::vector<string> vec;
     std::copy(in, eof, back_inserter(vec));
-    
+
     // output
-    std::copy(vec.cbegin(), vec.cend(), std::ostream_iterator<string>(std::cout, "\n"));
+    std::copy(vec.cbegin(), vec.cend(),
+              std::ostream_iterator<string>(std::cout, "\n"));
 }

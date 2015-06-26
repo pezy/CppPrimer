@@ -1,14 +1,14 @@
 //
 //  ex13_30.h
-//  Exercise 13.30 
+//  Exercise 13.30
 //
 //  Created by pezy on 1/23/15.
 //  Copyright (c) 2015 pezy. All rights reserved.
 //
-//  Write and test a swap function for your valuelike version of HasPtr. 
-//  Give your swap a print statement that notes when it is executed. 
+//  Write and test a swap function for your valuelike version of HasPtr.
+//  Give your swap a print statement that notes when it is executed.
 //
-//  See ex13_22.h 
+//  See ex13_22.h
 
 #ifndef CP5_ex13_11_h
 #define CP5_ex13_11_h
@@ -19,22 +19,23 @@
 class HasPtr {
 public:
     friend void swap(HasPtr&, HasPtr&);
-    HasPtr(const std::string &s = std::string()) : ps(new std::string(s)), i(0) { }
-    HasPtr(const HasPtr &hp) : ps(new std::string(*hp.ps)), i(hp.i) { }
-    HasPtr& operator=(const HasPtr &hp) {
+    HasPtr(const std::string& s = std::string()) : ps(new std::string(s)), i(0)
+    {
+    }
+    HasPtr(const HasPtr& hp) : ps(new std::string(*hp.ps)), i(hp.i) {}
+    HasPtr& operator=(const HasPtr& hp)
+    {
         auto new_p = new std::string(*hp.ps);
         delete ps;
         ps = new_p;
         i = hp.i;
         return *this;
     }
-    ~HasPtr() {
-        delete ps;
-    } 
-    
+    ~HasPtr() { delete ps; }
+
     void show() { std::cout << *ps << std::endl; }
 private:
-    std::string *ps;
+    std::string* ps;
     int i;
 };
 

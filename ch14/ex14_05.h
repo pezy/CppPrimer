@@ -12,8 +12,11 @@ class Book {
 
 public:
     Book() = default;
-    Book(unsigned no, std::string name, std::string author, std::string pubdate):no_(no), name_(name), author_(author), pubdate_(pubdate) { }
-    Book(std::istream &in) { in >> *this; }
+    Book(unsigned no, std::string name, std::string author, std::string pubdate)
+        : no_(no), name_(name), author_(author), pubdate_(pubdate)
+    {
+    }
+    Book(std::istream& in) { in >> *this; }
 
 private:
     unsigned no_;
@@ -26,6 +29,5 @@ std::istream& operator>>(std::istream&, Book&);
 std::ostream& operator<<(std::ostream&, const Book&);
 bool operator==(const Book&, const Book&);
 bool operator!=(const Book&, const Book&);
-
 
 #endif // BOOK_H

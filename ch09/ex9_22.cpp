@@ -2,24 +2,24 @@
 #include <vector>
 using std::vector;
 
-void insertDoubleValue(vector<int> &iv, int some_val)
+void insertDoubleValue(vector<int>& iv, int some_val)
 {
     auto cursor = iv.size() / 2;
     auto iter = iv.begin(), mid = iv.begin() + cursor;
     while (iter != mid) {
         if (*iter == some_val) {
             iter = iv.insert(iter, 2 * some_val);
-            ++iter; ++cursor;
+            ++iter;
+            ++cursor;
             mid = iv.begin() + cursor;
         }
         ++iter;
     }
 }
 
-void print(const vector<int> &iv)
+void print(const vector<int>& iv)
 {
-    for (auto i : iv)
-        std::cout << i << " ";
+    for (auto i : iv) std::cout << i << " ";
     std::cout << std::endl;
 }
 

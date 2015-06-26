@@ -14,7 +14,7 @@ using std::endl;
 
 #define NDEBUG
 
-void printVec(vector<int> &vec)
+void printVec(vector<int>& vec)
 {
 #ifdef NDEBUG
     cout << "vector size: " << vec.size() << endl;

@@ -9,7 +9,7 @@
 #include <iostream>
 #include <string>
 
-void swap(int &lhs, int &rhs)
+void swap(int& lhs, int& rhs)
 {
     int temp = lhs;
     lhs = rhs;

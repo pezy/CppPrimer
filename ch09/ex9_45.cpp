@@ -13,8 +13,8 @@
 #include <string>
 
 //! Exercise 9.45
-std::string
-pre_suffix(const std::string &name, const std::string &pre, const std::string &su);
+std::string pre_suffix(const std::string& name, const std::string& pre,
+                       const std::string& su);
 
 int main()
 {
@@ -24,9 +24,8 @@ int main()
     return 0;
 }
 
-
-inline std::string
-pre_suffix(const std::string &name, const std::string &pre, const std::string &su)
+inline std::string pre_suffix(const std::string& name, const std::string& pre,
+                              const std::string& su)
 {
     auto ret = name;
     ret.insert(ret.begin(), pre.begin(), pre.end());

@@ -11,7 +11,7 @@
 #include "ex7_41.h"
 
 // constructor
-Sales_data::Sales_data(std::istream &is) : Sales_data()
+Sales_data::Sales_data(std::istream& is) : Sales_data()
 {
     std::cout << "Sales_data(istream &is)" << std::endl;
     read(is, *this);
@@ -26,7 +26,7 @@ Sales_data& Sales_data::combine(const Sales_data& rhs)
 }
 
 // friend functions
-std::istream &read(std::istream &is, Sales_data &item)
+std::istream& read(std::istream& is, Sales_data& item)
 {
     double price = 0;
     is >> item.bookNo >> item.units_sold >> price;
@@ -34,13 +34,13 @@ std::istream &read(std::istream &is, Sales_data &item)
     return is;
 }
 
-std::ostream &print(std::ostream &os, const Sales_data &item)
+std::ostream& print(std::ostream& os, const Sales_data& item)
 {
     os << item.isbn() << " " << item.units_sold << " " << item.revenue;
     return os;
 }
 
-Sales_data add(const Sales_data &lhs, const Sales_data &rhs)
+Sales_data add(const Sales_data& lhs, const Sales_data& rhs)
 {
     Sales_data sum = lhs;
     sum.combine(rhs);

@@ -1,11 +1,11 @@
 //
 //  ex12_26.cpp
-//  Exercise 12.26 
+//  Exercise 12.26
 //
 //  Created by pezy on 12/30/14.
 //  Copyright (c) 2014 pezy. All rights reserved.
 //
-//  Rewrite the program on page 481 using an allocator. 
+//  Rewrite the program on page 481 using an allocator.
 
 #include <iostream>
 #include <string>
@@ -17,11 +17,9 @@ void input_reverse_output_string(int n)
     auto const p = alloc.allocate(n);
     std::string s;
     auto q = p;
-    while (std::cin >> s && q != p + n)
-        alloc.construct(q++, s);
-    
-    while (q != p)
-    {
+    while (std::cin >> s && q != p + n) alloc.construct(q++, s);
+
+    while (q != p) {
         std::cout << *--q << " ";
         alloc.destroy(q);
     }

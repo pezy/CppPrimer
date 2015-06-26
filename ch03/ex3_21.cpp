@@ -12,7 +12,7 @@ using std::string;
 using std::cout;
 using std::endl;
 
-void check(const vector<int> &vec)
+void check(const vector<int>& vec)
 {
     if (vec.empty())
         cout << "size: 0; no values." << endl;
@@ -23,7 +23,7 @@ void check(const vector<int> &vec)
     }
 }
 
-void check(const vector<string> &vec)
+void check(const vector<string>& vec)
 {
     if (vec.empty())
         cout << "size: 0; no values." << endl;

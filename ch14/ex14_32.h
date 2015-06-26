@@ -13,13 +13,12 @@ class StrBlobPtr;
 /**
  * @brief a class that holds a pointer to a StrBlobPtr.
  */
-class StrBlobPtr_pointer
-{
+class StrBlobPtr_pointer {
 public:
     StrBlobPtr_pointer() = default;
     StrBlobPtr_pointer(StrBlobPtr* p) : pointer(p) {}
 
-    StrBlobPtr& operator *();
+    StrBlobPtr& operator*();
     StrBlobPtr* operator->();
 
 private:

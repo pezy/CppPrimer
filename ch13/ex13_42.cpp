@@ -1,7 +1,7 @@
 #include "ex13_42_TextQuery.h"
 #include <iostream>
 
-void runQueries(std::ifstream &infile)
+void runQueries(std::ifstream& infile)
 {
     TextQuery tq(infile);
     while (true) {

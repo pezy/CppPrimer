@@ -2,16 +2,14 @@
 #include "ex14_30_StrBlob.h"
 #include <iostream>
 
-StrBlobPtr&
-StrBlobPtr_pointer::operator *()
+StrBlobPtr& StrBlobPtr_pointer::operator*()
 {
     return *(this->pointer);
 }
 
-StrBlobPtr*
-StrBlobPtr_pointer::operator ->()
+StrBlobPtr* StrBlobPtr_pointer::operator->()
 {
-    return & this->operator *();
+    return &this->operator*();
 }
 
 int main()

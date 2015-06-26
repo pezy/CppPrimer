@@ -5,19 +5,19 @@ using std::endl;
 using std::begin;
 using std::end;
 
-void print(const int *pi)
+void print(const int* pi)
 {
     if (pi) cout << *pi << endl;
 }
 
-void print(const char *p)
+void print(const char* p)
 {
     if (p)
         while (*p) cout << *p++;
     cout << endl;
 }
 
-void print(const int *beg, const int *end)
+void print(const int* beg, const int* end)
 {
     while (beg != end) cout << *beg++ << endl;
 }

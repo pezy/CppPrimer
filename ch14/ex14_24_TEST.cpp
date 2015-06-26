@@ -7,18 +7,22 @@
  ***************************************************************************/
 //!
 //! Exercise 14.20:
-//! Define the addition and compound-assignment operators for your Sales_data class.
+//! Define the addition and compound-assignment operators for your Sales_data
+//! class.
 //!
 //! Exercise 14.22:
-//! Define a version of the assignment operator that can assign a string representing
+//! Define a version of the assignment operator that can assign a string
+//! representing
 //! an ISBN to a Sales_data.
 //!
 //! Exercise 14.23:
-//! Define an initializer_list assignment operator for your version of the StrVec
+//! Define an initializer_list assignment operator for your version of the
+//! StrVec
 //! class.
 //!
 //! Exercise 14.24:
-//! Decide whether the class you used in exercise 7.40 from § 7.5.1 (p. 291) needs a
+//! Decide whether the class you used in exercise 7.40 from § 7.5.1 (p. 291)
+//! needs a
 //! copy- and move-assignment operator. If so, define those operators.
 //!
 
@@ -30,15 +34,7 @@ int main()
 
     Date lhs(9999999), rhs(1);
 
-    std::cout << (lhs -= 12000) <<"\n";
-
+    std::cout << (lhs -= 12000) << "\n";
 
     return 0;
 }
-
-
-
-
-
-
-

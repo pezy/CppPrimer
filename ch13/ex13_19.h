@@ -5,11 +5,13 @@
 //  Created by pezy on 1/15/15.
 //  Copyright (c) 2015 pezy. All rights reserved.
 //
-//  Does your Employee class need to define its own versions of the copy-control members?
+//  Does your Employee class need to define its own versions of the copy-control
+//  members?
 //  If so, why? If not, why not?
 //  Implement whatever copy-control members you think Employee needs.
 //
-//  Answer: No, cause there really is no sensible meaning. employee can't copy in real world.
+//  Answer: No, cause there really is no sensible meaning. employee can't copy
+//  in real world.
 
 #ifndef CP5_ex13_19_h
 #define CP5_ex13_19_h
@@ -20,7 +22,7 @@ using std::string;
 class Employee {
 public:
     Employee();
-    Employee(const string &name);
+    Employee(const string& name);
     Employee(const Employee&) = delete;
     Employee& operator=(const Employee&) = delete;
 

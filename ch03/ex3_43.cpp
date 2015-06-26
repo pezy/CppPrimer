@@ -19,7 +19,7 @@ int main()
 
     // using pointers.
     for (int(*p)[4] = ia; p != ia + 3; ++p)
-        for (int *q = *p; q != *p + 4; ++q) cout << *q << " ";
+        for (int* q = *p; q != *p + 4; ++q) cout << *q << " ";
     cout << endl;
 
     return 0;

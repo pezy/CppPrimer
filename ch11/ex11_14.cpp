@@ -15,15 +15,21 @@
 #include <string>
 #include <vector>
 
-using std::ostream; using std::cout; using std::cin; using std::endl; using std::string;
-using std::make_pair; using std::pair; using std::vector; using std::map;
+using std::ostream;
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
+using std::make_pair;
+using std::pair;
+using std::vector;
+using std::map;
 
-class Families
-{
+class Families {
 public:
-    using Child     = pair<string, string>;
-    using Children  = vector<Child>;
-    using Data      = map<string, Children>;
+    using Child = pair<string, string>;
+    using Children = vector<Child>;
+    using Data = map<string, Children>;
 
     void add(string const& last_name, string const& first_name, string birthday)
     {
@@ -32,12 +38,10 @@ public:
 
     ostream& print(std::ostream& os) const
     {
-        if (_data.empty())
-            return os << "No data right now." << endl;
+        if (_data.empty()) return os << "No data right now." << endl;
 
-        for (const auto& pair : _data)
-        {
-            os << pair.first << ":\n" ;
+        for (const auto& pair : _data) {
+            os << pair.first << ":\n";
             for (const auto& child : pair.second)
                 os << child.first << " " << child.second << endl;
             os << endl;
@@ -53,7 +57,9 @@ int main()
 {
     Families families;
     string message = "Please enter last name, first name and birthday";
-    for (string l, f, b; cout << message << endl, cin >> l >> f >> b; families.add(l, f, b));
+    for (string l, f, b; cout << message << endl, cin >> l >> f >> b;
+         families.add(l, f, b))
+        ;
     families.print(cout << "Current data:" << endl);
 
     return 0;

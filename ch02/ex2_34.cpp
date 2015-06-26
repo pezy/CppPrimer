@@ -12,7 +12,7 @@ int main()
     auto e = &ci; // e is const int*(& of a const object is low-level const)
 
     const auto f = ci; // deduced type of ci is int; f has type const int
-    auto &g = ci;      // g is a const int& that is bound to ci
+    auto& g = ci;      // g is a const int& that is bound to ci
 
     a = 42;
     b = 42;

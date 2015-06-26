@@ -5,7 +5,8 @@
 //  Created by pezy on 1/15/15.
 //  Copyright (c) 2015 pezy. All rights reserved.
 //
-//  Write versions of numbered and f corresponding to the previous three exercises
+//  Write versions of numbered and f corresponding to the previous three
+//  exercises
 //  and check whether you correctly predicted the output.
 //
 //  For 13.15
@@ -14,19 +15,19 @@
 
 class numbered {
 public:
-    numbered() {
+    numbered()
+    {
         static int unique = 10;
         mysn = unique++;
     }
 
-    numbered(const numbered& n) {
-        mysn = n.mysn + 1;
-    }
+    numbered(const numbered& n) { mysn = n.mysn + 1; }
 
     int mysn;
 };
 
-void f(numbered s) {
+void f(numbered s)
+{
     std::cout << s.mysn << std::endl;
 }
 

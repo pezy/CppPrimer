@@ -8,7 +8,7 @@
 #include <string>
 #include <stdexcept>
 
-void swap(int *lhs, int *rhs)
+void swap(int* lhs, int* rhs)
 {
     int tmp;
     tmp = *lhs;

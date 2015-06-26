@@ -1,6 +1,6 @@
 #include <iostream>
 
-void reset(int &i)
+void reset(int& i)
 {
     i = 0;
 }

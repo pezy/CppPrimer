@@ -10,12 +10,10 @@
 //! 464 is correct. If not, how would you correct the call?
 //  correct.
 
-
 #include <iostream>
 #include <vector>
 #include <string>
 #include <memory>
-
 
 void process(std::shared_ptr<int> ptr)
 {
@@ -26,7 +24,6 @@ int main()
 {
     std::shared_ptr<int> p(new int(42));
     process(std::shared_ptr<int>(p));
-
 
     /**
       * codes below shows how the reference count change.

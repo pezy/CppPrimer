@@ -4,7 +4,8 @@
 //! What kinds of problems would you use count to solve?
 //! When might you use find instead?
 //  I would use count to deal with multimap or multi multiset.
-//  As for the associative container that have unique key, I would use find instead of count.
+//  As for the associative container that have unique key, I would use find
+//  instead of count.
 //!
 //! Exercise 11.28:
 //! Define and initialize a variable to hold the result of
@@ -28,8 +29,10 @@
 //!     cout << pos.first->second << endl;
 //              ^^^^^^^^^^^^^^^^^
 //  pos                     a pair
-//  pos.first               the iterator refering to the first element with the matching key
-//  pos.first->second       the value part of the key-value of the first element with the matching key
+//  pos.first               the iterator refering to the first element with the
+//  matching key
+//  pos.first->second       the value part of the key-value of the first element
+//  with the matching key
 
 #include <iostream>
 #include <map>
@@ -40,12 +43,16 @@
 int main()
 {
     std::map<std::string, std::vector<int>> m;
-    m = {{"Alan",{1,2,3,4,5,}},{"John",{1,5,6,7,8}}};
+    m = {{"Alan",
+          {
+              1, 2, 3, 4, 5,
+          }},
+         {"John", {1, 5, 6, 7, 8}}};
 
     //! ex11.28
     std::map<std::string, std::vector<int>>::iterator it;
-//! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-//! type used to define this iterator.
+    //! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    //! type used to define this iterator.
 
     it = m.find("Alan");
 

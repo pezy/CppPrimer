@@ -21,8 +21,8 @@ int main()
 
     cout << "=========" << endl;
     // use C-Style character strings.
-    const char *cs1 = "Wangyue";
-    const char *cs2 = "Pezy";
+    const char* cs1 = "Wangyue";
+    const char* cs2 = "Pezy";
 
     auto result = strcmp(cs1, cs2);
     if (result == 0)

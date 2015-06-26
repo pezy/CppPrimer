@@ -10,7 +10,7 @@ int main()
     // a range for to manage the iteration
     // use type alias
     using int_array = int[4];
-    for (int_array &p : ia)
+    for (int_array& p : ia)
         for (int q : p) cout << q << " ";
     cout << endl;
 
@@ -21,8 +21,8 @@ int main()
 
     // using pointers.
     // use type alias
-    for (int_array *p = ia; p != ia + 3; ++p)
-        for (int *q = *p; q != *p + 4; ++q) cout << *q << " ";
+    for (int_array* p = ia; p != ia + 3; ++p)
+        for (int* q = *p; q != *p + 4; ++q) cout << *q << " ";
     cout << endl;
 
     return 0;
