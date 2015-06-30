@@ -311,7 +311,7 @@ Tip: please review the `1.4.4`.
 ##Exercise 1.24
 > Test the previous program by giving multiple transactions representing multiple ISBNs. The records for each ISBN should be grouped together.
 
-Use `data`/`book.txt` as the records.
+`data`/`book.txt` may be used as the records.
 
 ![ex1_24](https://cloud.githubusercontent.com/assets/1147451/8335734/0fbefbbc-1ad2-11e5-9df3-fa1203dffb42.png)
 
