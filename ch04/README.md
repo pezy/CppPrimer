@@ -266,7 +266,7 @@ We then shift the bits `6` digits to the left, which yields us `1111 1111 1111 1
 
 > In our grading example in this section, what would happen if we used unsigned int as the type for quiz1?
 
-no different in most situation. `unsigned int` have the same size as `unsigned long` on most machine. But the second one could make sure that it have **at least 32 bits** on any machine.
+There are 30 students in the example of this section. `unsigned long` have at least 32 bits on any machine. Thus, it is ensured that the bits start out with well-define values. The standard define that `unsigned int` is guaranteed to hold 16 bits. If `unsigned int` adopted, the result is undefined.
 
 ##Exercise 4.27
 
