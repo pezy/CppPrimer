@@ -1,107 +1,156 @@
-## [Exercise 7.1](ex7_01.cpp)
-## [Exercise 7.2](ex7_02.h)
-## [Exercise 7.3](ex7_03.cpp)
-## [Exercise 7.4](ex7_04.h)
-## [Exercise 7.5](ex7_05.h)
-## [Exercise 7.6](ex7_06.h)
-## [Exercise 7.7](ex7_07.cpp)
-## Exercise 7.8
+[Exercise 7.1](ex7_01.cpp)
+--------------------------
 
-Define `read`'s Sales_data parameter as plain reference since it's intended to change the `revenue`'s value.
+[Exercise 7.2](ex7_02.h)
+------------------------
 
-Define `print`'s Sales_data parameter as a reference to const since it isn't intended to change any member's value of this object.
+[Exercise 7.3](ex7_03.cpp)
+--------------------------
 
-## [Exercise 7.9](ex7_09.h)
-## Exercise 7.10
+[Exercise 7.4](ex7_04.h)
+------------------------
+
+[Exercise 7.5](ex7_05.h)
+------------------------
+
+[Exercise 7.6](ex7_06.h)
+------------------------
+
+[Exercise 7.7](ex7_07.cpp)
+--------------------------
+
+Exercise 7.8
+------------
+
+Define `read`'s `Sales_data` parameter as plain reference since it's intended to change the `revenue`'s value.
+
+Define `print`'s `Sales_data` parameter as a reference to `const` since it isn't intended to change any member's value of this object.
+
+[Exercise 7.9](ex7_09.h)
+------------------------
+
+Exercise 7.10
+-------------
 
 ```cpp
 if(read(read(cin, data1), data2))
 ```
 
 we can try to divide it like that:
-```
+
+```cpp
 std::istream &firstStep = read(cin, data1);
 sdt::istream &secondStep = read(firstStep, data2);
 if (secondStep)
 ```
-the condition of the `if` statement would read two Sales_data object at one time.
 
-## Exercise 7.11 [Header](ex7_11.h)|[CPP](ex7_11.cpp)
-## [Exercise 7.12](ex7_12.h)
-## [Exercise 7.13](ex7_13.cpp)
-## Exercise 7.14
+the condition of the `if` statement would read two `Sales_data` object at one time.
+
+Exercise 7.11 [Header](ex7_11.h)|[CPP](ex7_11.cpp)
+--------------------------------------------------
+
+[Exercise 7.12](ex7_12.h)
+-------------------------
+
+[Exercise 7.13](ex7_13.cpp)
+---------------------------
+
+Exercise 7.14
+-------------
+
 ```cpp
 Sales_data() : units_sold(0) , revenue(0){}
 ```
 
-## [Exercise 7.15](ex7_15.h)
+[Exercise 7.15](ex7_15.h)
+-------------------------
 
-## Exercise 7.16
+Exercise 7.16
+-------------
 
-There are no restrictions on how often an access specifier may appear.The specified
-access level remains in effect until the next access specifier or the end of the class body.
+There are no restrictions on how often an access specifier may appear.The specified access level remains in effect until the next access specifier or the end of the class body.
 
 The members which are accessible to all parts of the program should define after a public specifier.
 
 The members which are accessible to the member functions of the class but are not accessible to code that uses the class should define after a private specifier.
 
-## Exercise 7.17
+Exercise 7.17
+-------------
 
 The only difference between using `class` and using `struct` to define a class is the default access level. (`class` : private, `struct` : public)
 
-## Exercise 7.18
+Exercise 7.18
+-------------
 
 encapsulation is the separation of implementation from interface. It hides the implementation details of a type. (In C++, encapsulation is enforced by putting the implementation in the private part of a class)
 
------
+---
 
 Important advantages:
 
-- User code cannot inadvertently corrupt the state of an encapsulation object.
-- The implementation of an encapsulated class can change over time without requiring changes in user-level code.
+-	User code cannot inadvertently corrupt the state of an encapsulation object.
+-	The implementation of an encapsulated class can change over time without requiring changes in user-level code.
 
-## Exercise 7.19
+Exercise 7.19
+-------------
 
-public include: constructors, `getName()`, `getAddress()`.
-private include: `name`, `address`.
+-	`public` include: constructors, `getName()`, `getAddress()`.
+-	`private` include: `name`, `address`.
 
 the interface should be defined as public, the data shouldn't expose to outside of the class.
 
-## Exercise 7.20
+Exercise 7.20
+-------------
 
 `friend` is a mechanism by which a class grants access to its nonpublic members. They have the same rights as members.
 
 **Pros**:
-- the useful functions can refer to class members in the class scope without needing to explicitly prefix them with the class name.
-- you can access all the nonpublic members conveniently.
-- sometimes, more readable to the users of class.
+
+-	the useful functions can refer to class members in the class scope without needing to explicitly prefix them with the class name.
+-	you can access all the nonpublic members conveniently.
+-	sometimes, more readable to the users of class.
 
 **Cons**:
-- lessens encapsulation and therefore maintainability.
-- code verbosity, declarations inside the class, outside the class.
 
-## [Exercise 7.21](ex7_21.h)
-## [Exercise 7.22](ex7_22.h)
-## Exercise 7.23 [Header](ex7_23.h)|[CPP](ex7_23.cpp)
-## [Exercise 7.24](ex7_24.h)
+-	lessens encapsulation and therefore maintainability.
+-	code verbosity, declarations inside the class, outside the class.
 
-## Exercise 7.25
+[Exercise 7.21](ex7_21.h)
+-------------------------
+
+[Exercise 7.22](ex7_22.h)
+-------------------------
+
+Exercise 7.23 [Header](ex7_23.h)|[CPP](ex7_23.cpp)
+--------------------------------------------------
+
+[Exercise 7.24](ex7_24.h)
+-------------------------
+
+Exercise 7.25
+-------------
 
 The class below can rely on it. It goes in *Section 7.1.5*:
->..the synthesized versions are unlikely to work correctly for classes that allocate resources that reside outside the class objects themselves.
 
->Moreover, the synthesized versions for copy, assignment, and destruction work correctly for classes that have **vector or string members**.
+> ..the synthesized versions are unlikely to work correctly for classes that allocate resources that reside outside the class objects themselves.
+>
+> Moreover, the synthesized versions for copy, assignment, and destruction work correctly for classes that have **vector or string members**.
 
-Hence the class below which used only built-in type and strings can rely on the default version of copy and assignment. (by @Mooophy)
+Hence the class below which used only built-in type and strings can rely on the default version of copy and assignment. (by [@Mooophy](https://github.com/Mooophy)\)
 
-## Exercise 7.26 [Header](ex7_26.h)|[CPP](ex7_26.cpp)
-## Exercise 7.27 [Class](ex7_27.h)|[Test](ex7_27_TEST.cpp)
+Exercise 7.26 [Header](ex7_26.h)|[CPP](ex7_26.cpp)
+--------------------------------------------------
 
-## Exercise 7.28
+Exercise 7.27 [Class](ex7_27.h)|[Test](ex7_27_TEST.cpp)
+-------------------------------------------------------
+
+Exercise 7.28
+-------------
 
 The second call to `display` couldn't print `#` among the output, cause the call to `set` would change the **temporary copy**, not myScreen.
 
-## Exercise 7.29
+Exercise 7.29
+-------------
 
 ```sh
 #with '&'
@@ -114,30 +163,41 @@ XXXXXXXXXXXXXXXXXXXXXXXXX
                    ^^^
 ```
 
-## Exercise 7.30
+Exercise 7.30
+-------------
 
 **Pros**
 
-- more explicit
-- less scope for misreading
-- can use the member function parameter which name is same as the member name.
+-	more explicit
+-	less scope for misreading
+-	can use the member function parameter which name is same as the member name.
 
-        void setAddr(const std::string &addr) {this->addr = addr;}
+	```cpp
+	void setAddr(const std::string &addr) {this->addr = addr;}
+	```
 
 **Cons**
 
-- more to read
-- sometimes redundant
+-	more to read
+-	sometimes redundant
 
-        std::string getAddr() const { return this->addr; } // unnecessary
+	```cpp
+	std::string getAddr() const { return this->addr; } // unnecessary
+	```
 
-## [Exercise 7.31](ex7_31.h)
-## [Exercise 7.32](ex7_32.h)
-## Exercise 7.33
+[Exercise 7.31](ex7_31.h)
+-------------------------
+
+[Exercise 7.32](ex7_32.h)
+-------------------------
+
+Exercise 7.33
+-------------
 
 [clang]error: unknown type name 'pos'
 
 fixed:
+
 ```cpp
 Screen::pos Screen::size() const
 {
@@ -145,15 +205,19 @@ Screen::pos Screen::size() const
 }
 ```
 
-## Exercise 7.34
+Exercise 7.34
+-------------
 
 There is an error in
 
-    dummy_fcn(pos height)
-               ^
-    Unknown type name 'pos'
+```cpp
+dummy_fcn(pos height)
+           ^
+Unknown type name 'pos'
+```
 
-## Exercise 7.35
+Exercise 7.35
+-------------
 
 ```cpp
 typedef string Type;
@@ -183,7 +247,9 @@ Type Exercise::setVal(Type parm) {
     return val;
 }
 ```
+
 to
+
 ```cpp
 Exercise::Type Exercise::setVal(Type parm) {
     val = parm + initVal();
@@ -193,11 +259,13 @@ Exercise::Type Exercise::setVal(Type parm) {
 
 and `Exercise::initVal()` should be defined.
 
-## Exercise 7.36
+Exercise 7.36
+-------------
 
->In this case, the constructor initializer makes it appear as if `base` is initialized with `i` and then `base` is used to initialize `rem`. However, `base` is initialized first. The effect of this initializer is to initialize `rem` with the undefined value of `base`!
+> In this case, the constructor initializer makes it appear as if `base` is initialized with `i` and then `base` is used to initialize `rem`. However, `base` is initialized first. The effect of this initializer is to initialize `rem` with the undefined value of `base`!
 
 **fixd**
+
 ```cpp
 struct X {
   X (int i, int j): base(i), rem(base % j) { }
@@ -205,7 +273,8 @@ struct X {
 };
 ```
 
-## Exercise 7.37
+Exercise 7.37
+-------------
 
 ```cpp
 Sales_data first_item(cin);   // use Sales_data(std::istream &is) ; its value are up to your input.
@@ -216,36 +285,43 @@ int main() {
 }
 ```
 
-## Exercise 7.38
+Exercise 7.38
+-------------
 
 ```cpp
 Sales_data(std::istream &is = std::cin) { read(is, *this); }
 ```
 
-## Exercise 7.39
+Exercise 7.39
+-------------
 
 illegal. cause the call of overloaded 'Sales_data()' is **ambiguous**.
 
-## Exercise 7.40
+Exercise 7.40
+-------------
 
-Such as `Book`
+Such as `Book`:
+
 ```cpp
 class Book {
 public:
-  Book() = default;
-  Book(unsigned no, std::string name, std::string author, std::string pubdate):no_(no), name_(name), author_(author), pubdate_(pubdate) { }
-  Book(std::istream &in) { in >> no_ >> name_ >> author_ >> pubdate_; }
+    Book() = default;
+    Book(unsigned no, std::string name, std::string author, std::string pubdate) : no*(no), name*(name), author*(author), pubdate*(pubdate) { }
+    Book(std::istream &in) { in >> no_ >> name_ >> author_ >> pubdate_; }
 
 private:
-  unsigned no_;
-  std::string name_;
-  std::string author_;
-  std::string pubdate_;
+    unsigned no*;
+    std::string name*;
+    std::string author*;
+    std::string pubdate*;
 };
 ```
 
-## Exercise 7.41 [Header](ex7_41.h)|[Cpp](ex7_41.cpp)|[Test](ex7_41_TEST.cpp)
-## Exercise 7.42
+Exercise 7.41 [Header](ex7_41.h)|[Cpp](ex7_41.cpp)|[Test](ex7_41_TEST.cpp)
+--------------------------------------------------------------------------
+
+Exercise 7.42
+-------------
 
 ```cpp
 class Book {
@@ -262,50 +338,66 @@ private:
 };
 ```
 
-## [Exercise 7.43](ex7_43.cpp)
-## Exercise 7.44
+[Exercise 7.43](ex7_43.cpp)
+---------------------------
+
+Exercise 7.44
+-------------
 
 illegal, cause there are ten elements, each would be default initialized. But no default initializer for the temporary object.
 
-## Exercise 7.45
+Exercise 7.45
+-------------
 
 No problem. cause `C` have the default constructor.
 
-## Exercise 7.46
+Exercise 7.46
+-------------
 
-- a) A class must provide at least one constructor. (**untrue**, "The compiler-generated constructor is known as the synthesized default constructor.")
-- b) A default constructor is a constructor with an empty parameter list. (**untrue**,  A default constructor is a constructor that is used if no initializer is supplied.What's more, A constructor that supplies default arguments for all its parameters also defines the default constructor)
-- c) If there are no meaningful default values for a class, the class should not provide a default constructor. (**untrue**, the class should provide.)
-- d) If a class does not define a default constructor, the compiler generates one that initializes each data member to the default value of its associated type. (**untrue**, only if our class does not explicitly define **any constructors**, the compiler will implicitly define the default constructor for us.)
+-	a) A class must provide at least one constructor. (**untrue**, "The compiler-generated constructor is known as the synthesized default constructor.")
+-	b) A default constructor is a constructor with an empty parameter list. (**untrue**, A default constructor is a constructor that is used if no initializer is supplied.What's more, A constructor that supplies default arguments for all its parameters also defines the default constructor)
+-	c) If there are no meaningful default values for a class, the class should not provide a default constructor. (**untrue**, the class should provide.)
+-	d) If a class does not define a default constructor, the compiler generates one that initializes each data member to the default value of its associated type. (**untrue**, only if our class does not explicitly define **any constructors**, the compiler will implicitly define the default constructor for us.)
 
-## Exercise 7.47
+Exercise 7.47
+-------------
 
 Whether the conversion of a `string` to `Sales_data` is desired **depends on how we think our users will use the conversion**. In this case, it might be okay. The `string` in null_book probably represents a nonexistent ISBN.
 
 Benefits:
 
-- prevent the use of a constructor in a context that requires an implicit conversion
-- we can define a constructor which is used only with the direct form of initialization
+-	prevent the use of a constructor in a context that requires an implicit conversion
+-	we can define a constructor which is used only with the direct form of initialization
 
 Drawbacks:
 
-- meaningful only on constructors that can be called with a single argument
+-	meaningful only on constructors that can be called with a single argument
 
-## Exercise 7.48
+Exercise 7.48
+-------------
 
 Both are noting happened.
 
-## Exercise 7.49
+Exercise 7.49
+-------------
 
 ```cpp
 (a) Sales_data &combine(Sales_data); // ok
 (b) Sales_data &combine(Sales_data&); // [Error] no matching function for call to 'Sales_data::combine(std::string&)' (`std::string&` can not convert to `Sales_data` type.)  
 (c) Sales_data &combine(const Sales_data&) const; // The trailing const mark can't be put here, as it forbids any mutation on data members. This comflicts with combine's semantics.
 ```
-Some detailed explanation about problem (b) :It's wrong. Because `combine`’s parameter is  a non-const reference , we can't  pass a temporary to that parameter. If `combine`’s parameter is  a  reference to const , we can  pass a temporary to that parameter. Like this :`Sales_data &combine(const Sales_data&); `  Here we call the `Sales_data` `combine` member function with a string argument. This call is perfectly legal; the compiler automatically creates a `Sales_data` object from the given string. That newly generated (temporary) `Sales_data` is passed to `combine`.(Also you can read C++ Primer Page 295(English Edition))
 
-## [Exercise 7.50](ex7_50.h)
-## Exercise 7.51
+Some detailed explanation about problem (b) :
+
+It's wrong.
+
+Because `combine`’s parameter is a non-const reference , we can't pass a temporary to that parameter. If `combine`’s parameter is a reference to `const` , we can pass a temporary to that parameter. Like this :`Sales_data &combine(const Sales_data&);` Here we call the `Sales_data` `combine` member function with a string argument. This call is perfectly legal; the compiler automatically creates a `Sales_data` object from the given string. That newly generated (temporary) `Sales_data` is passed to `combine`.(check on page 295(English Edition))
+
+[Exercise 7.50](ex7_50.h)
+-------------------------
+
+Exercise 7.51
+-------------
 
 Such as a function like that:
 
@@ -330,7 +422,8 @@ setYourName("pezy"); // just fine.
 
 it is very natural.
 
-## Exercise 7.52
+Exercise 7.52
+-------------
 
 In my opinion ,the aim of the problem is Aggregate Class. Test-makers think that `Sales_data` is Aggregate Class,so `Sales_data` should have no in-class initializers if we want to initialize the data members of an aggregate class by providing a braced list of member initializers:
 
@@ -344,36 +437,60 @@ struct Sales_data {
 };
 ```
 
-## [Exercise 7.53](ex7_53.h)
+[Exercise 7.53](ex7_53.h)
+-------------------------
 
-## Exercise 7.54
+Exercise 7.54
+-------------
 
 shouldn't, cause a `constexpr` function must contain exactly one **return** statement.
 
-## Exercise 7.55
+Exercise 7.55
+-------------
 
-yes.
+no.
 
->An aggregate class whose data members are all of literal type is a literal class.
+`std::string` is not a literal type, and it can be verified by following codes:
 
-## Exercise 7.56
+```cpp
+#include <string>
+#include <iostream>
+#include <type_traits>
 
->What is a static class member?
+struct Data {
+    int ival;
+    std::string s;
+};
+
+int main()
+{
+    std::cout << std::boolalpha;
+    std::cout << std::is_literal_type<Data>::value << std::endl;
+    // output: false
+}
+```
+
+Exercise 7.56
+-------------
+
+> What is a static class member?
 
 A class member that is **associated with the class**, rather than with individual objects of the class type.
 
->What are the advantages of static members?
+> What are the advantages of static members?
 
 each object can no need to store a common data. And if the data is changed, each object can use the new value.
 
->How do they differ from ordinary members?
+> How do they differ from ordinary members?
 
-- a static data member can have **incomplete type**.
-- we can use a static member **as a default argument**.
+-	a static data member can have **incomplete type**.
+-	we can use a static member **as a default argument**.
 
-## [Exercise 7.57](ex7_57.h)
+[Exercise 7.57](ex7_57.h)
+-------------------------
 
-## Exercise 7.58
+Exercise 7.58
+-------------
 
 ```cpp
 static double rate = 6.5;
