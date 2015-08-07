@@ -52,4 +52,4 @@ int main()
 }
 //! output :
 //!
-// ex10.16: 1234 alan
+// ex10.16: hi~ 1234 alan 
