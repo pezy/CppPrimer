@@ -299,7 +299,7 @@ more discusses: [#22](https://github.com/ReadingLab/Discussion-for-Cpp/issues/22
 
 This loop let user input a word all the way until the word is sought.
 
-It isn't a good use of assert. because if user begin to input a word, the `cin` would be always have content. so the `assert` would be always `true`. It is meaningless. using `assert(s == sought)` is more better.
+It isn't a good use of `assert`. The `assert` macro is often used to check for conditions that “cannot happen”. But the `assert` would always happen when users input `EOF` directly. The behavior is very natural, so the check is meaningless. using `assert(!cin || s == sought)` is more better.
 
 ## Exercise 6.49
 
