@@ -40,7 +40,7 @@ we can try to divide it like that:
 
 ```cpp
 std::istream &firstStep = read(cin, data1);
-sdt::istream &secondStep = read(firstStep, data2);
+std::istream &secondStep = read(firstStep, data2);
 if (secondStep)
 ```
 
@@ -306,18 +306,18 @@ Such as `Book`:
 class Book {
 public:
     Book() = default;
-    Book(unsigned no, std::string name, std::string author, std::string pubdate) : no*(no), name*(name), author*(author), pubdate*(pubdate) { }
+    Book(unsigned no, std::string name, std::string author, std::string pubdate) : no_(no), name_(name), author_(author), pubdate_(pubdate) { }
     Book(std::istream &in) { in >> no_ >> name_ >> author_ >> pubdate_; }
 
 private:
-    unsigned no*;
-    std::string name*;
-    std::string author*;
-    std::string pubdate*;
+    unsigned no_;
+    std::string name_;
+    std::string author_;
+    std::string pubdate_;
 };
 ```
 
-Exercise 7.41 [Header](ex7_41.h)|[Cpp](ex7_41.cpp)|[Test](ex7_41_TEST.cpp)
+Exercise 7.41 [Header](ex7_41.h)|[CPP](ex7_41.cpp)|[Test](ex7_41_TEST.cpp)
 --------------------------------------------------------------------------
 
 Exercise 7.42
@@ -384,7 +384,7 @@ Exercise 7.49
 ```cpp
 (a) Sales_data &combine(Sales_data); // ok
 (b) Sales_data &combine(Sales_data&); // [Error] no matching function for call to 'Sales_data::combine(std::string&)' (`std::string&` can not convert to `Sales_data` type.)  
-(c) Sales_data &combine(const Sales_data&) const; // The trailing const mark can't be put here, as it forbids any mutation on data members. This comflicts with combine's semantics.
+(c) Sales_data &combine(const Sales_data&) const; // The trailing const mark can't be put here, as it forbids any mutation on data members. This conflicts with combines semantics.
 ```
 
 Some detailed explanation about problem (b) :
