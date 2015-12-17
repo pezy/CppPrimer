@@ -550,6 +550,7 @@ Exercise 2.35
 > const auto j2 = i, &k2 = i;
 > ```
 
+-	`i` is `const int`.
 -	`j` is `int`.
 -	`k` is `const int&`.
 -	`p` is `const int *`.
