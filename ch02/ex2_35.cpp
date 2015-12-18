@@ -16,7 +16,7 @@ int main() {
   std::cout << "k2 is " << typeid(k2).name() << "\n";
 
   std::cout << std::endl;
-  std::cout << std::boolalpha;
+  std::cout << std::boolalpha;  //学习了，见你已经改过了，以前没用过github，不太会，不知道这次能不能成功
 
   std::cout << "i and j  have same type? "
             << std::is_same<decltype(i), decltype(j)>::value << "\n";
