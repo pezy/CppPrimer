@@ -5,25 +5,35 @@ using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
-using std::pair;
 
 int main()
 {
-    pair<string, int> max_duplicated;
-    int count = 0;
-    for (string str, prestr; cin >> str; prestr = str) {
-        if (str == prestr)
-            ++count;
+    string str1;
+    string tempstr, laststr;
+    int count = 0, tempCount = 0;      // 计数 count
+    
+    while (cin >> tempstr)
+    {
+        if (tempCount == 0)
+            laststr = tempstr;
+        if (tempstr == laststr)
+            ++tempCount;
         else
-            count = 0;
-        if (count > max_duplicated.second) max_duplicated = {prestr, count};
+        {
+            laststr = tempstr;
+            tempCount = 1;              // 次数置为1
+        }
+        if (tempCount > count)
+        {
+            count = tempCount;
+            str1 = tempstr;
+        }
     }
-
-    if (max_duplicated.first.empty())
-        cout << "There's no duplicated string." << endl;
+    
+    if (count == 1)
+        cout << "All words are single!" << endl;
     else
-        cout << "the word " << max_duplicated.first << " occurred "
-             << max_duplicated.second + 1 << " times. " << endl;
-
+        cout << "\"" << str1 << "\" appears " << count << " times" << endl;
+    
     return 0;
 }
