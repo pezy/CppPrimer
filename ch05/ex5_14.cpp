@@ -1,39 +1,33 @@
 #include <iostream>
 #include <string>
 
-using std::cout;
-using std::cin;
-using std::endl;
 using std::string;
+using std::cin;
+using std::cout;
+using std::endl;
 
 int main()
 {
-    string str1;
-    string tempstr, laststr;
-    int count = 0, tempCount = 0;      // 计数 count
+    string pre_word, word, max_repeat_word;
+    int repeat_times = 0, max_repeat_times = 0;
     
-    while (cin >> tempstr)
-    {
-        if (tempCount == 0)
-            laststr = tempstr;
-        if (tempstr == laststr)
-            ++tempCount;
-        else
-        {
-            laststr = tempstr;
-            tempCount = 1;              // 次数置为1
+    while (cin >> word) {
+        if (word == pre_word) {
+            ++repeat_times;
+        } else {
+            repeat_times = 1;
+            pre_word = word;
         }
-        if (tempCount > count)
-        {
-            count = tempCount;
-            str1 = tempstr;
+        
+        if (max_repeat_times < repeat_times) {
+            max_repeat_times = repeat_times;
+            max_repeat_word = pre_word;
         }
     }
     
-    if (count == 1)
-        cout << "All words are single!" << endl;
-    else
-        cout << "\"" << str1 << "\" appears " << count << " times" << endl;
-    
-    return 0;
+    if (max_repeat_times <= 1){
+        cout << "no word was repeated" << endl;
+    } else {
+        cout << "the word '" << max_repeat_word << "' occurred " << max_repeat_times << " times" << endl;
+    }
 }
