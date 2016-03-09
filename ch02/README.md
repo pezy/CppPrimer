@@ -138,10 +138,8 @@ Exercise 2.8
 
 int main()
 {
-    std::cout << 2 << "\115\012";
-    std::cout << 2 << "\t\115\012";
-
-    return 0;
+    std::cout << "\062\115\012";
+    std::cout << "\062\t\115\012";
 }
 
 ```
