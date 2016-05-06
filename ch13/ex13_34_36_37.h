@@ -17,8 +17,8 @@
 #ifndef CP5_ex13_34_36_37_h
 #define CP5_ex13_34_36_37_h
 
-#include <string>
 #include <set>
+#include <string>
 
 class Folder;
 
@@ -66,8 +66,8 @@ public:
 private:
     std::set<Message*> msgs;
 
-    void add_to_Message(const Folder&);
-    void remove_to_Message();
+    void add_to_Messages(const Folder&);
+    void remove_from_Messages();
 
     void addMsg(Message* m) { msgs.insert(m); }
     void remMsg(Message* m) { msgs.erase(m); }

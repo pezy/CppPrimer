@@ -259,8 +259,8 @@ Exercise 13.33:
 
 Because these operations must also update the given `Folder`. Updating a `Folder` is a job that the `Folder` class controls through its `addMsg` and `remMsg` members, which will add or remove a pointer to a given `Message`, respectively.
 
-Exercise 13.34 [hpp](ex13_34_36_37.h) | [cpp](ex13_34_36_37.cpp)
-----------------------------------------------------------------
+Exercise 13.34 [hpp](ex13_34_36_37.h) | [cpp](ex13_34_36_37.cpp) | [test](ex13_34_36_37_TEST.cpp)
+-------------------------------------------------------------------------------------------------
 
 Exercise 13.35:
 ---------------
@@ -269,11 +269,11 @@ Exercise 13.35:
 
 some existing `Folders` will out of sync with the `Message` after assignment.
 
-Exercise 13.36 [hpp](ex13_34_36_37.h) | [cpp](ex13_34_36_37.cpp)
-----------------------------------------------------------------
+Exercise 13.36 [hpp](ex13_34_36_37.h) | [cpp](ex13_34_36_37.cpp) | [test](ex13_34_36_37_TEST.cpp)
+-------------------------------------------------------------------------------------------------
 
-Exercise 13.37 [hpp](ex13_34_36_37.h) | [cpp](ex13_34_36_37.cpp)
-----------------------------------------------------------------
+Exercise 13.37 [hpp](ex13_34_36_37.h) | [cpp](ex13_34_36_37.cpp) | [test](ex13_34_36_37_TEST.cpp)
+-------------------------------------------------------------------------------------------------
 
 Exercise 13.38:
 ---------------
