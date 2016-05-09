@@ -238,7 +238,7 @@ vec.resize(10);     // erases 90 elements from the back of vec
 that takes a single argument place on the element type?
 
 If the container holds elements of a class type and resize adds elements
-we **must supply an initializer** or the element type must have a **default constructor**.
+the element type must have a **default constructor**.
 
 ## Exercise 9.31 [use list](ex9_31_1.cpp) | [use forward_list](ex9_31_2.cpp)
 ## [Exercise 9.32](ex9_32.cpp)
