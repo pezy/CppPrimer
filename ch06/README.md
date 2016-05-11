@@ -195,12 +195,13 @@ The type of `elem` in the `for` loop is `const std::string&`.
 
 ## Exercise 6.29
 
-We should use `const reference` as the loop control variable. because the elements in an `initializer_list` are always const values, so we cannot change the value of an element in an `initializer_list`.
+Depends on the type of elements of `initializer_list`. When the type is [PODType](http://en.cppreference.com/w/cpp/concept/PODType), reference is unnecessary. Because `POD` is **cheap to copy**(such as `int`). Otherwise, Using reference(`const`) is the better choice.
 
 ## Exercise 6.30
 
 Error (Clang):
 >Non-void function 'str_subrange' should return a value. // error #1
+
 
 >Control may reach end of non-void function. // error #2
 
@@ -305,12 +306,12 @@ It isn't a good use of `assert`. The `assert` macro is often used to check for c
 
 candidate function:
 >Set of functions that are considered when resolving a function call. (all the functions
-with the name used in the call for which a declaration is in scope at the time of the call.)
+>with the name used in the call for which a declaration is in scope at the time of the call.)
 
 viable function:
 >Subset of the candidate functions that could match a given call.
 >It have the same number of parameters as arguments to the call,
-and each argument type can be converted to the corresponding parameter type.
+>and each argument type can be converted to the corresponding parameter type.
 
 ## Exercise 6.50
 
