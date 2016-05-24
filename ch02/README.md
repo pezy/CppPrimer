@@ -460,7 +460,7 @@ Exercise 2.28
 Exercise 2.29
 -------------
 
-> Uing the variables in the previous exercise, which of the following assignments are legal? Explain why.
+> Using the variables in the previous exercise, which of the following assignments are legal? Explain why.
 >
 > ```cpp
 > i = ic;     // legal.
