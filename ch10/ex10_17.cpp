@@ -1,16 +1,16 @@
 //! @pezy
 //!
 //! Exercise 10.17
-//! Rewrite exercise 10.12 from ¡ì 10.3.1 (p. 387)
+//! Rewrite exercise 10.12 from 10.3.1 (p. 387)
 //! to use a lambda in the call to sort instead of the compareIsbn function.
 //!
 //! @See 7.26, 10.12
 
+#include "../ch07/ex7_26.h" // Sales_data class.
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm>
-#include "../ch07/ex7_26.h" // Sales_data class.
 
 int main()
 {
