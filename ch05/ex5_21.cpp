@@ -27,7 +27,7 @@ int main()
     while (cin >> curr) {
         if (!isupper(curr[0]))
             continue;
-        else if (prev == curr) {
+        if (prev == curr) {
             cout << curr << " occurs twice in succession." << endl;
             no_twice = true;
             break;
