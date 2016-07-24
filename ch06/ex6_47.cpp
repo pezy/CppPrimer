@@ -12,11 +12,11 @@ using std::vector;
 using std::cout;
 using std::endl;
 
-#define NDEBUG
+//#define NDEBUG
 
 void printVec(vector<int>& vec)
 {
-#ifdef NDEBUG
+#ifndef NDEBUG
     cout << "vector size: " << vec.size() << endl;
 #endif
     if (!vec.empty()) {
