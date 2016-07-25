@@ -127,7 +127,7 @@ casue `c` maybe a temp varable. such as `find_char(s, 'a', occurs)`
 
 >What would happen if we made `s` a plain reference? What if we made `occurs` a reference to const?
 
-`s` could be changed in the function, and `occurs` whould not be changed. so `occurs = 0;` is an error.
+`s` could be changed in the function, and `occurs` would not be changed. so `occurs = 0;` is an error.
 
 ## Exercise 6.16
 ```cpp
@@ -272,7 +272,7 @@ decltype(arrStr)& arrPtr(int i)
 
 (b) legal, and match.
 
-(c) legal, but not match. `wd` whould be setting to '*'.
+(c) legal, but not match. `wd` would be setting to '*'.
 
 ## [Exercise 6.42](ex6_42.cpp)
 ## Exercise 6.43
