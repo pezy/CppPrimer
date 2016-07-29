@@ -14,7 +14,7 @@ int main()
 
     signInMail.print_debug(); // print "welcome to cppprimer"
     signInMail.save(mailBox); // send to mailBox
-    mailBox.print_debug();    // print "welcome to cppprimer hello"
+    mailBox.print_debug();    // print "hello welcome to cppprimer"
 
     firstMail = firstMail;   // test for assignment to self.
     firstMail.print_debug(); // print "hello"
