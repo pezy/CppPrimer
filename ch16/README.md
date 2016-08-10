@@ -58,3 +58,82 @@ Exercise 16.8:
 > In the “Key Concept” box on page 108, we noted that as a matter of habit C++ programmers prefer using != to using <. Explain the rationale for this habit.
 
 As we’ve seen, only a few library types, `vector` and `string` being among them, have the subscript operator. Similarly, all of the library containers have iterators that define the `==` and `!=` operators. Most of those iterators do not have the `<` operator. By routinely using iterators and `!=`, we don’t have to worry about the precise type of container we’re processing.
+
+Exercise 16.9:
+--------------
+
+> What is a function template? What is a class template?
+
+-	function template: Definition from which specific functions can be instantiated.
+-	class template: Definition from which specific classes can be instantiated.
+-	differ: the compiler cannot deduce the template parameter type(s) like function templates for a class template. we should supply the list of template arguments to use in place of the template parameters inside angle brackets following the template's name.
+
+Exercise 16.10:
+---------------
+
+> What happens when a class template is instantiated?
+
+the compiler **rewrites** the class template, **replacing each instance** of the template parameter `T` by the given template argument.
+
+Exercise 16.11:
+---------------
+
+> The following definition of `List` is incorrect. How would you fix it?
+>
+> ```cpp
+> template <typename elemType> class ListItem;
+> template <typename elemType> class List {
+> public:
+>   List<elemType>();
+>   List<elemType>(const List<elemType> &);
+>   List<elemType>& operator=(const List<elemType> &);
+>   ~List();
+>   void insert(ListItem *ptr, elemType value);
+> private:
+>   ListItem *front, *end;
+> };
+> ```
+
+use of class template `ListItem` requires template arguments.
+
+```
+void insert(ListItem<elemType> *ptr, elemType value);
+ListItem<elemType> *front, *end;
+```
+
+Exercise 16.12:
+---------------
+
+> Write your own version of the `Blob` and `BlobPtr` templates. including the various `const` members that were not shown in the text.
+
+[`Blob`, `BlobPtr` and `ConstBlobPtr`](ex16_12_blob.h) | [Test](ex16_12_blob_test.cpp)
+
+Exercise 16.13:
+---------------
+
+> Explain which kind of friendship you chose for the equality and relational operators for `BlobPtr`.
+
+General friendship that each instantiation of `BlobPtr` grants access to the version of the equality and relational operators instantiated with the same type.
+
+Exercise 16.14:
+---------------
+
+> Write a `Screen` class template that uses nontype parameters to define the height and width of the `Screen`.
+
+[Screen](ex16_14_screen.h) | [Test](ex16_14_screen_test.cpp)
+
+Exercise 16.15:
+---------------
+
+> Implement input and output operators for your `Screen` template. Which, if any, friends are necessary in class `Screen` to make the input and output operators work? Explain why each friend declaration, if any, was needed.
+
+[Screen](ex16_14_screen.h) | [Test](ex16_14_screen_test.cpp)
+
+same reason with `Blob`.
+
+Exercise 16.16:
+---------------
+
+> Rewrite the `StrVec` class (§ 13.5, p. 526) as a template named `Vec`.
+
+[Vec](ex16_16_vec.h) | [Test](ex16_16_vec_test.cpp)
