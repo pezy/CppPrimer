@@ -137,3 +137,42 @@ Exercise 16.16:
 > Rewrite the `StrVec` class (§ 13.5, p. 526) as a template named `Vec`.
 
 [Vec](ex16_16_vec.h) | [Test](ex16_16_vec_test.cpp)
+
+Exercise 16.17:
+---------------
+
+> What, if any, are the differences between a type parameter that is declared as a `typename` and one that is declared as a `class`? When must `typename` be used?
+
+When we want to inform the compiler that a name represents a type, we must use the keyword `typename`, not `class`.
+
+Exercise 16.18:
+---------------
+
+> Explain each of the following function template declarations and identify whether any are illegal. Correct each error that you find.
+>
+> ```cpp
+> (a) template <typename T, U, typename V> void f1(T, U, V);
+> (b) template <typename T> T f2(int &T);
+> (c) inline template <typename T> T foo(T, unsigned int*);
+> (d) template <typename T> f4(T, T);
+> (e) typedef char Ctype;
+> template <typename Ctype> Ctype f5(Ctype a);
+> ```
+
+Fixed:
+
+```cpp
+(a) template <typename T, typename U, typename V> void f1(T, U, V);
+(b) template <typename T> T f2(int &);
+(c)
+```
+
+Exercise 16.19:
+---------------
+
+> Write a function that takes a reference to a container and prints the elements in that container. Use the container’s `size_type` and `size` members to control the loop that prints the elements.
+
+Exercise 16.20:
+---------------
+
+> Rewrite the function from the previous exercise to use iterators returned from `begin` and `end` to control the loop.
