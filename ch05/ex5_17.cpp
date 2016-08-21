@@ -14,10 +14,9 @@ int main()
     for (decltype(vec1.size()) i = 0; i != size; ++i) {
         if (vec1[i] != vec2[i]) {
             cout << "false" << endl;
-            break;
+            return 0;
         }
-        if (i == size - 1) cout << "true" << endl;
     }
-
+    cout << "true" << endl;
     return 0;
 }
