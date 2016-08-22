@@ -16,8 +16,12 @@ int main(void)
             cout << "Input two integers: ";
         }
         catch (runtime_error err) {
-            cout << err.what() << "\n"
-                 << "Try again.\nInput two integers: ";
+            cout << err.what() ;
+            cout << "\nTry Again? Enter y or n:" << endl;
+            char c;
+            cin >> c;
+            if (!cin || c == 'n')
+                break;
         }
     }
 
