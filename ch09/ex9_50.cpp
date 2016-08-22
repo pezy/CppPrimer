@@ -12,14 +12,14 @@
 #include <string>
 #include <vector>
 
-int sum_for_int(const std::vector<std::string> const& v)
+int sum_for_int(const std::vector<std::string> &v)
 {
     int sum = 0;
     for (auto const& s : v) sum += std::stoi(s);
     return sum;
 }
 
-float sum_for_float(const std::vector<std::string> const& v)
+float sum_for_float(const std::vector<std::string> &v)
 {
     float sum = 0.0;
     for (auto const& s : v) sum += std::stof(s);

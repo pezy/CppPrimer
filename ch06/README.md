@@ -127,7 +127,7 @@ casue `c` maybe a temp varable. such as `find_char(s, 'a', occurs)`
 
 >What would happen if we made `s` a plain reference? What if we made `occurs` a reference to const?
 
-`s` could be changed in the function, and `occurs` whould not be changed. so `occurs = 0;` is an error.
+`s` could be changed in the function, and `occurs` would not be changed. so `occurs = 0;` is an error.
 
 ## Exercise 6.16
 ```cpp
@@ -195,12 +195,13 @@ The type of `elem` in the `for` loop is `const std::string&`.
 
 ## Exercise 6.29
 
-We should use `const reference` as the loop control variable. because the elements in an `initializer_list` are always const values, so we cannot change the value of an element in an `initializer_list`.
+Depends on the type of elements of `initializer_list`. When the type is [PODType](http://en.cppreference.com/w/cpp/concept/PODType), reference is unnecessary. Because `POD` is **cheap to copy**(such as `int`). Otherwise, Using reference(`const`) is the better choice.
 
 ## Exercise 6.30
 
 Error (Clang):
 >Non-void function 'str_subrange' should return a value. // error #1
+
 
 >Control may reach end of non-void function. // error #2
 
@@ -271,7 +272,7 @@ decltype(arrStr)& arrPtr(int i)
 
 (b) legal, and match.
 
-(c) legal, but not match. `wd` whould be setting to '*'.
+(c) legal, but not match. `wd` would be setting to '*'.
 
 ## [Exercise 6.42](ex6_42.cpp)
 ## Exercise 6.43
@@ -299,18 +300,18 @@ more discusses: [#22](https://github.com/ReadingLab/Discussion-for-Cpp/issues/22
 
 This loop let user input a word all the way until the word is sought.
 
-It isn't a good use of assert. because if user begin to input a word, the `cin` would be always have content. so the `assert` would be always `true`. It is meaningless. using `assert(s == sought)` is more better.
+It isn't a good use of `assert`. The `assert` macro is often used to check for conditions that “cannot happen”. But the `assert` would always happen when users input `EOF` directly. The behavior is very natural, so the check is meaningless. using `assert(!cin || s == sought)` is more better.
 
 ## Exercise 6.49
 
 candidate function:
 >Set of functions that are considered when resolving a function call. (all the functions
-with the name used in the call for which a declaration is in scope at the time of the call.)
+>with the name used in the call for which a declaration is in scope at the time of the call.)
 
 viable function:
 >Subset of the candidate functions that could match a given call.
 >It have the same number of parameters as arguments to the call,
-and each argument type can be converted to the corresponding parameter type.
+>and each argument type can be converted to the corresponding parameter type.
 
 ## Exercise 6.50
 
@@ -339,7 +340,7 @@ int calc(const int&, const int&); // calls lookup(const int&)
 (b)
 ```cpp
 int calc(char*, char*); // calls lookup(char*)
-int calc(const char*, const char*); calls lookup(const char *)
+int calc(const char*, const char*); //calls lookup(const char *)
 ```
 (c)
 

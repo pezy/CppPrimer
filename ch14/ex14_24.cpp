@@ -11,7 +11,13 @@ Date::Date(Size days)
     Size y4 = (days - y400 * YtoD_400 - y100 * YtoD_100) / YtoD_4;
     Size y = (days - y400 * YtoD_400 - y100 * YtoD_100 - y4 * YtoD_4) / 365;
     Size d = days - y400 * YtoD_400 - y100 * YtoD_100 - y4 * YtoD_4 - y * 365;
-    this->year = y400 * 400 + y100 * 100 + y4 * 4 + y;
+    if(d==0){
+        this->year = y400 * 400 + y100 * 100 + y4 * 4 + y;
+        this->month = 12;
+        this->day = 31;
+    }
+    else {
+    this->year = y400 * 400 + y100 * 100 + y4 * 4 + y + 1;
 
     //! check if leap and choose the months vector accordingly
     std::vector<Size> currYear =
@@ -38,6 +44,7 @@ Date::Date(Size days)
         else
             return false;
     });
+ }
 }
 
 //! construcotr taking iostream
@@ -106,12 +113,14 @@ Date::Size Date::toDays() const
     for (auto it = currYear.cbegin(); it != currYear.cbegin() + this->month - 1;
          ++it)
         result += *it;
+        
+        auto pre_year = this->year - 1;
 
     //! calculate result + days by years
-    result += (this->year / 400) * YtoD_400;
-    result += (this->year % 400 / 100) * YtoD_100;
-    result += (this->year % 100 / 4) * YtoD_4;
-    result += (this->year % 4) * YtoD_1;
+    result += (pre_year / 400) * YtoD_400;
+    result += (pre_year % 400 / 100) * YtoD_100;
+    result += (pre_year % 100 / 4) * YtoD_4;
+    result += (pre_year % 4) * YtoD_1;
 
     return result;
 }

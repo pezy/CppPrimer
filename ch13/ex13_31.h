@@ -40,7 +40,7 @@ public:
         std::cout << "call swap(HasPtr &rhs)" << std::endl;
     }
 
-    void show() { std::cout << *ps << std::endl; }
+    void show() const { std::cout << *ps << std::endl; }
 private:
     std::string* ps;
     int i;

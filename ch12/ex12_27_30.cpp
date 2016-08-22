@@ -12,6 +12,7 @@
 #include "ex12_27_30.h"
 #include <sstream>
 #include <algorithm>
+#include <iterator>
 
 TextQuery::TextQuery(std::ifstream& ifs) : input(new vector<string>)
 {

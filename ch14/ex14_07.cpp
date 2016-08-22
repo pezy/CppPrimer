@@ -17,7 +17,7 @@ void String::range_initializer(const char* first, const char* last)
 
 String::String(const char* s)
 {
-    char* sl = const_cast<char*>(s);
+    auto sl = s;
     while (*sl) ++sl;
     range_initializer(s, ++sl);
 }
@@ -53,7 +53,7 @@ String& String::operator=(const String& rhs)
 
 std::ostream& operator<<(std::ostream& os, const String& s)
 {
-    char* c = const_cast<char*>(s.c_str());
+    auto c = s.c_str();
     while (*c) os << *c++;
     return os;
 }
