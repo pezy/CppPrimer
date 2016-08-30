@@ -63,7 +63,7 @@ template<>
 std::string debug_rep(const char* str)
 {
     std::string ret(str);
-    return str;
+    return ret;
 }
 
 //! template specialization
