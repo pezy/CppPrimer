@@ -53,10 +53,10 @@ int main()
 	vector<PersonInfo> people;
 
 	string filename;
-	//cout << "Please input a record file name: ";
-	//cin >> filename;
-	//cout << endl;
-	ifstream fin(".//test.txt");
+	cout << "Please input a record file name: ";
+	cin >> filename;
+	cout << endl;
+	ifstream fin(filename);
 	
 	if (fin.is_open())
 	{
