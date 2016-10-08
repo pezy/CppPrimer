@@ -7,7 +7,7 @@
 >- (b) Read an unknown number of words. Always insert new words at the back. Remove the next value from the front.
 >- (c) Read an unknown number of integers from a file. Sort the numbers and then print them to standard output.
 
-- (a) `std::set` is the best. now, we can select `vector` or `deque`, better than `list`, cause we don't need insert or delete elements in the middle.
+- (a) `std::set` is the best. now, we can select `list`, better than `vector` or `deque`, cause we may need to insert elements in the middle frequently to keep sorted alphabetical.
 - (b) `deque`. If the program needs to insert or delete elements at the front and the back, but not in the middle, use a deque
 - (c) `vector`, no need that insert or delete at the front or back. and If your program has lots of small elements and space overhead matters, don’t use list or forward_list.
 
