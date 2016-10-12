@@ -12,11 +12,14 @@ using std::endl;
 int main()
 {
     string s;
+    string output_string;
     cout << "Enter a string of characters including punctuation." << endl;
     while (getline(cin, s)) {
         for (auto i : s)
-            if (!ispunct(i)) cout << i;
-        cout << endl;
+            if (!ispunct(i)) 
+                output_string+=c;
+                
+        cout <<output_string<< endl;
     }
 
     return 0;
