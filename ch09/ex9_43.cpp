@@ -3,6 +3,7 @@
 //  Exercise 9.43
 //
 //  Created by pezy on 6/18/15.
+//  Updated by sanerror on 10/16/16.
 //  Copyright (c) 2014 pezy. All rights reserved.
 //
 //  @Brief  Write a function that takes three strings, s, oldVal, and newVal.
