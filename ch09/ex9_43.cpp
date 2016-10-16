@@ -3,6 +3,7 @@
 //  Exercise 9.43
 //
 //  Created by pezy on 6/18/15.
+//  Updated by sanerror on 10/16/16.
 //  Copyright (c) 2014 pezy. All rights reserved.
 //
 //  @Brief  Write a function that takes three strings, s, oldVal, and newVal.
@@ -18,20 +19,19 @@ using std::string;
 
 void Replace(string& s, const string& oldVal, const string& newVal)
 {
-    for (auto beg = s.begin(); beg != s.end(); ++beg) {
-        if (*beg != oldVal.front()) continue;
-        if (std::distance(beg, s.end()) <
-            std::distance(oldVal.begin(), oldVal.end()))
-            break;
-        if (string{beg, beg + oldVal.size()} == oldVal) {
-            auto pos = std::distance(s.begin(), beg);
-            s.erase(beg, beg + oldVal.size());
-            s.insert(beg, newVal.cbegin(), newVal.cend());
-            beg = std::next(s.begin(), pos + newVal.size() - 1);
-        }
-    }
+	for (auto beg = s.begin(); beg != s.end(); ) {
+		if (std::distance(beg, s.end()) <
+			std::distance(oldVal.begin(), oldVal.end()))
+			break;
+		if (*beg == oldVal.front() && string{ beg, beg + oldVal.size() } == oldVal) {
+			beg = s.erase(beg, beg + oldVal.size());
+			beg = s.insert(beg, newVal.cbegin(), newVal.cend()) + newVal.size();
+		}
+		else {
+			++beg;
+		}
+	}
 }
-
 int main()
 {
     {
