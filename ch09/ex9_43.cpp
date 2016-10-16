@@ -20,18 +20,18 @@ using std::string;
 void Replace(string& s, const string& oldVal, const string& newVal)
 {
 	for (auto beg = s.begin(); beg != s.end(); ) {
-		++beg;
-		if (*beg != oldVal.front()) continue; 
 		if (std::distance(beg, s.end()) <
 			std::distance(oldVal.begin(), oldVal.end()))
 			break;
-		if (string{ beg, beg + oldVal.size() } == oldVal) {
+		if (*beg == oldVal.front() && string{ beg, beg + oldVal.size() } == oldVal) {
 			beg = s.erase(beg, beg + oldVal.size());
 			beg = s.insert(beg, newVal.cbegin(), newVal.cend()) + newVal.size();
 		}
+		else {
+			++beg;
+		}
 	}
 }
-
 int main()
 {
     {
