@@ -123,7 +123,7 @@ cause the `s` should not be changed by this function. but `occurs`'s result must
 
 >Why are these parameters references, but the char parameter `c` is not?
 
-casue `c` maybe a temp varable. such as `find_char(s, 'a', occurs)`
+It's OK to use const reference here but copying a `char` directly would be more memory-efficient. 
 
 >What would happen if we made `s` a plain reference? What if we made `occurs` a reference to const?
 
