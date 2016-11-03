@@ -148,7 +148,7 @@ should be changed.
 ## Exercise 6.18
 (a)
 ```cpp
-bool compare(matrix &m1, matrix &m2){ /.../ }
+bool compare(const matrix &m1, const matrix &m2){ /.../ }
 ```
 (b)
 ```cpp
