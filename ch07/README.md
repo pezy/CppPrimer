@@ -344,7 +344,7 @@ private:
 Exercise 7.44
 -------------
 
-illegal, cause there are ten elements, each would be default initialized. But no default initializer for the temporary object.
+illegal, cause there are ten elements, each would be value initialized. But no default constructor for `NoDefault` type.
 
 Exercise 7.45
 -------------
