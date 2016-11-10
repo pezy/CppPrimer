@@ -60,10 +60,10 @@ Exercise 13.4:
 >
 > ```cpp
 > Point global;
-> Point foo_bar(Point arg) // 1
+> Point foo_bar(Point arg) // 1: Point arg
 > {
->     Point local = arg, *heap = new Point(global); // 2, 3
->     *heap = local;
+>     Point local = arg, *heap = new Point(global); // 2: local = arg
+>     *heap = local; // 3: *heap = local
 >     Point pa[ 4 ] = { local, *heap }; // 4, 5
 >     return *heap; // 6
 > }
