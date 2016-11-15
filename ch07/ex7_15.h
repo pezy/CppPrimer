@@ -2,44 +2,51 @@
 //  ex7_15.h
 //  Exercise 7.15
 //
-//  Created by pezy on 11/9/14.
+//  Created by zzzhhh on 11/15/16.
 //  Copyright (c) 2014 pezy. All rights reserved.
 //
 
 #ifndef CP5_ex7_15_h
 #define CP5_ex7_15_h
 
-#include <string>
+#include "stdafx.h"
 #include <iostream>
+using std::cin;
+using std::cout;
+using std::string;
 
-struct Person;
-std::istream& read(std::istream&, Person&);
+//use “struct” default privileges is public
+//use “calss” default privileges is private
 
-struct Person {
-    Person() = default;
-    Person(const std::string sname, const std::string saddr)
-        : name(sname), address(saddr)
-    {
-    }
-    Person(std::istream& is) { read(is, *this); }
+class Person {
+public:
+	Person() = default;
+	Person(const std::string sname, const string saddr)
+		: name(sname), address(saddr),age(20)
+	{
+	}
 
-    std::string getName() const { return name; }
-    std::string getAddress() const { return address; }
 
-    std::string name;
-    std::string address;
+	string getName() const { return name; }
+	string getAddress() const { return address; }
+
+private:
+	string name;
+	string address;
+	int age;
+
 };
 
-std::istream& read(std::istream& is, Person& person)
-{
-    is >> person.name >> person.address;
-    return is;
-}
 
-std::ostream& print(std::ostream& os, const Person& person)
+int main()
 {
-    os << person.name << " " << person.address;
-    return os;
+	string name = "Ham";
+	string adres = "china";
+	Person obj(name, adres);
+	string out = obj.getName();
+	// Converting a string to a C-style string
+	cout << out.c_str();
+	return 0;
 }
 
 #endif
