@@ -71,8 +71,8 @@ inline void r_print(const std::vector<std::string>& v)
 //! Exercise 10.35
 inline void r_withOrdinary_print(const std::vector<std::string>& v)
 {
-    for (auto it = std::prev(v.cend()); it != std::prev(v.cbegin()); --it)
-        std::cout << *it << " ";
+    for (auto iter = v.rbegin(); iter != v.rend(); ++iter)
+		std::cout << *iter << " ";
 }
 
 //! Exercise 10.36
