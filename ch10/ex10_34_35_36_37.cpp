@@ -72,7 +72,7 @@ inline void r_print(const std::vector<std::string>& v)
 inline void r_withOrdinary_print(const std::vector<std::string>& v)
 {
     for (auto iter = v.end(); iter != v.begin();) 
-		std::cout << *--iter << " ";	
+	std::cout << *--iter << " ";	
 }
 
 //! Exercise 10.36
