@@ -5,7 +5,7 @@ using std::endl;
 using std::begin;
 using std::end;
 
-void print(const int* pi)
+void print(int* pi)
 {
     if (pi) cout << *pi << endl;
 }
@@ -29,7 +29,7 @@ void print(const int ia[], size_t size)
     }
 }
 
-void print(int(&arr)[2])
+void print(const int(&arr)[2])
 {
     for (auto i : arr) cout << i << endl;
 }
@@ -43,7 +43,5 @@ int main()
     print(begin(j), end(j));
     print(&i);
     print(j, end(j) - begin(j));
-    print(j);
-
-    return 0;
+    print(const_cast<const int(&)[2]>(j));
 }
