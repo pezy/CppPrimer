@@ -29,7 +29,7 @@
 template<typename T, unsigned size>
 T* begin(const T(&arr)[size])
 {
-    return arr;
+    return const_cast<T *>(arr);
 }
 
 
@@ -37,7 +37,7 @@ T* begin(const T(&arr)[size])
 template<typename T, unsigned size>
 T* end(const T (&arr)[size])
 {
-    return arr + size;
+    return const_cast<T *>(arr + size);
 }
 
 int main()
