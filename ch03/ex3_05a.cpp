@@ -15,9 +15,11 @@ int main()
     string str;
     while (cin >> str) {
         largeStr += str;
+        cout << "The concatenated string is " << largeStr << endl;
+        largeStr = "";
     }
 
-    cout << "The concatenated string is " << largeStr << endl;
+    
 
     return 0;
 }
