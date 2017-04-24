@@ -210,7 +210,7 @@ while (iter != mid)
 **Problems:**
 
 1. It's a endless loop. `iter` never equal `mid`.
-1. `mid` will be invalid after the `insert`.(see Mooophy/Cpp-Primer#133)
+1. `mid` will be invalid after the `insert`.(see [Mooophy/Cpp-Primer#133](https://github.com/Mooophy/Cpp-Primer/issues/133))
 
 **FIXED**:
 
