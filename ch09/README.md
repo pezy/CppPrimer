@@ -206,23 +206,20 @@ if both elem1 and elem2 are the off-the-end iterator, nothing happened too.
 ## [Exercise 9.27](ex9_27.cpp)
 
 ## Exercise 9.28:
->Write a function that takes a forward_list<string> and two additional string arguments. The function should find the first string and insert the second immediately following the first. If the first string is not found, then insert the second string at the end of the list.
+>Write a function that takes a `forward_list<string>` and two additional string arguments. The function should find the first string and insert the second immediately following the first. If the first string is not found, then insert the second string at the end of the list.
 
 ```cpp
-void find_and_insert(forward_list<string> &list, string const& to_find, string const& to_add)
+void find_and_insert(forward_list<string> &list, const string& to_find, const string& to_add)
 {
     auto prev = list.before_begin();
+    auto size = std::distance(list.begin(), list.end());
     for (auto curr = list.begin(); curr != list.end(); prev = curr++)
-    {
-        if (*curr == to_find)
-        {
-            list.insert_after(curr, to_add);
-            return;
-        }
-    }
-    list.insert_after(prev, to_add);
+        if (*curr == to_find) list.insert_after(curr, to_add);
+    if (size == std::distance(list.begin(), list.end())) list.insert_after(prev, to_add);
 }
 ```
+
+[UnitTest](ex9_28_TEST.cpp)
 
 ## Exercise 9.29:
 >Given that vec holds 25 elements, what does
