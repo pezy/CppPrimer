@@ -45,7 +45,7 @@ wy_Date::wy_Date(const std::string& s)
     case 0x10:
         day = std::stoi(s.substr(0, s.find_first_of("/")));
         month = std::stoi(s.substr(s.find_first_of("/") + 1,
-                                   s.find_first_of("/") - s.find_last_of("/")));
+                                   s.find_last_of("/") - s.find_first_of("/")-1));
         year = std::stoi(s.substr(s.find_last_of("/") + 1, 4));
         break;
 

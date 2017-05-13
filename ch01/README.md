@@ -170,7 +170,7 @@ the loop sums the numbers from -100 to 100. the final value of sum is zero.
 int main()
 {
     int sum = 0;
-    for (int i=50; i<=100; ++i)
+    for (int i = 50; i <= 100; ++i)
         sum += i;
 
     std::cout << "the sum is: " << sum << std::endl;
@@ -185,7 +185,7 @@ int main()
 
 int main()
 {
-    for (int i=10; i>=0; --i)
+    for (int i = 10; i >= 0; --i)
         std::cout << i << " ";
     std::cout << std::endl;
 
