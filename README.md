@@ -1,17 +1,20 @@
-##C++ Primer 5th Answers
+# C++ Primer 5th Answers
+
+---
 
 [![GitHub issues](https://img.shields.io/github/issues/pezy/CppPrimer.svg)](https://github.com/pezy/CppPrimer/issues)
 [![GitHub license](https://img.shields.io/badge/license-CC0-blue.svg)](https://raw.githubusercontent.com/pezy/Cpp-Primer/master/LICENSE)
 [![](https://img.shields.io/badge/%E4%B8%AD%E6%96%87-%E8%AE%A8%E8%AE%BA%E5%8C%BA-yellowgreen.svg)](https://github.com/ReadingLab/Discussion-for-Cpp)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/pezy/0.99)
+[![Donate](https://img.shields.io/badge/Donate-%E6%94%AF%E4%BB%98%E5%AE%9D-blue.svg)](http://devnotes.org/img/alipay.jpg)
 
-### Notes
+## Notes
 
 - Use `GCC 4.9+`, `Clang 3.4+`, `MSVC 14+`, and [others](http://en.cppreference.com/w/cpp/compiler_support).
 - Use `-std=c++11`(recommend: `-pedantic -Wall`) flag for compiling.
 - Have you discovered incorrect information? [Submit](https://github.com/pezy/CppPrimer/issues/new).
 
-### Contents
+## Contents
 
 - [Chapter 1. Getting Started](ch01/README.md)
 - Part I: The Basics

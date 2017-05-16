@@ -1,11 +1,13 @@
-##Exercise 6.1
+# Chapter 6. Functions
+
+## Exercise 6.1
 
 **Parameters**: Local variable declared inside the function parameter list.
 they are initialized by the **arguments** provided in the each function call.
 
 **Arguments**: Values supplied in a function call that are used to initialize the function's **parameters**.
 
-##Exercise 6.2
+## Exercise 6.2
 
 ```cpp
 (a) string f() {
@@ -18,7 +20,7 @@ they are initialized by the **arguments** provided in the each function call.
 (d) double square (double x) { return x * x; }
 ```
 
-##Exercise 6.3
+## Exercise 6.3
 
 ```cpp
 #include <iostream>
@@ -39,7 +41,7 @@ int main()
 
 ## [Exercise 6.4](ex6_04.cpp)
 
-##Exercise 6.5
+## Exercise 6.5
 
 ```cpp
 template <typename T>
@@ -49,8 +51,7 @@ T abs(T i)
 }
 ```
 
-##Exercise 6.6
-
+## Exercise 6.6
 
 **local variable**: Variables defined inside a **block**;
 
@@ -87,10 +88,15 @@ size_t generate()
 ```
 
 ## [Exercise 6.8](Chapter6.h)
+
 ## Exercise 6.9 [fact.cc](fact.cc) | [factMain.cc](factMain.cc)
+
 ## [Exercise 6.10](ex6_10.cpp)
+
 ## [Exercise 6.11](ex6_11.cpp)
+
 ## [Exercise 6.12](ex6_12.cpp)
+
 ## Exercise 6.13
 
 `void f(T)` pass the argument by value. **nothing the function does to the parameter can affect the argument**.
@@ -99,6 +105,7 @@ size_t generate()
 ## Exercise 6.14
 
 a parameter should be a reference type:
+
 ```cpp
 void reset(int &i)
 {
@@ -107,6 +114,7 @@ void reset(int &i)
 ```
 
 a parameter should not be a reference:
+
 ```cpp
 void print(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
@@ -123,13 +131,14 @@ cause the `s` should not be changed by this function. but `occurs`'s result must
 
 >Why are these parameters references, but the char parameter `c` is not?
 
-It's OK to use const reference here but copying a `char` directly would be more memory-efficient. 
+It's OK to use const reference here but copying a `char` directly would be more memory-efficient.
 
 >What would happen if we made `s` a plain reference? What if we made `occurs` a reference to const?
 
 `s` could be changed in the function, and `occurs` would not be changed. so `occurs = 0;` is an error.
 
 ## Exercise 6.16
+
 ```cpp
 bool is_empty(const string& s) { return s.empty(); }
 ```
@@ -146,11 +155,15 @@ For the second function,"const" can't be used,because the content of the agument
 should be changed.
 
 ## Exercise 6.18
+
 (a)
+
 ```cpp
 bool compare(const matrix &m1, const matrix &m2){ /.../ }
 ```
+
 (b)
+
 ```cpp
 vector<int>::iterator change_val(int, vector<int>::iterator) { /.../ }
 ```
@@ -168,7 +181,9 @@ If we can use `const`, just use it. If we make a parameter a plain reference whe
 the reference value maybe changed.
 
 ## [Exercise 6.21](ex6_21.cpp)
+
 ## [Exercise 6.22](ex6_22.cpp)
+
 ## [Exercise 6.23](ex6_23.cpp)
 
 ## Exercise 6.24
@@ -180,13 +195,15 @@ to the array's first element.
 
 In this question, `const int ia[10]` is actually same as `const int*`, and the size of the array is **irrelevant**.
 we can pass `const int ia[3]` or `const int ia[255]`, there are no differences. If we want to pass an array which size is ten, we should use reference like that:
+
 ```cpp
 void print10(const int (&ia)[10]) { /*...*/ }
 ```
 
-see more discusses at http://stackoverflow.com/questions/26530659/confused-about-array-parameters
+see more discusses at <http://stackoverflow.com/questions/26530659/confused-about-array-parameters>
 
 ## [Exercise 6.25 && Exercise 6.26](ex6_25_26.cpp)
+
 ## [Exercise 6.27](ex6_27.cpp)
 
 ## Exercise 6.28
@@ -200,10 +217,9 @@ Depends on the type of elements of `initializer_list`. When the type is [PODType
 ## Exercise 6.30
 
 Error (Clang):
->Non-void function 'str_subrange' should return a value. // error #1
-
-
->Control may reach end of non-void function. // error #2
+> Non-void function 'str_subrange' should return a value. // error #1
+>
+> Control may reach end of non-void function. // error #2
 
 ## Exercise 6.31
 
@@ -213,7 +229,8 @@ when you can find the preexited object that the reference refered.
 
 legal, it gave the values (0 ~ 9) to array `ia`.
 
-##[Exercise 6.33](ex6_33.cpp)([Generics Version](ex6_33_generics_version.cpp))
+## [Exercise 6.33](ex6_33.cpp)([Generics Version](ex6_33_generics_version.cpp))
+
 ## Exercise 6.34
 
 When the recursion termination condition becomes `var != 0`, two situations can happen :
@@ -245,6 +262,7 @@ decltype(arrS)& func3(ArrT& arr);
 I pefer the first one. because it is more simpler to me.
 
 ## Exercise 6.38
+
 ```cpp
 decltype(arrStr)& arrPtr(int i)
 {
@@ -275,16 +293,19 @@ decltype(arrStr)& arrPtr(int i)
 (c) legal, but not match. `wd` would be setting to '*'.
 
 ## [Exercise 6.42](ex6_42.cpp)
+
 ## Exercise 6.43
 
 Both two should put in a header. (a) is an inline function. (b) is the declaration of useful function. we always put them in the header.
 
 ## [Exercise 6.44](ex6_44.cpp)
+
 ## Exercise 6.45
 
 For example, the function `arrPtr` in [Exercise 6.38](#exercise-638) and `make_plural` in [Exercise 6.42](#exercise-642) should be defined as `inline`. But the function `func` in [Exercise 6.4](#exercise-64) shouldn't. Cause it just being call once and too many codes in the function.
 
 ## Exercise 6.46
+
 > Would it be possible to define `isShorter` as a `constexpr`? If so, do so. If not, explain why not.
 
 No.
@@ -296,6 +317,7 @@ But `std::string`(parameter of `isShorter`) is not a literal type.
 more discusses: [#22](https://github.com/ReadingLab/Discussion-for-Cpp/issues/22)
 
 ## [Exercise 6.47](ex6_47.cpp)
+
 ## Exercise 6.48
 
 This loop let user input a word all the way until the word is sought.
@@ -324,6 +346,7 @@ viable function:
 (d) match `void f(double, double = 3.14)`.
 
 ## [Exercise 6.51](ex6_51.cpp)
+
 ## Exercise 6.52
 
 (a) Match through a promotion
@@ -333,20 +356,25 @@ viable function:
 ## Exercise 6.53
 
 (a)
+
 ```cpp
 int calc(int&, int&); // calls lookup(int&)
 int calc(const int&, const int&); // calls lookup(const int&)
 ```
+
 (b)
+
 ```cpp
 int calc(char*, char*); // calls lookup(char*)
 int calc(const char*, const char*); //calls lookup(const char *)
 ```
+
 (c)
 
 illegal. both calls lookup(char*)
 
 ## Exercise 6.54
+
 ```cpp
 int func(int a, int b);
 
@@ -366,6 +394,7 @@ std::vector<pFunc6*> vec6;
 ```
 
 ## Exercise 6.55
+
 ```cpp
 int add(int a, int b) { return a + b; }
 int subtract(int a, int b) { return a - b; }
@@ -374,6 +403,7 @@ int divide(int a, int b) { return b != 0 ? a / b : 0; }
 ```
 
 ## Exercise 6.56
+
 ```cpp
 std::vector<decltype(func) *> vec{add, subtract, multiply, divide};
 for (auto f : vec)
