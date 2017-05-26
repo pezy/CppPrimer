@@ -155,3 +155,31 @@ Fixed:
 ## Exercise 16.20
 
 > Rewrite the function from the previous exercise to use iterators returned from `begin` and `end` to control the loop.
+
+## Exercise 16.27
+> For each labeled statement explain what, if any, instantiations happen. If a template is instantiated, explain why; if not, explain why not.
+>```cpp
+>template <typename T> class Stack { };
+>
+>void f1(Stack<char>);                   // (a)
+>class Exercise {
+>    Stack<double> &rsd;                 // (b)
+>    Stack<int>    si;                   // (c)
+>};
+>int main() {
+>    Stack<char> *sc;                    // (d)
+>    f1(*sc);                            // (e)
+>    int iObj = sizeof(Stack< string >); // (f)
+>}
+>```
+
+Solution:
+- (a) No instantiation, compiles, it got instantiated when called.
+- (b) No instantiation, compiles, references and pointers doesn't need instantiation
+- (c) Instantiation. Doesn't compile!
+- (d) No instantiation, compiles, references and pointers doesn't need instantiation
+- (e) Instantiation of Stack<char>. Doesn't compile!
+- (f) Instantiation of Stack<std::string>. Doesn't compileNo instantiation, compiles, references and pointers doesn't need instantiation!
+
+Solution from [How is a template instantiated? - Stack Overflow](https://stackoverflow.com/questions/21598635/how-is-a-template-instantiated)
+
