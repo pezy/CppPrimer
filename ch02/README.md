@@ -395,7 +395,8 @@ Because the type `void*` is a special pointer type that can hold the address of 
 > const int buf;      // illegal, buf is uninitialized const.
 > int cnt = 0;        // legal.
 > const int sz = cnt; // legal.
-> ++cnt; ++sz;        // illegal, attempt to write to const object(sz).
+> ++cnt;              // legal.
+> ++sz;               // illegal, attempt to write to const object(sz).
 > ```
 
 ## Exercise 2.27
