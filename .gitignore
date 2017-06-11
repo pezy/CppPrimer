@@ -1,6 +1,9 @@
 # Mac OS
 .DS_Store
 
+# LLVM
+*.dSYM
+
 # Compiled Object files
 *.slo
 *.lo
