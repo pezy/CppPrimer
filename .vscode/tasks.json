@@ -8,7 +8,9 @@
         "${file}",
         "-o",
         "${file}.exe",
-        "-std=c++11"
+        "-std=c++11",
+        "-pedantic",
+        "-Wall"
     ],
     "showOutput": "always",
     "isShellCommand": true,
