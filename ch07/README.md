@@ -2,7 +2,7 @@
 
 ## [Exercise 7.1](ex7_01.cpp)
 
-## [Exercise 7.2](ex7_02.h)
+## [Exercise 7.2](ex7_02_sales_data.h)
 
 ## [Exercise 7.3](ex7_03.cpp)
 
@@ -10,7 +10,7 @@
 
 ## [Exercise 7.5](ex7_05.h)
 
-## [Exercise 7.6](ex7_06.h)
+## [Exercise 7.6](ex7_06_sales_data.h)
 
 ## [Exercise 7.7](ex7_07.cpp)
 
@@ -38,9 +38,11 @@ if (secondStep)
 
 the condition of the `if` statement would read two `Sales_data` object at one time.
 
-## Exercise 7.11 [Header](ex7_11.h)|[CPP](ex7_11.cpp)
+## Exercise 7.11
 
-## [Exercise 7.12](ex7_12.h)
+[Sales_data Definition](ex7_11_sales_data.h) | [Sales_data Implementation](ex7_11_sales_data.cpp)
+
+## [Exercise 7.12](ex7_12_sales_data.h)
 
 ## [Exercise 7.13](ex7_13.cpp)
 
@@ -97,7 +99,7 @@ the interface should be defined as public, the data shouldn't expose to outside 
 - lessens encapsulation and therefore maintainability.
 - code verbosity, declarations inside the class, outside the class.
 
-## [Exercise 7.21](ex7_21.h)
+## [Exercise 7.21](ex7_21_sales_data.h)
 
 ## [Exercise 7.22](ex7_22.h)
 
@@ -115,7 +117,9 @@ The class below can rely on it. It goes in *Section 7.1.5*:
 
 Hence the class below which used only built-in type and strings can rely on the default version of copy and assignment. (by [@Mooophy](https://github.com/Mooophy)\)
 
-## Exercise 7.26 [Header](ex7_26.h)|[CPP](ex7_26.cpp)
+## Exercise 7.26
+
+[Sales_data Definition](ex7_26_sales_data.h) | [Sales_data Implementation](ex7_26_sales_data.cpp)
 
 ## Exercise 7.27 [Class](ex7_27.h)|[Test](ex7_27_TEST.cpp)
 
@@ -279,7 +283,9 @@ private:
 };
 ```
 
-## Exercise 7.41 [Header](ex7_41.h)|[CPP](ex7_41.cpp)|[Test](ex7_41_TEST.cpp)
+## Exercise 7.41
+
+[Sales_data Definition](ex7_41_sales_data.h) | [Sales_data Implementation](ex7_41_sales_data.cpp)|[Sales_data Test](ex7_41_sales_data_test.cpp)
 
 ## Exercise 7.42
 

@@ -1,12 +1,4 @@
-//
-//  ex7_41_TEST.cpp
-//  Test of Exercise 7.41
-//
-//  Created by pezy on 11/14/14.
-//  Copyright (c) 2014 pezy. All rights reserved.
-//
-
-#include "ex7_41.h"
+#include "ex7_41_sales_data.h"
 using std::cout;
 using std::endl;
 

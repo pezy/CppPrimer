@@ -1,12 +1,4 @@
-//
-//  ex7_11.cpp
-//  Exercise 7.11
-//
-//  Created by pezy on 11/9/14.
-//  Copyright (c) 2014 pezy. All rights reserved.
-//
-
-#include "ex7_11.h"
+#include "ex7_11_sales_data.h"
 
 int main()
 {
@@ -21,6 +13,4 @@ int main()
 
     Sales_data item4(std::cin);
     print(std::cout, item4) << std::endl;
-
-    return 0;
 }

@@ -19,7 +19,7 @@ Same:
 
 >Write declarations for the overloaded input, output, addition, and compound-assignment operators for `Sales_data`.
 
-[hpp](ex14_02.h) | [cpp](ex14_02.cpp)
+[Sales_data Definition](ex14_02_sales_data.h) | [Sales_data Implementation](ex14_02_sales_data.cpp) | [Sales_data Test](ex14_02_sales_data_test.cpp)
 
 ## Exercise 14.3
 
@@ -60,9 +60,9 @@ Reference:
 
 (e) non-member
 
-(f) symetric , non-member
+(f) symmetric , non-member
 
-(g) symetric , non-member
+(g) symmetric , non-member
 
 (h) = () [] -> must be member
 
@@ -100,13 +100,13 @@ see [Exercise 14.2](#exercise-142).
 
 ## Exercise 14.10
 
->Describe the behaviour of the Sales_data input operator if given the following input:
+>Describe the behavior of the Sales_data input operator if given the following input:
 
 - (a) 0-201-99999-9 10 24.95
 - (b) 10 24.95 0-210-99999-9
 
 - (a) correct format.
-- (b) ilegal input. But `0-210-99999-9` will be converted to a float stored in this object. As a result, the data inside will be a wrong one.
+- (b) illegal input. But `0-210-99999-9` will be converted to a float stored in this object. As a result, the data inside will be a wrong one.
 
 Output: `10 24 22.8 0.95`
 
@@ -126,7 +126,7 @@ istream& operator>>(istream& in, Sales_data& s)
 }
 ```
 
-no input check. nothing happend.
+no input check. nothing happened.
 
 ## Exercise 14.12
 
@@ -213,7 +213,7 @@ Sales_data operator+(const Sales_data &lhs, const Sales_data &rhs)
 
 >Define a version of the assignment operator that can assign a `string` representing an ISBN to a `Sales_data`.
 
-[hpp](ex14_22.h) | [cpp](ex14_22.cpp) | [Test](ex14_22_TEST.cpp)
+[Sales_data Definition](ex14_22_sales_data.h) | [Sales_data Implementation](ex14_22_sales_data.cpp) | [Sales_data Test](ex14_22_sales_data_test.cpp)
 
 ## Exercise 14.23
 
@@ -370,7 +370,7 @@ std::transform(ivec.begin(), ivec.end(), ivec.begin(), std::bind(std::multiplies
 
 > Write conversion operators to convert a `Sales_data` to `string` and to `double`. What values do you think these operators should return?
 
-[hpp](ex14_45.h) | [cpp](ex14_45.cpp) | [Test](ex14_45_TEST.cpp)
+[Sales_data Definition](ex14_45_sales_data.h) | [Sales_data Implementation](ex14_45_sales_data.cpp) | [Sales_data Test](ex14_45_sales_data_test.cpp)
 
 ## Exercise 14.46
 

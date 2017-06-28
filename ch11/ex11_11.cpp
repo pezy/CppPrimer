@@ -1,13 +1,4 @@
-//
-//  ex11_11.cpp
-//  Exercise 11.11
-//
-//  Created by pezy on 12/15/14.
-//  Copyright (c) 2014 pezy. All rights reserved.
-//
-//  Redefine bookstore without using decltype.
-
-#include "../ch07/ex7_26.h"
+#include "../ch07/ex7_26_sales_data.h"
 #include <set>
 
 bool compareIsbn(const Sales_data& lhs, const Sales_data& rhs)

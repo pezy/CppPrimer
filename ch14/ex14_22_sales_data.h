@@ -1,22 +1,11 @@
-/*
-=================================================================================
+#ifndef CP5_ex14_22_h
+#define CP5_ex14_22_h
 
-C++ Primer 5th Exercise Answer Source Code
-Copyright (C) 2014-2015 github.com/pezy/Cpp-Primer
-
-Sales_data
-
-If you have questions, try to connect with me: pezy<urbancpz@gmail.com>
-
-=================================================================================
-*/
-
-#ifndef CP5_ex14_45_h
-#define CP5_ex14_45_h
-
-#include <string>
 #include <iostream>
+#include <string>
 
+// added an assignment operator that can assign a string representing an ISBN to
+// a Sales_data
 class Sales_data {
     friend std::istream& operator>>(std::istream&, Sales_data&);
     friend std::ostream& operator<<(std::ostream&, const Sales_data&);
@@ -31,11 +20,9 @@ public:
     Sales_data(const std::string& s) : Sales_data(s, 0, 0.0f) {}
     Sales_data(std::istream& is);
 
-    Sales_data& operator=(const std::string&);
-    Sales_data& operator+=(const Sales_data&);
-    explicit operator std::string() const { return bookNo; }
-    explicit operator double() const { return avg_price(); }
+    Sales_data& operator=(const std::string&); // assign string to Sales_data
 
+    Sales_data& operator+=(const Sales_data&);
     std::string isbn() const { return bookNo; }
 
 private:

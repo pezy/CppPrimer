@@ -1,14 +1,4 @@
-//
-//  ex7_41.cpp
-//  Exercise 7.41
-//
-//  Created by pezy on 11/20/14.
-//  Copyright (c) 2014 pezy. All rights reserved.
-//
-//  @Brief implementation of class Sales_data
-//  @See ex7_41.h
-
-#include "ex7_41.h"
+#include "ex7_41_sales_data.h"
 
 // constructor
 Sales_data::Sales_data(std::istream& is) : Sales_data()

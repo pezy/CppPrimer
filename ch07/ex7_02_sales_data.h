@@ -1,16 +1,9 @@
-//
-//  ex7_02.h
-//  Exercise 7.2
-//
-//  Created by pezy on 14/11/8.
-//  Copyright (c) 2014 pezy. All rights reserved.
-//
-
 #ifndef CP5_ex7_02_h
 #define CP5_ex7_02_h
 
 #include <string>
 
+// Add the combine and isbn members to the Sales_data
 struct Sales_data {
     std::string isbn() const { return bookNo; };
     Sales_data& combine(const Sales_data&);

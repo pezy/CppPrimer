@@ -1,19 +1,10 @@
-//
-//  ex14_02.h
-//  Exercise 14.2
-//
-//  Created by pezy on 3/9/15.
-//  Copyright (c) 2014 pezy. All rights reserved.
-//
-//  @See ex7_41.h
-//  @Add overloaded input, output, addition, and compound-assignment operators
-
 #ifndef CP5_ex14_02_h
 #define CP5_ex14_02_h
 
-#include <string>
 #include <iostream>
+#include <string>
 
+// added overloaded input, output, addition, and compound-assignment operators
 class Sales_data {
     friend std::istream& operator>>(std::istream&, Sales_data&);       // input
     friend std::ostream& operator<<(std::ostream&, const Sales_data&); // output

@@ -1,30 +1,12 @@
-//
-//  ex7_12.h
-//  Exercise 7.12
-//
-//  Created by pezy on 11/9/14.
-//  Copyright (c) 2014 pezy. All rights reserved.
-//
+#ifndef CP5_ex7_06_h
+#define CP5_ex7_06_h
 
-#ifndef CP5_ex7_12_h
-#define CP5_ex7_12_h
-
-#include <string>
 #include <iostream>
+#include <string>
 
-struct Sales_data;
-std::istream& read(std::istream&, Sales_data&);
-
+// added add, read, print functions
 struct Sales_data {
-    Sales_data() = default;
-    Sales_data(const std::string& s) : bookNo(s) {}
-    Sales_data(const std::string& s, unsigned n, double p)
-        : bookNo(s), units_sold(n), revenue(n * p)
-    {
-    }
-    Sales_data(std::istream& is) { read(is, *this); }
-
-    std::string isbn() const { return bookNo; };
+    std::string const& isbn() const { return bookNo; };
     Sales_data& combine(const Sales_data&);
 
     std::string bookNo;

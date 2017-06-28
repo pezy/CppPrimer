@@ -1,6 +1,7 @@
-#include <string>
 #include <iostream>
+#include <string>
 
+// own Sales_data
 struct Sales_data {
     std::string bookNo;
     unsigned units_sold = 0;

@@ -1,47 +1,25 @@
-//
-//  ex7_41.h
-//  Exercise 7.41
-//
-//  Created by pezy on 11/20/14.
-//  Copyright (c) 2014 pezy. All rights reserved.
-//
-//  @See ex7_26.h
-//  @Add 1. use delegating constructors
-//       2. add a statement to the body of each of the constructors that prints
-//       a message whether it is executed.
+#ifndef CP5_ex7_26_h
+#define CP5_ex7_26_h
 
-#ifndef CP5_ex7_41_h
-#define CP5_ex7_41_h
-
-#include <string>
 #include <iostream>
+#include <string>
 
+// define Sales_data::avg_price as an inline function.
 class Sales_data {
     friend std::istream& read(std::istream& is, Sales_data& item);
     friend std::ostream& print(std::ostream& os, const Sales_data& item);
     friend Sales_data add(const Sales_data& lhs, const Sales_data& rhs);
 
 public:
+    Sales_data() = default;
+    Sales_data(const std::string& s) : bookNo(s) {}
     Sales_data(const std::string& s, unsigned n, double p)
         : bookNo(s), units_sold(n), revenue(n * p)
     {
-        std::cout << "Sales_data(const std::string&, unsigned, double)"
-                  << std::endl;
     }
+    Sales_data(std::istream& is) { read(is, *this); }
 
-    Sales_data() : Sales_data("", 0, 0.0f)
-    {
-        std::cout << "Sales_data()" << std::endl;
-    }
-
-    Sales_data(const std::string& s) : Sales_data(s, 0, 0.0f)
-    {
-        std::cout << "Sales_data(const std::string&)" << std::endl;
-    }
-
-    Sales_data(std::istream& is);
-
-    std::string isbn() const { return bookNo; }
+    std::string isbn() const { return bookNo; };
     Sales_data& combine(const Sales_data&);
 
 private:
