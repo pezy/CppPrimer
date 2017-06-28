@@ -45,7 +45,7 @@ Explain which design you think is better and why.
 
 > Explain which version of `findBook` you prefer and why.
 
-I prefer the tuple version, because this version is the most refined.
+I prefer the tuple version, because this version is more flexible.
 
 ## Exercise 17.8
 
