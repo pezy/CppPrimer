@@ -1,3 +1,5 @@
+#pragma once
+
 #include <algorithm>
 #include <iostream>
 #include <numeric>
@@ -67,4 +69,4 @@ void reportResults(std::istream& in, std::ostream& os,
         std::cout << "----" << std::endl;
     }
 }
-}
+} // namespace EX06

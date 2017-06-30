@@ -1,3 +1,5 @@
+#pragma once
+
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -34,4 +36,4 @@ private:
 };
 
 ostream& print(ostream&, const query_result&);
-}
+} // namespace EX03

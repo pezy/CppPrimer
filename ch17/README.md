@@ -67,3 +67,27 @@ Because `std::accumulate`'s third parameter is the initial value of the sum. It'
 (a): 64 bits, lower-order 6 bits are `100000`, remaining bits are 0.
 (b): 00000000000011110110100110110101
 (c): depends on what user has been input.
+
+## Exercise 17.10
+
+> Using the sequence 1, 2, 3, 5, 8, 13, 21, initialize a `bitset` that has a 1 bit in each position corresponding to a number in this sequence. Default initialize another `bitset` and write a small program to turn on each of the appropriate bits.
+
+[`bitset` initialization and turn on test](ex17_10.cpp)
+
+## Exercise 17.11
+
+> Define a data structure that contains an integral object to track responses to a true/false quiz containing 10 questions. What changes, if any, would you need to make in your data structure if the quiz had 100 questions?
+
+[`QuizResponses` Definition](ex17_11_quiz_responses.h)
+
+## Exercise 17.12
+
+> Using the data structure from the previous question, write a function that takes a question number and a value to indicate a true/false answer and updates the quiz results accordingly.
+
+[`QuizResponses` Definition](ex17_11_quiz_responses.h)
+
+## Exercise 17.13
+
+> Write an integral object that contains the correct answers for the true/false quiz. Use it to generate grades on the quiz for the data structure from the previous two exercises.
+
+[Test `QuizResponses` class](ex17_11_quiz_responses_test.cpp)
