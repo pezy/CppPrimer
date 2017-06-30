@@ -53,3 +53,17 @@ I prefer the tuple version, because this version is more flexible.
 
 Nothing happened, it's the same as passed `Sales_data(s)`.
 Because `std::accumulate`'s third parameter is the initial value of the sum. It's will be zero whether `Sales_data()` or `Sales_data(s)`. Check the constructor of `Sales_data` and the `operator+=` member for more information.
+
+## Exercise 17.9
+
+>Explain the bit pattern each of the following `bitset` objects contains:
+
+```cpp
+(a) bitset<64> bitvec(32);
+(b) bitset<32> bv(1010101);
+(c) string bstr; cin >> bstr; bitset<8> bv(bstr);
+```
+
+(a): 64 bits, lower-order 6 bits are `100000`, remaining bits are 0.
+(b): 00000000000011110110100110110101
+(c): depends on what user has been input.
