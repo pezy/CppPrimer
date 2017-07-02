@@ -91,3 +91,21 @@ Because `std::accumulate`'s third parameter is the initial value of the sum. It'
 > Write an integral object that contains the correct answers for the true/false quiz. Use it to generate grades on the quiz for the data structure from the previous two exercises.
 
 [Test `QuizResponses` class](ex17_11_quiz_responses_test.cpp)
+
+## Exercise 17.14
+
+> Write several regular expressions designed to trigger various errors. Run your program to see what output your compiler generates for each error.
+
+[Try error code 1](ex17_14.cpp)
+
+## Exercise 17.15
+
+> Write a program using the pattern that finds words that violate the “i before e except after c” rule. Have your program prompt the user to supply a word and indicate whether the word is okay or not. Test your program with words that do and do not violate the rule.
+
+[I before E except after C rule](ex17_15.cpp)
+
+## Exercise 17.16
+
+> What would happen if your regex object in the previous program were initialized with "[^c]ei"? Test your program using that pattern to see whether your expectations were correct.
+
+`[^c]ei` says we want any such letter that is followed by the letters 'ei', This pattern describes strings containing exactly **three** characters. The test words in [ex17_15](ex17_15.cpp) will all fail.
