@@ -1,14 +1,17 @@
-# Exercise information
+### Exercise information
 
+<!-- 
 Exercise 1.1
-
 > Review the documentation for your compiler and determine what file naming convention it uses. Compile and run the main program from page 2.
+-->
 
-# Question or BUG
+### Question or BUG
 
+<!--
 cannot compile.
+-->
 
-# Your enviroment information
+### Your enviroment information
 
-- **System**: Win10
-- **Compiler version/IDE**: VS2017
+- **System**:  :grey_question:
+- **Compiler version/IDE**:  :grey_question:
