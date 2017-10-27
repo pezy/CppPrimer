@@ -5,8 +5,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/pezy/CppPrimer.svg)](https://github.com/pezy/CppPrimer/issues)
 [![GitHub license](https://img.shields.io/badge/license-CC0-blue.svg)](https://raw.githubusercontent.com/pezy/Cpp-Primer/master/LICENSE)
 [![](https://img.shields.io/badge/%E4%B8%AD%E6%96%87-%E8%AE%A8%E8%AE%BA%E5%8C%BA-yellowgreen.svg)](https://github.com/ReadingLab/Discussion-for-Cpp)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/pezy/0.99)
-[![Donate](https://img.shields.io/badge/Donate-%E6%94%AF%E4%BB%98%E5%AE%9D-blue.svg)](http://devnotes.org/img/alipay.jpg)
+[![Slack](https://img.shields.io/badge/Slack-join-brightgreen.svg)](https://join.slack.com/t/cppprimers/shared_invite/enQtMjYyODExNDIxNzMwLTM5YzAyMjBlZGM1MTU4MTZkYTI4NzBhOWFjYTM2NzAwMTkzODFiNDExOTFjZGM0Yzc5NzczYTVlZTgzMjlkMGQ)
 
 ## Notes
 
@@ -37,5 +36,5 @@
   - [Chapter 16. Templates and Generic Programming](ch16/README.md)
 - Part IV:  Advanced Topics
   - [Chapter 17. Specialized Library Facilities](ch17/README.md)
-  - [Chapter 18. Tools for Large Programs](ch18)
+  - [Chapter 18. Tools for Large Programs](ch18/README.md)
   - Chapter 19. Specialized Tools and Techniques
