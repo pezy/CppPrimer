@@ -19,7 +19,7 @@ void find_and_insert(forward_list<string> &list, const string& to_find, const st
 	auto prev = list.before_begin();
 	auto size = std::distance(list.begin(), list.end());
 	for (auto curr = list.begin(); curr != list.end(); prev = curr++)
-		if (*curr == to_find) list.insert_after(curr, to_add);
+		if (*curr == to_find) curr=list.insert_after(curr, to_add);
 	if (size == std::distance(list.begin(), list.end())) list.insert_after(prev, to_add);
 }
 
