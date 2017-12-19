@@ -5,7 +5,8 @@
 [![GitHub issues](https://img.shields.io/github/issues/pezy/CppPrimer.svg)](https://github.com/pezy/CppPrimer/issues)
 [![GitHub license](https://img.shields.io/badge/license-CC0-blue.svg)](https://raw.githubusercontent.com/pezy/Cpp-Primer/master/LICENSE)
 [![](https://img.shields.io/badge/%E4%B8%AD%E6%96%87-%E8%AE%A8%E8%AE%BA%E5%8C%BA-yellowgreen.svg)](https://github.com/ReadingLab/Discussion-for-Cpp)
-[![Slack](https://img.shields.io/badge/Slack-join-brightgreen.svg)](https://join.slack.com/t/cppprimers/shared_invite/enQtMjYyODExNDIxNzMwLTM5YzAyMjBlZGM1MTU4MTZkYTI4NzBhOWFjYTM2NzAwMTkzODFiNDExOTFjZGM0Yzc5NzczYTVlZTgzMjlkMGQ)
+[![Slack](https://img.shields.io/badge/Slack-join-brightgreen.svg)](https://join.slack.com/t/cppprimers/shared_invite/enQtMjg4NzQ4NjU4NzczLTZiNWMxOGM0MDRjNzNkMGJhNjYxZjQ3NGFmYmRhZWVlYTI4YTBhMTE3NDhlYzNlYTM3OTA3MzU2MjhhYTE2YWI)
+[![Thanks](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/pezy)
 
 ## Notes
 
