@@ -223,7 +223,7 @@ Error (Clang):
 
 ## Exercise 6.31
 
-when you can find the preexited object that the reference refered.
+when you can find the preexisted object that the reference refered.
 
 ## Exercise 6.32
 

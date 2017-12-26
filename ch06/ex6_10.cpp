@@ -1,28 +1,25 @@
-//!@Yue wang
-//!
-//! Exercise 6.10:
-//! Using pointers, write a function to swap the values of two ints.
-//! Test the function by calling it and printing the swapped values.
-//!
-#include <iostream>
-#include <string>
-#include <stdexcept>
+// Using pointers, write a function to swap the values of two ints.
+// Test the function by calling it and printing the swapped values.
 
-void swap(int* lhs, int* rhs)
+#include <iostream>
+#include <stdexcept>
+#include <string>
+
+using std::cin;
+using std::cout;
+using std::endl;
+
+void swap(int* const lhs, int* const rhs)
 {
-    int tmp;
-    tmp = *lhs;
+    auto tmp = *lhs;
     *lhs = *rhs;
     *rhs = tmp;
 }
 
 int main()
 {
-    for (int lft, rht;
-         std::cout << "Please Enter:\n", std::cin >> lft >> rht;) {
-        swap(&lft, &rht);
-        std::cout << lft << " " << rht << std::endl;
+    for (int lht, rht; cout << "Please Enter:\n", cin >> lht >> rht;) {
+        swap(&lht, &rht);
+        cout << lht << " " << rht << endl;
     }
-
-    return 0;
 }

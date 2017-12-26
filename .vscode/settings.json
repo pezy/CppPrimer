@@ -1,4 +1,5 @@
 {
+    "editor.formatOnSave": true,
     "files.associations": {
         "vector": "cpp",
         "iosfwd": "cpp",

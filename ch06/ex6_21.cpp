@@ -1,15 +1,10 @@
-//! @Alan
-//!
-//! Exercise 6.21:
-//! Write a function that takes an int and a pointer to an int and
-//! returns the larger of the int value or the value to which the
-//! pointer points. What type should you use for the pointer?
-//!
+// Write a function that takes an int and a pointer to an int and
+// returns the larger of the int value or the value to which the
+// pointer points. What type should you use for the pointer?
 
 #include <iostream>
-using std::cout;
 
-int LargerOne(const int i, const int* ip)
+int LargerOne(int i, const int* const ip)
 {
     return (i > *ip) ? i : *ip;
 }
@@ -17,7 +12,5 @@ int LargerOne(const int i, const int* ip)
 int main()
 {
     int c = 6;
-    cout << LargerOne(7, &c);
-
-    return 0;
+    std::cout << LargerOne(7, &c) << std::endl;
 }
