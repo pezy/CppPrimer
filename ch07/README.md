@@ -238,7 +238,7 @@ and `Exercise::initVal()` should be defined.
 
 ```cpp
 struct X {
-  X (int i, int j): base(i), rem(base % j) { }
+  X (int i, int j): base(i), rem(i % j) { }
   int base, rem;
 };
 ```
@@ -257,7 +257,7 @@ int main() {
 ## Exercise 7.38
 
 ```cpp
-Sales_data(std::istream &is = std::cin) { read(is, *this); }
+Sales_data(std::istream &is = std::cin) { read(is, *this); }// wrong!!!!!!!!!
 ```
 
 ## Exercise 7.39
