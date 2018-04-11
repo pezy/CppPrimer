@@ -237,6 +237,8 @@ Solution from [How is a template instantiated? - Stack Overflow](https://stackov
 
 > Write your own versions of `shared_ptr` and `unique_ptr`.
 
+[shared_ptr](ex16_28_shared_ptr.h) | [unique_ptr](ex16_28_unique_ptr.h) | [test](ex16_28_test.cpp)
+
 ## Exercise 16.29
 
 > Revise your `Blob` class to use your version of `shared_ptr` rather than the library version.
