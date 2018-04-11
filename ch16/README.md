@@ -143,20 +143,69 @@ When we want to inform the compiler that a name represents a type, we must use t
 Fixed:
 
 ```cpp
-(a) template <typename T, typename U, typename V> void f1(T, U, V);
-(b) template <typename T> T f2(int &);
-(c)
+(a) template <typename T, typename U, typename V> void f1(T, U, V); // identifier 'U'
+(b) template <typename T> T f2(int &); // typename would be hidden
+(c) template <typename T> inline T foo(T, unsigned int*); // inline must be after template
+(d) template <typename T> void f4(T, T); // return type should be provided
+(e) typedef char Ctype;
+template <typename T> T f5(Ctype a); // the typename hides this typedef
 ```
 
 ## Exercise 16.19
 
 > Write a function that takes a reference to a container and prints the elements in that container. Use the container’s `size_type` and `size` members to control the loop that prints the elements.
 
+[print](ex16_19_print_container.cpp)
+
 ## Exercise 16.20
 
 > Rewrite the function from the previous exercise to use iterators returned from `begin` and `end` to control the loop.
 
+[print](ex16_20_print_container_iter.cpp)
+
+## Exercise 16.21
+
+> Write your own version of `DebugDelete`.
+
+[DebugDelete|h](ex16_21_debugdelete.h) | [DebugDelete|cpp](ex16_21_debugdelete.cpp)
+
+## Exercise 16.22
+
+> Revise your `TextQuery` programs from 12.3 (p. 484) so that the `shared_ptr` members use a `DebugDelete` as their deleter (12.1.4, p. 468).
+
+[TestQuery|h](ex16_22_textquery.h) | [TestQuery|cpp](ex16_22_textquery.cpp) | [TestQuery|test](ex16_22_textquery_test.cpp)
+
+## Exercise 16.23
+
+> Predict when the call operator will be executed in your main query program. If your expectations and what happens differ, be sure you understand why.
+
+when input the `q` to quit `runQueries` function. [Exercise 16.22](#exercise-1622)'s output can check this.
+
+## Exercise 16.24
+
+> Add a constructor that takes two iterators to your `Blob` template.
+
+[Blob|h](ex16_24_blob.h) | [Blob|test](ex16_24_blob_test.cpp)
+
+## Exercise 16.25
+
+> Explain the meaning of these declarations
+>```cpp
+>extern template class vector<string>;
+>template class vector<Sales_data>;
+>```
+
+`vector<string>` instantiation declaration here, it must be instantiated elsewhere in the program.
+`vector<Sales_data>` instantiates all members of the class template here.
+
+## Exercise 16.26
+
+> Assuming `NoDefault` is a class that does not have a default constructor, can we explicitly instantiate `vector<NoDefault>`? If not, why not?
+
+see <https://stackoverflow.com/questions/21525169/while-explicitly-instantiating-vectorsometype-what-is-the-sometype-default-co>
+
 ## Exercise 16.27
+
 > For each labeled statement explain what, if any, instantiations happen. If a template is instantiated, explain why; if not, explain why not.
 >```cpp
 >template <typename T> class Stack { };
@@ -174,12 +223,29 @@ Fixed:
 >```
 
 Solution:
+
 - (a) No instantiation, compiles, it got instantiated when called.
 - (b) No instantiation, compiles, references and pointers doesn't need instantiation
 - (c) Instantiation. Doesn't compile!
 - (d) No instantiation, compiles, references and pointers doesn't need instantiation
-- (e) Instantiation of Stack<char>. Doesn't compile!
-- (f) Instantiation of Stack<std::string>. Doesn't compileNo instantiation, compiles, references and pointers doesn't need instantiation!
+- (e) Instantiation of `Stack<char>`. Doesn't compile!
+- (f) Instantiation of `Stack<std::string>`. Doesn't compileNo instantiation, compiles, references and pointers doesn't need instantiation!
 
 Solution from [How is a template instantiated? - Stack Overflow](https://stackoverflow.com/questions/21598635/how-is-a-template-instantiated)
 
+## Exercise 16.28
+
+> Write your own versions of `shared_ptr` and `unique_ptr`.
+
+## Exercise 16.29
+
+> Revise your `Blob` class to use your version of `shared_ptr` rather than the library version.
+
+## Exercise 16.30
+
+Rerun some of your programs to verify your `shared_ptr` and revised `Blob` classes. (Note: Implementing the `weak_ptr` type is beyond the scope of this Primer, so you will not be able to use the `BlobPtr`
+class with your revised `Blob`.)
+
+## Exercise 16.31
+
+>Explain how the compiler might inline the call to the deleter if we used `DebugDelete` with `unique_ptr`.

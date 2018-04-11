@@ -1,14 +1,3 @@
-/*
-================================================================================
-C++ Primer 5th Exercise Answer Source Code
-Copyright (C) 2014-2015 github.com/pezy/CppPrimer
-
-custom template compare function.
-
-If you have questions, try to connect with me: pezy<urbancpz@gmail.com>
-================================================================================
-*/
-
 #ifndef CP5_EX16_02_COMPARE_H_
 #define CP5_EX16_02_COMPARE_H_
 

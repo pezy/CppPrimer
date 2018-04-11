@@ -1,14 +1,3 @@
-/*
-================================================================================
-C++ Primer 5th Exercise Answer Source Code
-Copyright (C) 2014-2015 github.com/pezy/CppPrimer
-
-Rewrite the `Vec<T>` class (§ 13.5, p. 526) as a template named `Vec`
-
-If you have questions, try to connect with me: pezy<pezy.dev@gmail.com>
-================================================================================
-*/
-
 #ifndef CP5_EX16_16_VEC_H_
 #define CP5_EX16_16_VEC_H_
 
