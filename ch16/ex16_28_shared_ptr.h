@@ -1,21 +1,12 @@
 #ifndef CP5_EX16_28_SHARED_PTR_H_
 #define CP5_EX16_28_SHARED_PTR_H_
 
-#include "ex16_21_debugdelete.h"
-#include <functional>
-
 template <typename T> class SharedPtr {
-public:
-    friend void swap(SharedPtr& lhs, SharedPtr& rhs)
-    {
-        using std::swap;
-        swap(lhs.ptr_, rhs.ptr_);
-        swap(lhs.count_ptr_, rhs.count_ptr_);
-        swap(lhs.delete_, rhs.deleter_);
-    }
+    using DelFuncPtr = void (*)(T*);
 
-    SharedPtr(T* ptr = nullptr, const std::function<void(T*)>& del = DebugDelete())
-        : ptr_(ptr), count_ptr_(new size_t(ptr != nullptr)), deleter_(del)
+public:
+    SharedPtr(T* ptr = nullptr, DelFuncPtr del = nullptr)
+        : ptr_(ptr), count_ptr_(new size_t(ptr != nullptr)), del_(del)
     {
     }
 
@@ -23,32 +14,39 @@ public:
     {
         if (!ptr_) return;
         if (--*count_ptr_ == 0) {
-            deleter_(ptr_);
+            del_ ? del_(ptr_) : delete ptr_;
             delete count_ptr_;
         }
         ptr_ = nullptr;
         count_ptr_ = nullptr;
     }
 
-    SharedPtr(const SharedPtr& sp) : ptr_(sp.ptr_), count_ptr_(sp.count_ptr_), deleter_(sp.deleter_)
+    SharedPtr(const SharedPtr& sp) : ptr_(sp.ptr_), count_ptr_(sp.count_ptr_), del_(sp.del_)
     {
         ++*count_ptr_;
     }
 
     SharedPtr& operator=(SharedPtr sp)
     {
-        swap(*this, sp);
+        swap(sp);
         return *this;
     }
 
-    SharedPtr(const SharedPtr&& sp) noexcept : SharedPtr() { swap(*this, sp); }
+    SharedPtr(const SharedPtr&& sp) noexcept : SharedPtr() { swap(sp); }
 
-    void reset(T* ptr = nullptr, const std::function<void(T*)>& del = DebugDelete())
+    void reset(T* ptr = nullptr, DelFuncPtr del = nullptr)
     {
-        swap(*this, SharePtr(ptr, del));
+        SharedPtr tmp(ptr, del);
+        swap(tmp);
     }
 
-    void swap(SharedPtr& r) noexcept { swap(*this, r); }
+    void swap(SharedPtr& r) noexcept
+    {
+        using std::swap;
+        swap(ptr_, r.ptr_);
+        swap(count_ptr_, r.count_ptr_);
+        swap(del_, r.del_);
+    }
 
     T* get() const noexcept { return ptr_; }
     T& operator*() const noexcept { return *get(); }
@@ -59,7 +57,7 @@ public:
 private:
     T* ptr_ = nullptr;
     size_t* count_ptr_ = nullptr;
-    std::function<void(T*)> deleter_;
+    DelFuncPtr del_ = nullptr;
 };
 
 #endif // CP5_EX16_28_SHARED_PTR_H_
