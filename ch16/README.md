@@ -243,11 +243,17 @@ Solution from [How is a template instantiated? - Stack Overflow](https://stackov
 
 > Revise your `Blob` class to use your version of `shared_ptr` rather than the library version.
 
+[Blob with SharedPtr](ex16_29_blob.h) | [test](ex16_29_blob_test.cpp)
+
 ## Exercise 16.30
 
 Rerun some of your programs to verify your `shared_ptr` and revised `Blob` classes. (Note: Implementing the `weak_ptr` type is beyond the scope of this Primer, so you will not be able to use the `BlobPtr`
 class with your revised `Blob`.)
 
+check [Exercise 16.28](#exercise-1628)
+
 ## Exercise 16.31
 
 >Explain how the compiler might inline the call to the deleter if we used `DebugDelete` with `unique_ptr`.
+
+The compiler will set the default deleter type as `DebugDelete`, which will be executed is known at compile time.
