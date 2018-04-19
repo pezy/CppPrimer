@@ -257,3 +257,76 @@ check [Exercise 16.28](#exercise-1628)
 >Explain how the compiler might inline the call to the deleter if we used `DebugDelete` with `unique_ptr`.
 
 The compiler will set the default deleter type as `DebugDelete`, which will be executed is known at compile time.
+
+## Exercise 16.32
+
+> What happens during template argument deduction?
+
+During template argument deduction, the compiler uses types of the arguments in the call to find the template arguments that generate a version of the function that best matches the given call.
+
+## Exercise 16.33
+
+> Name two type conversions allowed on function arguments involved in template argument deduction.
+
+1. `const` conversions
+2. Array- or function-to-pointer conversions
+
+## Exercise 16.34
+
+> Given only the following code, explain whether each of these calls is legal. If so, what is the type of `T`? If not, why not?
+> ```cpp
+> template <class T> int compare(const T&, const T&);
+> (a) compare("hi", "world");
+> (b) compare("bye", "dad");
+> ```
+
+- (a): illegal, as two types are different, the first type being `const char[3]` ,second `const char[6]`
+- (b): legal, the type is `const char(&)[4]`.
+
+## Exercise 16.35
+
+>Which, if any, of the following calls are errors? If the call is legal, what is the type of T? If the call is not legal, what is the problem?
+> ```cpp
+> template <typename T> T calc(T, int);
+> template <typename T> T fcn(T, T);
+> double d; float f; char c;
+> (a) calc(c, 'c');
+> (b) calc(d, f);
+> (c) fcn(c, 'c');
+> (d) fcn(d, f);
+> ```
+
+- (a) legal, type is `char`.
+- (b) legal, type is `double`.
+- (c) legal, type is `char`.
+- (d) illegal, `d` is `double`, but `f` is `float`, they are totally different type.
+
+## Exercise 16.36
+
+> What happens in the following calls:
+> ```cpp
+> template <typename T> f1(T, T);
+> template <typename T1, typename T2) f2(T1, T2);
+> int i = 0, j = 42, *p1 = &i, *p2 = &j;
+> const int *cp1 = &i, *cp2 = &j;
+> (a) f1(p1, p2);
+> (b) f2(p1, p2);
+> (c) f1(cp1, cp2);
+> (d) f2(cp1, cp2);
+> (e) f1(p1, cp1);
+> (f) f2(p1, cp1);
+> ```
+
+At first, there are some error in function declarations.
+
+- `f1`, `f2` should have return type, maybe `void`?
+- In `f2`, `typename T2)` should be `typename T2>`.
+
+Then, the answers:
+
+- (a) `T` is `int*`
+- (b) `T1` and `T2` are both `int*`
+- (c) `T` is `const int*`
+- (d) `T1` and `T2` are both `const int*`
+- (e) **error**, `p1` is `int*`, `cp1` is `const int*`, they are different type
+- (f) `T1` is `int*`, `T2` is `const int*`
