@@ -376,3 +376,5 @@ auto sum(T1 a, T2 b) -> decltype(a + b) {
     return a + b;
 }
 ```
+
+More safer solution: <[Better `sum`](ex16_41_sum.cpp)>
