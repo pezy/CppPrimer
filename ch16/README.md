@@ -330,3 +330,49 @@ Then, the answers:
 - (d) `T1` and `T2` are both `const int*`
 - (e) **error**, `p1` is `int*`, `cp1` is `const int*`, they are different type
 - (f) `T1` is `int*`, `T2` is `const int*`
+
+## Exercise 16.37
+
+> The library `max` function has two function parameters and returns the larger of its arguments. This function has one template type parameter. Could you call `max` passing it an int and a double? If so, how? If not, why not?
+
+No, I could not. Because the arguments to `max` must have the same type.
+
+## Exercise 16.38
+
+> When we call `make_shared` (12.1.1, p. 451), we have to provide an explicit template argument. Explain why that argument is needed and how it is used.
+
+Because when we call `make_shared`, it is allowed for no argument. Then, we have nothing to deduce the type of the return type.
+
+## Exercise 16.39
+
+> Use an explicit template argument to make it sensible to pass two string literals to the original version of compare from 16.1.1 (p.652).
+
+```cpp
+std::cout << compare<std::string>("czwp", "czyz") << std::endl;
+                    ^^^^^^^^^^^^^
+```
+
+## Exercise 16.40
+
+> Is the following function legal? If not, why not? If it is legal, what, if any, are the restrictions on the argument type(s) that can be passed, and what is the return type?
+
+```cpp
+template <typename It>
+auto fcn3(It beg, It end) -> decltype(*beg + 0) {
+    // process the range
+    return *beg; // return a copy of an element from the range
+}
+```
+
+legal. But only type that support this + 0 operation can be passed, and the return type depends on the what type the operator `+` return.
+
+## Exercise 16.41
+
+>Write a version of `sum` with a return type that is guaranteed to be large enough to hold the result of the addition.
+
+```cpp
+template <typename T1, typename T2>
+auto sum(T1 a, T2 b) -> decltype(a + b) {
+    return a + b;
+}
+```
