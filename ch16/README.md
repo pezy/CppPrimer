@@ -378,3 +378,55 @@ auto sum(T1 a, T2 b) -> decltype(a + b) {
 ```
 
 More safer solution: <[Better `sum`](ex16_41_sum.cpp)>
+
+## Exercise 16.42
+
+> Determine the type of T and of val in each of the following calls:
+> ```cpp
+> template <typename T> void g(T&& val);
+> int i = 0; const int ci = i;
+> (a) g(i);
+> (b) g(ci);
+> (c) g(i * ci);
+> ```
+
+- (a) `int&`
+- (b) `const int&`
+- (c) `int`
+
+## Exercise 16.43
+
+> Using the function defined in the previous exercise, what would the template parameter of `g` be if we called `g(i = ci)`?
+
+`int&`
+
+## Exercise 16.44
+
+> Using the same three calls as in the first exercise, determine the types for `T` if `g`’s function parameter is declared as `T` (not `T&&`). What if `g`’s function parameter is `const T&`?
+
+Whatever `g`'s function parameter is declared as `T` or `const T&`, the `T`'s type in this three case would always `int`.
+
+## Exercise 16.45
+
+> Given the following template, explain what happens if we call `g` on a literal value such as 42. What if we call `g` on a variable of type `int`?
+> ```cpp
+> template <typename T> void g(T&& val) { vector<T> v; }
+> ```
+
+If we call `g` on a literal value such as 42, `T` should be `int`, and we get a tempoary variable `v`, which type is `vector<int>`. If we call `g` on a variable of type `int`, then `val` should be a lvalue, `T` should be `int&`(because `int& &&` ==> `int&`), then we would declared a `v` as `vector<int&>`. But the component type of `vector` must be [assignable](http://en.cppreference.com/w/cpp/concept/CopyAssignable), the references are not assignable, thus, `vector<int&>` is not allowed, the compiler would complain about it.
+
+## Exercise 16.46
+
+> Explain this loop from `StrVec::reallocate` in 13.5 (p.530):
+> ```cpp
+> for (size_t i = 0; i != size(); ++i)
+>   alloc.construct(dest++, std::move(*elem++));
+> ```
+
+Since C++11, [`std::allocator::construct`](http://en.cppreference.com/w/cpp/memory/allocator/construct)'s second parameter is `Args&&... args`. `*elem++` is a certain lvalue, and would be casted to a rvalue reference by `std::move`, then the `construct` would call the move constructor of `std::string` rather than copy constructor.
+
+## Exercise 16.47
+
+> Write your own version of the flip function and test it by calling functions that have lvalue and rvalue reference parameters.
+
+[flip and test](ex16_47_flip.cpp)
