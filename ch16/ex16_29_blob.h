@@ -1,5 +1,5 @@
-#ifndef CP5_EX16_12_BLOB_H_
-#define CP5_EX16_12_BLOB_H_
+#ifndef CP5_EX16_24_BLOB_H_
+#define CP5_EX16_24_BLOB_H_
 
 #include <vector>
 using std::vector;
@@ -7,59 +7,44 @@ using std::vector;
 #include <initializer_list>
 using std::initializer_list;
 
-#include <memory>
-using std::make_shared;
-using std::shared_ptr;
-
+#include "ex16_28_shared_ptr.h"
 #include <algorithm>
 #include <stdexcept>
-
-#ifndef _MSC_VER
-#define NOEXCEPT noexcept
-#else
-#define NOEXCEPT
-#endif
 
 template <typename> class BlobPtr;
 template <typename> class ConstBlobPtr;
 template <typename> class Blob;
 
 //==============================================================================
-//
 //  Blob - custom vector.
-//
 //==============================================================================
-
-template <typename T> bool operator==(const Blob<T>&, const Blob<T>&);
-template <typename T> bool operator!=(const Blob<T>&, const Blob<T>&);
-template <typename T> bool operator<(const Blob<T>&, const Blob<T>&);
-template <typename T> bool operator>(const Blob<T>&, const Blob<T>&);
-template <typename T> bool operator<=(const Blob<T>&, const Blob<T>&);
-template <typename T> bool operator>=(const Blob<T>&, const Blob<T>&);
 
 template <typename T> class Blob {
     friend class ConstBlobPtr<T>;
     friend class BlobPtr<T>;
-    friend bool operator==<T>(const Blob<T>&, const Blob<T>&);
-    friend bool operator!=<T>(const Blob<T>&, const Blob<T>&);
-    // clang-format off
-    friend bool operator< <T>(const Blob<T>&, const Blob<T>&);
-    friend bool operator> <T>(const Blob<T>&, const Blob<T>&);
-    // clang-format on
-    friend bool operator<=<T>(const Blob<T>&, const Blob<T>&);
-    friend bool operator>=<T>(const Blob<T>&, const Blob<T>&);
+    friend bool operator==(const Blob& lhs, const Blob& rhs) { return *lhs.data == *rhs.data; }
+    friend bool operator!=(const Blob& lhs, const Blob& rhs) { return !(lhs == rhs); }
+    friend bool operator<(const Blob& lhs, const Blob& rhs)
+    {
+        return std::lexicographical_compare(lhs.data->begin(), lhs.data->end(), rhs.data->begin(),
+                                            rhs.data->end());
+    }
+    friend bool operator>(const Blob& lhs, const Blob& rhs) { return rhs < lhs; }
+    friend bool operator<=(const Blob& lhs, const Blob& rhs) { return !(rhs < lhs); }
+    friend bool operator>=(const Blob& lhs, const Blob& rhs) { return !(lhs < rhs); }
 
 public:
-    typedef typename vector<T>::size_type size_type;
+    using size_type = typename vector<T>::size_type;
 
-    Blob() : data(make_shared<vector<T>>()) {}
-    Blob(initializer_list<T> il) : data(make_shared<vector<T>>(il)) {}
+    Blob() : data(new vector<T>()) {}
+    Blob(initializer_list<T> il) : data(new vector<T>(il)) {}
+    template <typename It> Blob(It b, It e) : data(new vector<T>(b, e)) {}
 
-    Blob(const Blob<T>& lhs) : data(make_shared<vector<T>>(*lhs.data)) {}
-    Blob& operator=(const Blob<T>&);
+    Blob(const Blob& b) : data(new vector<T>(*b.data)) {}
+    Blob& operator=(const Blob& b);
 
-    Blob(Blob<T>&& rhs) NOEXCEPT : data(std::move(rhs.data)) {}
-    Blob& operator=(Blob<T>&&) NOEXCEPT;
+    Blob(Blob&& b) NOEXCEPT : data(std::move(b.data)) {}
+    Blob& operator=(Blob&& b) NOEXCEPT;
 
     BlobPtr<T> begin();
     BlobPtr<T> end();
@@ -85,59 +70,24 @@ public:
 private:
     void check(size_type, const T&) const;
 
-    shared_ptr<vector<T>> data;
+    SharedPtr<vector<T>> data;
 };
-
-//------------------------------------------------------------------------------
-//  friend function.
-//------------------------------------------------------------------------------
-
-template <typename T> bool operator==(const Blob<T>& lhs, const Blob<T>& rhs)
-{
-    return *lhs.data == *rhs.data;
-}
-
-template <typename T> bool operator!=(const Blob<T>& lhs, const Blob<T>& rhs)
-{
-    return !(lhs == rhs);
-}
-
-template <typename T> bool operator<(const Blob<T>& lhs, const Blob<T>& rhs)
-{
-    return std::lexicographical_compare(lhs.data->begin(), lhs.data->end(),
-                                        rhs.data->begin(), rhs.data->end());
-}
-
-template <typename T> bool operator>(const Blob<T>& lhs, const Blob<T>& rhs)
-{
-    return rhs < lhs;
-}
-
-template <typename T> bool operator<=(const Blob<T>& lhs, const Blob<T>& rhs)
-{
-    return !(rhs < lhs);
-}
-
-template <typename T> bool operator>=(const Blob<T>& lhs, const Blob<T>& rhs)
-{
-    return !(lhs < rhs);
-}
 
 //------------------------------------------------------------------------------
 //  member function.
 //------------------------------------------------------------------------------
 
-template <typename T> Blob<T>& Blob<T>::operator=(const Blob<T>& lhs)
+template <typename T> Blob<T>& Blob<T>::operator=(const Blob<T>& b)
 {
-    data = make_shared<vector<T>>(*lhs.data);
+    data = new vector<T>(*b.data);
     return *this;
 }
 
-template <typename T> Blob<T>& Blob<T>::operator=(Blob<T>&& rhs) NOEXCEPT
+template <typename T> Blob<T>& Blob<T>::operator=(Blob<T>&& b) NOEXCEPT
 {
-    if (this != &rhs) {
-        data = std::move(rhs.data);
-        rhs.data = nullptr;
+    if (this != &b) {
+        data = std::move(b.data);
+        b.data = nullptr;
     }
 
     return *this;
@@ -193,8 +143,7 @@ template <typename T> inline const T& Blob<T>::back() const
     return data->back();
 }
 
-template <typename T>
-inline void Blob<T>::check(size_type i, const T& msg) const
+template <typename T> inline void Blob<T>::check(size_type i, const T& msg) const
 {
     if (i >= data->size()) throw std::out_of_range(msg);
 }
@@ -212,33 +161,38 @@ template <typename T> inline const T& Blob<T>::operator[](size_t n) const
 }
 
 //=================================================================================
-//
 //		BlobPtr - custom iterator of Blob
-//
 //=================================================================================
 
-template <typename T> bool operator==(const BlobPtr<T>&, const BlobPtr<T>&);
-template <typename T> bool operator!=(const BlobPtr<T>&, const BlobPtr<T>&);
-template <typename T> bool operator<(const BlobPtr<T>&, const BlobPtr<T>&);
-template <typename T> bool operator>(const BlobPtr<T>&, const BlobPtr<T>&);
-template <typename T> bool operator<=(const BlobPtr<T>&, const BlobPtr<T>&);
-template <typename T> bool operator>=(const BlobPtr<T>&, const BlobPtr<T>&);
-
 template <typename T> class BlobPtr {
-    friend bool operator==<T>(const BlobPtr<T>&, const BlobPtr<T>&);
-    friend bool operator!=<T>(const BlobPtr<T>&, const BlobPtr<T>&);
-    // clang-format off
-    friend bool operator< <T>(const BlobPtr<T>&, const BlobPtr<T>&);
-    friend bool operator> <T>(const BlobPtr<T>&, const BlobPtr<T>&);
-    // clang-format on
-    friend bool operator<=<T>(const BlobPtr<T>&, const BlobPtr<T>&);
-    friend bool operator>=<T>(const BlobPtr<T>&, const BlobPtr<T>&);
+    friend bool operator==(const BlobPtr<T>& lhs, const BlobPtr<T>& rhs)
+    {
+        return lhs.curr == rhs.curr;
+    }
+    friend bool operator!=(const BlobPtr<T>& lhs, const BlobPtr<T>& rhs) { return !(lhs == rhs); }
+    friend bool operator<(const BlobPtr<T>& lhs, const BlobPtr<T>& rhs)
+    {
+        return lhs.curr < rhs.curr;
+    }
+    friend bool operator>(const BlobPtr<T>& lhs, const BlobPtr<T>& rhs)
+    {
+        return lhs.curr > rhs.curr;
+    }
+    friend bool operator<=(const BlobPtr<T>& lhs, const BlobPtr<T>& rhs)
+    {
+        return lhs.curr <= rhs.curr;
+    }
+    friend bool operator>=(const BlobPtr<T>& lhs, const BlobPtr<T>& rhs)
+    {
+        return lhs.curr >= rhs.curr;
+    }
 
 public:
     BlobPtr() : curr(0) {}
     BlobPtr(Blob<T>& s, size_t sz = 0) : wptr(s.data), curr(sz) {}
 
-    T& deref() const;
+    T& operator*() const;
+    T* operator->() const;
     BlobPtr& operator++();
     BlobPtr& operator--();
     BlobPtr operator++(int);
@@ -252,56 +206,25 @@ public:
     const T& operator[](size_t n) const;
 
 private:
-    shared_ptr<vector<T>> check(size_t, const T&) const;
+    SharedPtr<vector<T>> check(size_t, const T&) const;
 
     std::weak_ptr<vector<T>> wptr;
     size_t curr;
 };
 
 //------------------------------------------------------------------------------
-//  friend function.
-//------------------------------------------------------------------------------
-
-template <typename T>
-bool operator==(const BlobPtr<T>& lhs, const BlobPtr<T>& rhs)
-{
-    return lhs.curr == rhs.curr;
-}
-
-template <typename T>
-bool operator!=(const BlobPtr<T>& lhs, const BlobPtr<T>& rhs)
-{
-    return !(lhs == rhs);
-}
-
-template <typename T> bool operator<(const BlobPtr<T>& x, const BlobPtr<T>& y)
-{
-    return x.curr < y.curr;
-}
-
-template <typename T> bool operator>(const BlobPtr<T>& x, const BlobPtr<T>& y)
-{
-    return x.curr > y.curr;
-}
-
-template <typename T> bool operator<=(const BlobPtr<T>& x, const BlobPtr<T>& y)
-{
-    return x.curr <= y.curr;
-}
-
-template <typename T> bool operator>=(const BlobPtr<T>& x, const BlobPtr<T>& y)
-{
-    return x.curr >= y.curr;
-}
-
-//------------------------------------------------------------------------------
 //  member function.
 //------------------------------------------------------------------------------
 
-template <typename T> inline T& BlobPtr<T>::deref() const
+template <typename T> T& BlobPtr<T>::operator*() const
 {
     auto p = check(curr, "dereference past end");
     return (*p)[curr];
+}
+
+template <typename T> T* BlobPtr<T>::operator->() const
+{
+    return &this->operator*();
 }
 
 template <typename T> inline BlobPtr<T>& BlobPtr<T>::operator++()
@@ -360,8 +283,7 @@ template <typename T> inline BlobPtr<T> BlobPtr<T>::operator-(size_t n) const
     return ret;
 }
 
-template <typename T>
-inline shared_ptr<vector<T>> BlobPtr<T>::check(size_t i, const T& msg) const
+template <typename T> inline SharedPtr<vector<T>> BlobPtr<T>::check(size_t i, const T& msg) const
 {
     auto ret = wptr.lock();
     if (!ret) throw std::runtime_error("unbound Blob<T>Ptr");
@@ -382,33 +304,34 @@ template <typename T> inline const T& BlobPtr<T>::operator[](size_t n) const
 }
 
 //=================================================================================
-//
 //		ConstBlobPtr - custom const_iterator of Blob
-//
 //=================================================================================
 
-template <typename T>
-bool operator==(const ConstBlobPtr<T>&, const ConstBlobPtr<T>&);
-template <typename T>
-bool operator!=(const ConstBlobPtr<T>&, const ConstBlobPtr<T>&);
-template <typename T>
-bool operator<(const ConstBlobPtr<T>&, const ConstBlobPtr<T>&);
-template <typename T>
-bool operator>(const ConstBlobPtr<T>&, const ConstBlobPtr<T>&);
-template <typename T>
-bool operator<=(const ConstBlobPtr<T>&, const ConstBlobPtr<T>&);
-template <typename T>
-bool operator>=(const ConstBlobPtr<T>&, const ConstBlobPtr<T>&);
-
 template <typename T> class ConstBlobPtr {
-    friend bool operator==<T>(const ConstBlobPtr<T>&, const ConstBlobPtr<T>&);
-    friend bool operator!=<T>(const ConstBlobPtr<T>&, const ConstBlobPtr<T>&);
-    // clang-format off
-    friend bool operator< <T>(const ConstBlobPtr<T>&, const ConstBlobPtr<T>&);
-    friend bool operator> <T>(const ConstBlobPtr<T>&, const ConstBlobPtr<T>&);
-    // clang-format on
-    friend bool operator<=<T>(const ConstBlobPtr<T>&, const ConstBlobPtr<T>&);
-    friend bool operator>=<T>(const ConstBlobPtr<T>&, const ConstBlobPtr<T>&);
+    friend bool operator==(const ConstBlobPtr<T>& lhs, const ConstBlobPtr<T>& rhs)
+    {
+        return lhs.curr == rhs.curr;
+    }
+    friend bool operator!=(const ConstBlobPtr<T>& lhs, const ConstBlobPtr<T>& rhs)
+    {
+        return !(lhs == rhs);
+    }
+    friend bool operator<(const ConstBlobPtr<T>& lhs, const ConstBlobPtr<T>& rhs)
+    {
+        return lhs.curr < rhs.curr;
+    }
+    friend bool operator>(const ConstBlobPtr<T>& lhs, const ConstBlobPtr<T>& rhs)
+    {
+        return lhs.curr > rhs.curr;
+    }
+    friend bool operator<=(const ConstBlobPtr<T>& lhs, const ConstBlobPtr<T>& rhs)
+    {
+        return lhs.curr <= rhs.curr;
+    }
+    friend bool operator>=(const ConstBlobPtr<T>& lhs, const ConstBlobPtr<T>& rhs)
+    {
+        return lhs.curr >= rhs.curr;
+    }
 
 public:
     ConstBlobPtr() : curr(0) {}
@@ -428,51 +351,11 @@ public:
     const T& operator[](size_t n) const;
 
 private:
-    std::shared_ptr<vector<T>> check(size_t, const T&) const;
+    std::SharedPtr<vector<T>> check(size_t, const T&) const;
 
     std::weak_ptr<vector<T>> wptr;
     size_t curr;
 };
-
-//------------------------------------------------------------------------------
-//  friend function.
-//------------------------------------------------------------------------------
-
-template <typename T>
-bool operator==(const ConstBlobPtr<T>& lhs, const ConstBlobPtr<T>& rhs)
-{
-    return lhs.curr == rhs.curr;
-}
-
-template <typename T>
-bool operator!=(const ConstBlobPtr<T>& lhs, const ConstBlobPtr<T>& rhs)
-{
-    return !(lhs == rhs);
-}
-
-template <typename T>
-bool operator<(const ConstBlobPtr<T>& lhs, const ConstBlobPtr<T>& rhs)
-{
-    return lhs.curr < rhs.curr;
-}
-
-template <typename T>
-bool operator>(const ConstBlobPtr<T>& lhs, const ConstBlobPtr<T>& rhs)
-{
-    return lhs.curr > rhs.curr;
-}
-
-template <typename T>
-bool operator<=(const ConstBlobPtr<T>& lhs, const ConstBlobPtr<T>& rhs)
-{
-    return lhs.curr <= rhs.curr;
-}
-
-template <typename T>
-bool operator>=(const ConstBlobPtr<T>& lhs, const ConstBlobPtr<T>& rhs)
-{
-    return lhs.curr >= rhs.curr;
-}
 
 //------------------------------------------------------------------------------
 //  member function.
@@ -517,32 +400,28 @@ template <typename T> inline ConstBlobPtr<T> ConstBlobPtr<T>::operator--(int)
     return ret;
 }
 
-template <typename T>
-inline ConstBlobPtr<T>& ConstBlobPtr<T>::operator+=(size_t n)
+template <typename T> inline ConstBlobPtr<T>& ConstBlobPtr<T>::operator+=(size_t n)
 {
     curr += n;
     check(curr, "increment past end of ConstBlob<T>Ptr");
     return *this;
 }
 
-template <typename T>
-inline ConstBlobPtr<T>& ConstBlobPtr<T>::operator-=(size_t n)
+template <typename T> inline ConstBlobPtr<T>& ConstBlobPtr<T>::operator-=(size_t n)
 {
     curr -= n;
     check(curr, "increment past end of ConstBlob<T>Ptr");
     return *this;
 }
 
-template <typename T>
-inline ConstBlobPtr<T> ConstBlobPtr<T>::operator+(size_t n) const
+template <typename T> inline ConstBlobPtr<T> ConstBlobPtr<T>::operator+(size_t n) const
 {
     ConstBlobPtr<T> ret = *this;
     ret += n;
     return ret;
 }
 
-template <typename T>
-inline ConstBlobPtr<T> ConstBlobPtr<T>::operator-(size_t n) const
+template <typename T> inline ConstBlobPtr<T> ConstBlobPtr<T>::operator-(size_t n) const
 {
     ConstBlobPtr<T> ret = *this;
     ret -= n;
@@ -550,8 +429,7 @@ inline ConstBlobPtr<T> ConstBlobPtr<T>::operator-(size_t n) const
 }
 
 template <typename T>
-inline std::shared_ptr<vector<T>> ConstBlobPtr<T>::check(size_t i,
-                                                         const T& msg) const
+inline std::SharedPtr<vector<T>> ConstBlobPtr<T>::check(size_t i, const T& msg) const
 {
     auto ret = wptr.lock();
     if (!ret) throw std::runtime_error("unbound Blob<T>Ptr");
@@ -559,11 +437,10 @@ inline std::shared_ptr<vector<T>> ConstBlobPtr<T>::check(size_t i,
     return ret;
 }
 
-template <typename T>
-inline const T& ConstBlobPtr<T>::operator[](size_t n) const
+template <typename T> inline const T& ConstBlobPtr<T>::operator[](size_t n) const
 {
     auto p = check(n, "dereference out of range.");
     return (*p)[n];
 }
 
-#endif // CP5_EX16_12_BLOB_H_
+#endif // CP5_EX16_24_BLOB_H_

@@ -1,15 +1,3 @@
-/*
-================================================================================
-C++ Primer 5th Exercise Answer Source Code
-Copyright (C) 2014-2015 github.com/pezy/CppPrimer
-
-a `Screen` class template that uses nontype parameters to define the height and
-width of the `Screen`.
-
-If you have questions, try to connect with me: pezy<pezy.dev@gmail.com>
-================================================================================
-*/
-
 #ifndef CP5_EX16_14_SCREEN_H_
 #define CP5_EX16_14_SCREEN_H_
 

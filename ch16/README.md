@@ -143,20 +143,69 @@ When we want to inform the compiler that a name represents a type, we must use t
 Fixed:
 
 ```cpp
-(a) template <typename T, typename U, typename V> void f1(T, U, V);
-(b) template <typename T> T f2(int &);
-(c)
+(a) template <typename T, typename U, typename V> void f1(T, U, V); // identifier 'U'
+(b) template <typename T> T f2(int &); // typename would be hidden
+(c) template <typename T> inline T foo(T, unsigned int*); // inline must be after template
+(d) template <typename T> void f4(T, T); // return type should be provided
+(e) typedef char Ctype;
+template <typename T> T f5(Ctype a); // the typename hides this typedef
 ```
 
 ## Exercise 16.19
 
 > Write a function that takes a reference to a container and prints the elements in that container. Use the container’s `size_type` and `size` members to control the loop that prints the elements.
 
+[print](ex16_19_print_container.cpp)
+
 ## Exercise 16.20
 
 > Rewrite the function from the previous exercise to use iterators returned from `begin` and `end` to control the loop.
 
+[print](ex16_20_print_container_iter.cpp)
+
+## Exercise 16.21
+
+> Write your own version of `DebugDelete`.
+
+[DebugDelete|h](ex16_21_debugdelete.h) | [DebugDelete|cpp](ex16_21_debugdelete.cpp)
+
+## Exercise 16.22
+
+> Revise your `TextQuery` programs from 12.3 (p. 484) so that the `shared_ptr` members use a `DebugDelete` as their deleter (12.1.4, p. 468).
+
+[TestQuery|h](ex16_22_textquery.h) | [TestQuery|cpp](ex16_22_textquery.cpp) | [TestQuery|test](ex16_22_textquery_test.cpp)
+
+## Exercise 16.23
+
+> Predict when the call operator will be executed in your main query program. If your expectations and what happens differ, be sure you understand why.
+
+when input the `q` to quit `runQueries` function. [Exercise 16.22](#exercise-1622)'s output can check this.
+
+## Exercise 16.24
+
+> Add a constructor that takes two iterators to your `Blob` template.
+
+[Blob|h](ex16_24_blob.h) | [Blob|test](ex16_24_blob_test.cpp)
+
+## Exercise 16.25
+
+> Explain the meaning of these declarations
+>```cpp
+>extern template class vector<string>;
+>template class vector<Sales_data>;
+>```
+
+`vector<string>` instantiation declaration here, it must be instantiated elsewhere in the program.
+`vector<Sales_data>` instantiates all members of the class template here.
+
+## Exercise 16.26
+
+> Assuming `NoDefault` is a class that does not have a default constructor, can we explicitly instantiate `vector<NoDefault>`? If not, why not?
+
+see <https://stackoverflow.com/questions/21525169/while-explicitly-instantiating-vectorsometype-what-is-the-sometype-default-co>
+
 ## Exercise 16.27
+
 > For each labeled statement explain what, if any, instantiations happen. If a template is instantiated, explain why; if not, explain why not.
 >```cpp
 >template <typename T> class Stack { };
@@ -174,12 +223,210 @@ Fixed:
 >```
 
 Solution:
+
 - (a) No instantiation, compiles, it got instantiated when called.
 - (b) No instantiation, compiles, references and pointers doesn't need instantiation
 - (c) Instantiation. Doesn't compile!
 - (d) No instantiation, compiles, references and pointers doesn't need instantiation
-- (e) Instantiation of Stack<char>. Doesn't compile!
-- (f) Instantiation of Stack<std::string>. Doesn't compileNo instantiation, compiles, references and pointers doesn't need instantiation!
+- (e) Instantiation of `Stack<char>`. Doesn't compile!
+- (f) Instantiation of `Stack<std::string>`. Doesn't compileNo instantiation, compiles, references and pointers doesn't need instantiation!
 
 Solution from [How is a template instantiated? - Stack Overflow](https://stackoverflow.com/questions/21598635/how-is-a-template-instantiated)
 
+## Exercise 16.28
+
+> Write your own versions of `shared_ptr` and `unique_ptr`.
+
+[shared_ptr](ex16_28_shared_ptr.h) | [unique_ptr](ex16_28_unique_ptr.h) | [test](ex16_28_test.cpp)
+
+## Exercise 16.29
+
+> Revise your `Blob` class to use your version of `shared_ptr` rather than the library version.
+
+[Blob with SharedPtr](ex16_29_blob.h) | [test](ex16_29_blob_test.cpp)
+
+## Exercise 16.30
+
+Rerun some of your programs to verify your `shared_ptr` and revised `Blob` classes. (Note: Implementing the `weak_ptr` type is beyond the scope of this Primer, so you will not be able to use the `BlobPtr`
+class with your revised `Blob`.)
+
+check [Exercise 16.28](#exercise-1628)
+
+## Exercise 16.31
+
+>Explain how the compiler might inline the call to the deleter if we used `DebugDelete` with `unique_ptr`.
+
+The compiler will set the default deleter type as `DebugDelete`, which will be executed is known at compile time.
+
+## Exercise 16.32
+
+> What happens during template argument deduction?
+
+During template argument deduction, the compiler uses types of the arguments in the call to find the template arguments that generate a version of the function that best matches the given call.
+
+## Exercise 16.33
+
+> Name two type conversions allowed on function arguments involved in template argument deduction.
+
+1. `const` conversions
+2. Array- or function-to-pointer conversions
+
+## Exercise 16.34
+
+> Given only the following code, explain whether each of these calls is legal. If so, what is the type of `T`? If not, why not?
+> ```cpp
+> template <class T> int compare(const T&, const T&);
+> (a) compare("hi", "world");
+> (b) compare("bye", "dad");
+> ```
+
+- (a): illegal, as two types are different, the first type being `const char[3]` ,second `const char[6]`
+- (b): legal, the type is `const char(&)[4]`.
+
+## Exercise 16.35
+
+>Which, if any, of the following calls are errors? If the call is legal, what is the type of T? If the call is not legal, what is the problem?
+> ```cpp
+> template <typename T> T calc(T, int);
+> template <typename T> T fcn(T, T);
+> double d; float f; char c;
+> (a) calc(c, 'c');
+> (b) calc(d, f);
+> (c) fcn(c, 'c');
+> (d) fcn(d, f);
+> ```
+
+- (a) legal, type is `char`.
+- (b) legal, type is `double`.
+- (c) legal, type is `char`.
+- (d) illegal, `d` is `double`, but `f` is `float`, they are totally different type.
+
+## Exercise 16.36
+
+> What happens in the following calls:
+> ```cpp
+> template <typename T> f1(T, T);
+> template <typename T1, typename T2) f2(T1, T2);
+> int i = 0, j = 42, *p1 = &i, *p2 = &j;
+> const int *cp1 = &i, *cp2 = &j;
+> (a) f1(p1, p2);
+> (b) f2(p1, p2);
+> (c) f1(cp1, cp2);
+> (d) f2(cp1, cp2);
+> (e) f1(p1, cp1);
+> (f) f2(p1, cp1);
+> ```
+
+At first, there are some error in function declarations.
+
+- `f1`, `f2` should have return type, maybe `void`?
+- In `f2`, `typename T2)` should be `typename T2>`.
+
+Then, the answers:
+
+- (a) `T` is `int*`
+- (b) `T1` and `T2` are both `int*`
+- (c) `T` is `const int*`
+- (d) `T1` and `T2` are both `const int*`
+- (e) **error**, `p1` is `int*`, `cp1` is `const int*`, they are different type
+- (f) `T1` is `int*`, `T2` is `const int*`
+
+## Exercise 16.37
+
+> The library `max` function has two function parameters and returns the larger of its arguments. This function has one template type parameter. Could you call `max` passing it an int and a double? If so, how? If not, why not?
+
+No, I could not. Because the arguments to `max` must have the same type.
+
+## Exercise 16.38
+
+> When we call `make_shared` (12.1.1, p. 451), we have to provide an explicit template argument. Explain why that argument is needed and how it is used.
+
+Because when we call `make_shared`, it is allowed for no argument. Then, we have nothing to deduce the type of the return type.
+
+## Exercise 16.39
+
+> Use an explicit template argument to make it sensible to pass two string literals to the original version of compare from 16.1.1 (p.652).
+
+```cpp
+std::cout << compare<std::string>("czwp", "czyz") << std::endl;
+                    ^^^^^^^^^^^^^
+```
+
+## Exercise 16.40
+
+> Is the following function legal? If not, why not? If it is legal, what, if any, are the restrictions on the argument type(s) that can be passed, and what is the return type?
+
+```cpp
+template <typename It>
+auto fcn3(It beg, It end) -> decltype(*beg + 0) {
+    // process the range
+    return *beg; // return a copy of an element from the range
+}
+```
+
+legal. But only type that support this + 0 operation can be passed, and the return type depends on the what type the operator `+` return.
+
+## Exercise 16.41
+
+>Write a version of `sum` with a return type that is guaranteed to be large enough to hold the result of the addition.
+
+```cpp
+template <typename T1, typename T2>
+auto sum(T1 a, T2 b) -> decltype(a + b) {
+    return a + b;
+}
+```
+
+More safer solution: <[Better `sum`](ex16_41_sum.cpp)>
+
+## Exercise 16.42
+
+> Determine the type of T and of val in each of the following calls:
+> ```cpp
+> template <typename T> void g(T&& val);
+> int i = 0; const int ci = i;
+> (a) g(i);
+> (b) g(ci);
+> (c) g(i * ci);
+> ```
+
+- (a) `int&`
+- (b) `const int&`
+- (c) `int`
+
+## Exercise 16.43
+
+> Using the function defined in the previous exercise, what would the template parameter of `g` be if we called `g(i = ci)`?
+
+`int&`
+
+## Exercise 16.44
+
+> Using the same three calls as in the first exercise, determine the types for `T` if `g`’s function parameter is declared as `T` (not `T&&`). What if `g`’s function parameter is `const T&`?
+
+Whatever `g`'s function parameter is declared as `T` or `const T&`, the `T`'s type in this three case would always `int`.
+
+## Exercise 16.45
+
+> Given the following template, explain what happens if we call `g` on a literal value such as 42. What if we call `g` on a variable of type `int`?
+> ```cpp
+> template <typename T> void g(T&& val) { vector<T> v; }
+> ```
+
+If we call `g` on a literal value such as 42, `T` should be `int`, and we get a tempoary variable `v`, which type is `vector<int>`. If we call `g` on a variable of type `int`, then `val` should be a lvalue, `T` should be `int&`(because `int& &&` ==> `int&`), then we would declared a `v` as `vector<int&>`. But the component type of `vector` must be [assignable](http://en.cppreference.com/w/cpp/concept/CopyAssignable), the references are not assignable, thus, `vector<int&>` is not allowed, the compiler would complain about it.
+
+## Exercise 16.46
+
+> Explain this loop from `StrVec::reallocate` in 13.5 (p.530):
+> ```cpp
+> for (size_t i = 0; i != size(); ++i)
+>   alloc.construct(dest++, std::move(*elem++));
+> ```
+
+Since C++11, [`std::allocator::construct`](http://en.cppreference.com/w/cpp/memory/allocator/construct)'s second parameter is `Args&&... args`. `*elem++` is a certain lvalue, and would be casted to a rvalue reference by `std::move`, then the `construct` would call the move constructor of `std::string` rather than copy constructor.
+
+## Exercise 16.47
+
+> Write your own version of the flip function and test it by calling functions that have lvalue and rvalue reference parameters.
+
+[flip and test](ex16_47_flip.cpp)
