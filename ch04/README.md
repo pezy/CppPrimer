@@ -120,6 +120,18 @@ The condition group `j` and `k` to the `<` operator. The `bool` result of that e
 i != j && j < k
 ```
 
+<font color=red>however when i tried this</font>
+
+```C++
+
+int i = 2, j = 2, k = 3;
+	if (i != (j < k)) {
+		cout << "hello" << endl;
+	}
+
+```
+
+it is going to print `hello`
 ---
 
 reference:
