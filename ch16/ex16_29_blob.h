@@ -7,6 +7,9 @@ using std::vector;
 #include <initializer_list>
 using std::initializer_list;
 
+#include <string>
+using std::string;
+
 #include "ex16_28_shared_ptr.h"
 #include <algorithm>
 #include <stdexcept>
@@ -68,7 +71,7 @@ public:
     const T& back() const;
 
 private:
-    void check(size_type, const T&) const;
+    void check(size_type, const string&) const;
 
     SharedPtr<vector<T>> data;
 };
@@ -143,7 +146,7 @@ template <typename T> inline const T& Blob<T>::back() const
     return data->back();
 }
 
-template <typename T> inline void Blob<T>::check(size_type i, const T& msg) const
+template <typename T> inline void Blob<T>::check(size_type i, const string& msg) const
 {
     if (i >= data->size()) throw std::out_of_range(msg);
 }
@@ -206,7 +209,7 @@ public:
     const T& operator[](size_t n) const;
 
 private:
-    SharedPtr<vector<T>> check(size_t, const T&) const;
+    SharedPtr<vector<T>> check(size_t, const string&) const;
 
     std::weak_ptr<vector<T>> wptr;
     size_t curr;
@@ -283,7 +286,7 @@ template <typename T> inline BlobPtr<T> BlobPtr<T>::operator-(size_t n) const
     return ret;
 }
 
-template <typename T> inline SharedPtr<vector<T>> BlobPtr<T>::check(size_t i, const T& msg) const
+template <typename T> inline SharedPtr<vector<T>> BlobPtr<T>::check(size_t i, const string& msg) const
 {
     auto ret = wptr.lock();
     if (!ret) throw std::runtime_error("unbound Blob<T>Ptr");
@@ -351,7 +354,7 @@ public:
     const T& operator[](size_t n) const;
 
 private:
-    std::SharedPtr<vector<T>> check(size_t, const T&) const;
+    std::SharedPtr<vector<T>> check(size_t, const string&) const;
 
     std::weak_ptr<vector<T>> wptr;
     size_t curr;
@@ -429,7 +432,7 @@ template <typename T> inline ConstBlobPtr<T> ConstBlobPtr<T>::operator-(size_t n
 }
 
 template <typename T>
-inline std::SharedPtr<vector<T>> ConstBlobPtr<T>::check(size_t i, const T& msg) const
+inline std::SharedPtr<vector<T>> ConstBlobPtr<T>::check(size_t i, const string& msg) const
 {
     auto ret = wptr.lock();
     if (!ret) throw std::runtime_error("unbound Blob<T>Ptr");
