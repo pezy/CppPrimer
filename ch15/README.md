@@ -35,7 +35,7 @@ class Base { ... };
 ```
 
 - (a) incorrect, derive from itself
-- (b) incorrect, this is a definition not a declaration
+- (b) correct.
 - (c) incorrect, A derived class is declared like any other class. The declaration contains the class name but does not include its derivation list
 
 ## Exercise 15.5
