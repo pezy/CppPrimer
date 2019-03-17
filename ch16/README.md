@@ -335,7 +335,12 @@ Then, the answers:
 
 > The library `max` function has two function parameters and returns the larger of its arguments. This function has one template type parameter. Could you call `max` passing it an int and a double? If so, how? If not, why not?
 
-No, I could not. Because the arguments to `max` must have the same type.
+Yes. Specify the parameter explicitly:
+> ```cpp
+> int a = 6; double b = 6.1231;
+> max<long double>(a, b);
+> ```
+> Normal conversions also apply for arguments whose template type parameter is explicitly specified
 
 ## Exercise 16.38
 
