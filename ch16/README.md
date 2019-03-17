@@ -338,7 +338,7 @@ Then, the answers:
 Yes. Specify the parameter explicitly:
 > ```cpp
 > int a = 6; double b = 6.1231;
-> max<long double>(a, b);
+> std::cout << std::max<long double>(a, b) << std::endl;
 > ```
 > Normal conversions also apply for arguments whose template type parameter is explicitly specified
 
