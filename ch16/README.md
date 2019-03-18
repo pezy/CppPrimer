@@ -340,7 +340,7 @@ Yes. Specify the parameter explicitly:
 > int a = 6; double b = 6.1231;
 > std::cout << std::max<long double>(a, b) << std::endl;
 > ```
-> Normal conversions also apply for arguments whose template type parameter is explicitly specified
+> Normal conversions also apply for arguments whose template type parameter is explicitly specified.
 
 ## Exercise 16.38
 
@@ -395,9 +395,13 @@ More safer solution: <[Better `sum`](ex16_41_sum.cpp)>
 > (c) g(i * ci);
 > ```
 
-- (a) `int&`
-- (b) `const int&`
-- (c) `int`
+- (a) T: `int&`  val: int& && -> int &
+- (b) T: `const int&`  val: const int& && -> const int &
+- (c) T: `int`  val: int &&
+
+> When we pass an lvalue `int` to a function parameter that is an rvalue reference to a template type parameter `T&&`, the compiler deduces the template type parameter as the argument’s lvalue reference type `int &`. 
+
+> `X& &`, `X& &&`, and `X&& &` all collapse to type `X&`.
 
 ## Exercise 16.43
 
