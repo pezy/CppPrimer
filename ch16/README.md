@@ -395,9 +395,9 @@ More safer solution: <[Better `sum`](ex16_41_sum.cpp)>
 > (c) g(i * ci);
 > ```
 
-- (a) T: `int&`  val: int& && -> int &
-- (b) T: `const int&`  val: const int& && -> const int &
-- (c) T: `int`  val: int &&
+- (a) T: `int&`  val: `int& &&` -> `int &`
+- (b) T: `const int&`  val: `const int& &&` -> `const int &`
+- (c) T: `int`  val: `int &&`
 
 > When we pass an lvalue `int` to a function parameter that is an rvalue reference to a template type parameter `T&&`, the compiler deduces the template type parameter as the argument’s lvalue reference type `int &`. 
 
