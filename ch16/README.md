@@ -439,3 +439,28 @@ Since C++11, [`std::allocator::construct`](http://en.cppreference.com/w/cpp/memo
 > Write your own version of the flip function and test it by calling functions that have lvalue and rvalue reference parameters.
 
 [flip and test](ex16_47_flip.cpp)
+
+## Exercise 16.49
+
+> Explain what happens in each of the following calls:
+```cpp
+template <typename T> void f(T);                   //1
+template <typename T> void f(const T*);            //2
+template <typename T> void g(T);                   //3
+template <typename T> void g(T*);                  //4
+int i = 42, *p = &i;
+const int ci = 0, *p2 = &ci;
+g(42); g(p); g(ci); g(p2);
+f(42); f(p); f(ci); f(p2);
+```
+> Answer:
+```cpp
+g(42);  //type: int(rvalue) call template 3  T: int          instantiation: void g(int)
+g(p);   //type: int *       call template 4  T: int          instantiation: void g(int *)
+g(ci);  //type: const int   call template 3  T: const int    instantiation: void g(const int)
+g(p2);  //type: const int * call template 4  T: const int    instantiation: void g(const int *)
+f(42);  //type: int(rvalue) call template 1  T: int          instantiation: void f(int)
+f(p);   //type: int *       call template 2  T: int          instantiation: void f(const int *)
+f(ci);  //type: const int   call template 1  T: const int    instantiation: void f(const int)
+f(p2);  //type: const int * call template 2  T：int          instantiation: void f(const int *)
+```
