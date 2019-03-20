@@ -460,7 +460,7 @@ g(p);   //type: int *       call template 4  T: int          instantiation: void
 g(ci);  //type: const int   call template 3  T: const int    instantiation: void g(const int)
 g(p2);  //type: const int * call template 4  T: const int    instantiation: void g(const int *)
 f(42);  //type: int(rvalue) call template 1  T: int          instantiation: void f(int)
-f(p);   //type: int *       call template 2  T: int          instantiation: void f(const int *)
+f(p);   //type: int *       call template 1  T: int *        instantiation: void f(int *)
 f(ci);  //type: const int   call template 1  T: const int    instantiation: void f(const int)
 f(p2);  //type: const int * call template 2  T：int          instantiation: void f(const int *)
 ```
