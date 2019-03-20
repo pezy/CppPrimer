@@ -461,13 +461,14 @@ g(ci);  // type: const int   call template 3  T: const int    instantiation: voi
 g(p2);  // type: const int * call template 4  T: const int    instantiation: void g(const int *)
 f(42);  // type: int(rvalue) call template 1  T: int          instantiation: void f(int)
 f(p);   // type: int *       call template 1  T: int *        instantiation: void f(int *)
-// f(int *) is an exact match for p(int *) while f(const int *) has an conversion from int * to const int *.
+// f(int *) is an exact match for p(int *) while f(const int *) has a conversion from int * to const int *.
 f(ci);  // type: const int   call template 1  T: const int    instantiation: void f(const int)
 f(p2);  // type: const int * call template 2  T：int          instantiation: void f(const int *)
 ```
 
 ## Exercise 16.50
 > Define the functions from the previous exercise so that they print an identifying message. Run the code from that exercise. If the calls behave differently from what you expected, make sure you understand why.
+
 [overload template](ex16_50_overload_template.cpp)
 
 ## Exercise 16.51
@@ -486,5 +487,6 @@ foo(i, s, s, d);   // input in Args: string, string, double       sizeof...(Args
 
 # Exercise 16.52
 > Write a program to check your answer to the previous question.
+
 [variadic template](ex16_52_variadic_template.cpp)
 
