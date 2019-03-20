@@ -467,6 +467,7 @@ f(p2);  // type: const int * call template 2  T：int          instantiation: vo
 ```
 
 ## Exercise 16.50
+
 > Define the functions from the previous exercise so that they print an identifying message. Run the code from that exercise. If the calls behave differently from what you expected, make sure you understand why.
 
 [overload template](ex16_50_overload_template.cpp)
@@ -486,7 +487,21 @@ foo(i, s, s, d);   // input in Args: string, string, double       sizeof...(Args
 ```
 
 # Exercise 16.52
+
 > Write a program to check your answer to the previous question.
 
 [variadic template](ex16_52_variadic_template.cpp)
+
+# Exercise 16.54
+
+> What happens if we call print on a type that doesn’t have an << operator?
+
+Error:
+```cpp
+std::vector<int> v = {1, 2};
+print(v);
+// error: no match for ‘operator<<’ (operand types are ‘std::ostream {aka std::basic_ostream<char>}’
+// and const std::vector<int>’)
+//          return os << t << endl;
+```
 
