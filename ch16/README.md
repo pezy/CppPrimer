@@ -465,3 +465,17 @@ f(p);   //type: int *       call template 1  T: int *        instantiation: void
 f(ci);  //type: const int   call template 1  T: const int    instantiation: void f(const int)
 f(p2);  //type: const int * call template 2  T：int          instantiation: void f(const int *)
 ```
+
+##  Exercise 16.51
+
+> Determine what sizeof...(Args) and sizeof...(rest) return for each call to foo in this section.
+```cpp
+template <typename T, typename ... Args>
+void foo(const T & t, const Args & ... rest);
+int i = 0; double d = 3.14; string s = "how";
+foo(i, s, 42, d);  # input in Args: string, int(rvalue), double  sizeof...(Args): 3  sizeof...(rest): 3
+foo(s, 42, "hi");  # input in Args: int(rvalue), const char[3]   sizeof...(Args): 2  sizeof...(rest): 2
+foo(d, s);         # input in Args: string                       sizeof...(Args): 1  sizeof...(rest): 1
+foo("hi");         # input in Args: None                         sizeof...(Args): 0  sizeof...(rest): 0
+foo(i, s, s, d);   # input in Args: string, string, double       sizeof...(Args): 3  sizeof...(rest): 3
+```
