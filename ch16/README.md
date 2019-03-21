@@ -505,3 +505,30 @@ print(v);
 //          return os << t << endl;
 ```
 
+# Exercise 16.58
+
+> Write the emplace_back function for your StrVec class and for the Vec class that you wrote for the exercises in 16.1.2 (p. 668).
+
+[emplace_back](ex16_58_emplace.cpp)
+
+# Exercise 16.59
+
+> Assuming s is a string, explain svec.emplace_back(s).
+
+```cpp
+template <typename T>
+template <typename ... Args>
+inline void Vec<T>::emplace_back(Args && ... args)
+{
+    chk_n_alloc();
+    alloc.construct(first_free++, std::forward<Args>(args)...);
+}
+Vec<std::string> vs;
+std::string s = "asd";
+vs.emplace_back(s);
+// Think (Args && ... args) as (T && t) for only one parameter is passed to Args.
+// 1: T is reduced as (int &) and type of function parameter t(int & &&) collapse to (int &) (see Exercise 16.42).
+// 2: std::forward<T>(t)   add && to T:   int & ->  int & && collapse to (int &).
+// 3: call copy constructor of std::string because second parameter is a lvalue. 
+```
+
