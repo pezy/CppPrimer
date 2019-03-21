@@ -532,3 +532,8 @@ vs.emplace_back(s);
 // 3: call copy constructor of std::string because the second parameter's type is lvalue reference(int &).
 ```
 
+# Exercise 16.61
+
+> Define your own version of make_shared.
+
+[make_shared](ex16_60_make_shared.cpp)
