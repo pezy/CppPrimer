@@ -46,18 +46,18 @@ class Vec
         Vec & operator=(const Vec &);
         Vec & operator=(Vec &&) noexcept;
         ~Vec() noexcept;
-
-        void push_back(const T &);
-        void push_back(T &&);
-        size_t size() const;
-        size_t capacity() const;
+       
         T * begin() const;
         T * end() const;
+        size_t size() const;
+        size_t capacity() const;
+        T & operator[](size_t);
+        const T & operator[](size_t) const;
+        void push_back(const T &);
+        void push_back(T &&);
         void reserve(size_t);
         void resize(size_t, const T & val = T());
         void free();
-        T & operator[](size_t);
-        const T & operator[](size_t) const;
 
         template <typename ... Args>
         void emplace_back(Args && ...);
@@ -129,17 +129,15 @@ inline Vec<T>::~Vec() noexcept
 }
 
 template <typename T>
-inline void Vec<T>::push_back(const T & t)
+inline T * Vec<T>::begin() const
 {
-   chk_n_alloc();
-   alloc.construct(first_free++, t);
+    return elements;
 }
 
 template <typename T>
-inline void Vec<T>::push_back(T && t)
+inline T * Vec<T>::end() const
 {
-    chk_n_alloc();
-    alloc.construct(first_free++, std::move(t));
+    return first_free;
 }
 
 template <typename T>
@@ -155,15 +153,38 @@ inline size_t Vec<T>::capacity() const
 }
 
 template <typename T>
-inline T * Vec<T>::begin() const
+inline T & Vec<T>::operator[](size_t index)
 {
-    return elements;
+    if (index > 0 && index < size())
+        return *(elements + index);
+    else
+        cerr << "Index error:\nmax_index: " << size() - 1
+             << " input index: " << index << endl;
+    exit(EXIT_FAILURE);
+}
+template <typename T>
+inline const T & Vec<T>::operator[](size_t index) const
+{
+    if (index > 0 && index < size())
+        return *(elements + index);
+    else
+        cerr << "Index error:\nmax_index: " << size() - 1
+             << " input index: " << index << endl;
+    exit(EXIT_FAILURE);
 }
 
 template <typename T>
-inline T * Vec<T>::end() const
+inline void Vec<T>::push_back(const T & t)
 {
-    return first_free;
+   chk_n_alloc();
+   alloc.construct(first_free++, t);
+}
+
+template <typename T>
+inline void Vec<T>::push_back(T && t)
+{
+    chk_n_alloc();
+    alloc.construct(first_free++, std::move(t));
 }
 
 template <typename T>
@@ -199,32 +220,19 @@ void Vec<T>::free()
 }
 
 template <typename T>
-inline T & Vec<T>::operator[](size_t index)
-{
-    if (index > 0 && index < size())
-        return *(elements + index);
-    else
-        cerr << "Index error:\nmax_index: " << size() - 1
-             << " input index: " << index << endl;
-    exit(EXIT_FAILURE);
-}
-template <typename T>
-inline const T & Vec<T>::operator[](size_t index) const
-{
-    if (index > 0 && index < size())
-        return *(elements + index);
-    else
-        cerr << "Index error:\nmax_index: " << size() - 1
-             << " input index: " << index << endl;
-    exit(EXIT_FAILURE);
-}
-
-template <typename T>
 template <typename ... Args>
 inline void Vec<T>::emplace_back(Args && ... args)
 {
     chk_n_alloc();
     alloc.construct(first_free++, std::forward<Args>(args)...);
+}
+
+template <typename T>
+inline void Vec<T>::swap(Vec & v) noexcept
+{
+    std::swap(elements, v.elements);
+    std::swap(first_free, v.first_free);
+    std::swap(cap, v.cap);
 }
 
 template <typename T>
@@ -252,14 +260,6 @@ void Vec<T>::reallocate(size_t max)
     elements = newstart;
     first_free = dest;
     cap = newstart + newcapacity;
-}
-
-template <typename T>
-inline void Vec<T>::swap(Vec & v) noexcept
-{
-    std::swap(elements, v.elements);
-    std::swap(first_free, v.first_free);
-    std::swap(cap, v.cap);
 }
 
 template <typename T>
@@ -297,8 +297,6 @@ bool operator>=(const Vec<T> & v1, const Vec<T> & v2)
 {
    return !(v1 < v2);
 }
-
-
 
 
 int main()
