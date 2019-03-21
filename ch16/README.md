@@ -526,9 +526,9 @@ inline void Vec<T>::emplace_back(Args && ... args)
 Vec<std::string> vs;
 std::string s = "asd";
 vs.emplace_back(s);
-// Think (Args && ... args) as (T && t) for only one parameter is passed to Args.
+// Think (Args && ... args) as (T && t) for only one parameter is passed to the template parameter pack.
 // 1: T is reduced as (int &) and type of function parameter t(int & &&) collapse to (int &) (see Exercise 16.42).
-// 2: std::forward<T>(t)   add && to T:   int & ->  int & && collapse to (int &).
-// 3: call copy constructor of std::string because second parameter is a lvalue. 
+// 2: std::forward<T>(t) returns type (T &&):   (int &) ->  (int & &&) collapse to (int &).
+// 3: call copy constructor of std::string because the second parameter is a lvalue. 
 ```
 
