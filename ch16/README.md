@@ -536,4 +536,4 @@ vs.emplace_back(s);
 
 > Define your own version of make_shared.
 
-[make_shared](ex16_60_make_shared.cpp)
+[make_shared](ex16_61_make_shared.cpp)
