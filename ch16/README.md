@@ -567,7 +567,7 @@ and the other a char* parameter. Rewrite these functions as specializations.
 
 > Would defining these specializations affect function matching for debug_rep? If so, how? If not, why not?
 
-No. It's just an instantiation of original function template.
+No. It's just an instantiation of the original function template.
 
 > Specializations instantiate a template; they do not overload it. As a result, 
 specializations do not affect function matching.
