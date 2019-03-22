@@ -486,13 +486,13 @@ foo("hi");         // input in Args: None                         sizeof...(Args
 foo(i, s, s, d);   // input in Args: string, string, double       sizeof...(Args): 3  sizeof...(rest): 3
 ```
 
-# Exercise 16.52
+## Exercise 16.52
 
 > Write a program to check your answer to the previous question.
 
 [variadic template](ex16_52_variadic_template.cpp)
 
-# Exercise 16.54
+## Exercise 16.54
 
 > What happens if we call print on a type that doesn’t have an << operator?
 
@@ -505,13 +505,13 @@ print(v);
 //          return os << t << endl;
 ```
 
-# Exercise 16.58
+## Exercise 16.58
 
 > Write the emplace_back function for your StrVec class and for the Vec class that you wrote for the exercises in 16.1.2 (p. 668).
 
 [emplace_back](ex16_58_emplace.cpp)
 
-# Exercise 16.59
+## Exercise 16.59
 
 > Assuming s is a string, explain svec.emplace_back(s).
 
@@ -532,8 +532,39 @@ vs.emplace_back(s);
 // 3: call copy constructor of std::string because the second parameter's type is lvalue reference(int &).
 ```
 
-# Exercise 16.61
+## Exercise 16.61
 
 > Define your own version of make_shared.
 
 [make_shared](ex16_61_make_shared.cpp)
+
+## Exercise 16.63
+
+> Define a function template to count the number of occurrences of a given value in a vector.
+Test your program by passing it a vector of doubles, a vector of ints, and a vector of strings.
+
+[count template](ex16_63_count_template.cpp)
+
+## Exercise 16.64
+
+> Write a specialized version of the template from the previous exercise to handle vector<const char*> and 
+a program that uses this specialization.
+
+[template specialization](ex16_64_template_specialization.cpp)
+
+## Exercise 16.65
+
+> In § 16.3 (p. 698) we defined overloaded two versions of debug_rep one had a const char* 
+and the other a char* parameter. Rewrite these functions as specializations.
+
+[debug_rep specialization](ex16_65_debug_rep.cpp)
+
+## Exercise 16.67
+
+> Would defining these specializations affect function matching for debug_rep? If so, how? If not, why not?
+
+No. It's just an instantiation of original function template.
+
+> Specializations instantiate a template; they do not overload it. As a result, 
+specializations do not affect function matching.
+

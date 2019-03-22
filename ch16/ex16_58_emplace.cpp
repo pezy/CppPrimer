@@ -18,8 +18,10 @@ using std::string;
 using std::pair;
 using std::initializer_list;
 
+// declaration for below templates .
 template <typename T> class Vec;
 
+// declaration of each template.
 template <typename T> bool operator==(const Vec<T> &, const Vec<T> &);
 template <typename T> bool operator!=(const Vec<T> &, const Vec<T> &);
 template <typename T> bool operator< (const Vec<T> &, const Vec<T> &);
@@ -31,12 +33,13 @@ template <typename T> bool operator>=(const Vec<T> &, const Vec<T> &);
 template <typename T>
 class Vec
 {
-       friend bool operator==<T>(const Vec<T> &, const Vec<T> &);
-       friend bool operator!=<T>(const Vec<T> &, const Vec<T> &);
-       friend bool operator< <T>(const Vec<T> &, const Vec<T> &);
-       friend bool operator> <T>(const Vec<T> &, const Vec<T> &);
-       friend bool operator<=<T>(const Vec<T> &, const Vec<T> &);
-       friend bool operator>=<T>(const Vec<T> &, const Vec<T> &);
+	// bound template friend.
+       	friend bool operator==<T>(const Vec<T> &, const Vec<T> &);
+       	friend bool operator!=<T>(const Vec<T> &, const Vec<T> &);
+       	friend bool operator< <T>(const Vec<T> &, const Vec<T> &);
+       	friend bool operator> <T>(const Vec<T> &, const Vec<T> &);
+       	friend bool operator<=<T>(const Vec<T> &, const Vec<T> &);
+       	friend bool operator>=<T>(const Vec<T> &, const Vec<T> &);
 
     public:
         Vec() : elements(nullptr), first_free(nullptr), cap(nullptr) {}
@@ -54,7 +57,7 @@ class Vec
         T & operator[](size_t);
         const T & operator[](size_t) const;
         void push_back(const T &);
-        void push_back(T &&);
+        void push_back(T &&);                         // used for rvalue
         void reserve(size_t);
         void resize(size_t, const T & val = T());
         void free();
