@@ -335,7 +335,7 @@ Then, the answers:
 
 > The library `max` function has two function parameters and returns the larger of its arguments. This function has one template type parameter. Could you call `max` passing it an int and a double? If so, how? If not, why not?
 
-> Yes. Specify the parameter explicitly:
+Yes. Specify the parameter explicitly:
 ```cpp
 int a = 6; double b = 6.1231;
 std::cout << std::max<long double>(a, b) << std::endl;
@@ -397,9 +397,9 @@ More safer solution: <[Better `sum`](ex16_41_sum.cpp)>
 > ```
   
 ```cpp
-//T: `int&`        val: `int& &&`       -> `int &`
-//T: `const int&`  val: `const int& &&` -> `const int &`
-//T: `int`         val: `int &&`
+//T: int&        val: int& &&        -> int &
+//T: const int&  val: const int& &&  -> const int &
+//T: int         val: int &&
 ```
 
 > When we pass an lvalue `int` to a function parameter that is an rvalue reference to a template type parameter `T&&`, the compiler deduces the template type parameter as the argument’s lvalue reference type `int &`. 
@@ -500,7 +500,7 @@ foo(i, s, s, d);   // input in Args: string, string, double       sizeof...(Args
 
 > What happens if we call print on a type that doesn’t have an << operator?
 
-> Error:
+Error:
 ```cpp
 std::vector<int> v = {1, 2};
 print(v);
