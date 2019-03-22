@@ -336,10 +336,11 @@ Then, the answers:
 > The library `max` function has two function parameters and returns the larger of its arguments. This function has one template type parameter. Could you call `max` passing it an int and a double? If so, how? If not, why not?
 
 Yes. Specify the parameter explicitly:
-> ```cpp
-> int a = 6; double b = 6.1231;
-> std::cout << std::max<long double>(a, b) << std::endl;
-> ```
+```cpp
+int a = 6; double b = 6.1231;
+std::cout << std::max<long double>(a, b) << std::endl;
+```
+  
 > Normal conversions also apply for arguments whose template type parameter is explicitly specified.
 
 ## Exercise 16.38
@@ -394,10 +395,12 @@ More safer solution: <[Better `sum`](ex16_41_sum.cpp)>
 > (b) g(ci);
 > (c) g(i * ci);
 > ```
-
-- (a) T: `int&`        val: `int& &&`       -> `int &`
-- (b) T: `const int&`  val: `const int& &&` -> `const int &`
-- (c) T: `int`         val: `int &&`
+  
+```cpp
+//T: int&        val: int& &&        -> int &
+//T: const int&  val: const int& &&  -> const int &
+//T: int         val: int &&
+```
 
 > When we pass an lvalue `int` to a function parameter that is an rvalue reference to a template type parameter `T&&`, the compiler deduces the template type parameter as the argument’s lvalue reference type `int &`. 
 
@@ -443,17 +446,17 @@ Since C++11, [`std::allocator::construct`](http://en.cppreference.com/w/cpp/memo
 ## Exercise 16.49
 
 > Explain what happens in each of the following calls:
-```cpp
-template <typename T> void f(T);                   //1
-template <typename T> void f(const T*);            //2
-template <typename T> void g(T);                   //3
-template <typename T> void g(T*);                  //4
-int i = 42, *p = &i;
-const int ci = 0, *p2 = &ci;
-g(42); g(p); g(ci); g(p2);
-f(42); f(p); f(ci); f(p2);
-```
-> Answer:
+>```cpp
+>template <typename T> void f(T);                   //1
+>template <typename T> void f(const T*);            //2
+>template <typename T> void g(T);                   //3
+>template <typename T> void g(T*);                  //4
+>int i = 42, *p = &i;
+>const int ci = 0, *p2 = &ci;
+>g(42); g(p); g(ci); g(p2);
+>f(42); f(p); f(ci); f(p2);
+>```
+  
 ```cpp
 g(42);  // type: int(rvalue) call template 3  T: int          instantiation: void g(int)
 g(p);   // type: int *       call template 4  T: int          instantiation: void g(int *)
@@ -475,6 +478,7 @@ f(p2);  // type: const int * call template 2  T：int          instantiation: vo
 ## Exercise 16.51
 
 > Determine what sizeof...(Args) and sizeof...(rest) return for each call to foo in this section.
+
 ```cpp
 template <typename T, typename ... Args>
 void foo(const T & t, const Args & ... rest);
