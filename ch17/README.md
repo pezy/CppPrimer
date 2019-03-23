@@ -138,7 +138,7 @@ Because `std::accumulate`'s third parameter is the initial value of the sum. It'
 
 > Rewrite your phone program so that it allows any number of whitespace characters to separate the three parts of a phone number.
 
-[validate phone numbers](ex17.22/ex17.22/main.cpp)
+[validate phone numbers](ex17.22/main.cpp)
 
 ## Exercise 17.28
 
@@ -158,3 +158,9 @@ Because `std::accumulate`'s third parameter is the initial value of the sum. It'
 
 [uniformly distribution](ex17.28.29.30/main.cpp)
 
+## Exercise 17.33
+
+> Write a version of the word transformation program from §11.3.6 (p. 440) that allows multiple transformations 
+for a given word andrandomly selects which transformation to apply.
+
+[word transformation](ex17_33_word_transformation.cpp)
