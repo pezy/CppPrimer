@@ -109,3 +109,52 @@ Because `std::accumulate`'s third parameter is the initial value of the sum. It'
 > What would happen if your regex object in the previous program were initialized with "[^c]ei"? Test your program using that pattern to see whether your expectations were correct.
 
 `[^c]ei` says we want any such letter that is followed by the letters 'ei', This pattern describes strings containing exactly **three** characters. The test words in [ex17_15](ex17_15.cpp) will all fail.
+
+## Exercise 17.17
+
+> Update your program so that it finds all the words in an input sequence that violiate the “ei” grammar rule.
+
+[regex](ex17.17.18/main.cpp)
+
+## Exercise 17.19
+
+> Why is it okay to call m[4].str() without first checking whether m[4] was matched?
+
+> str() returns a string containing the matched poertion of the input.If not matched returns the empty string whcih can also be used for comparison.
+
+## Exercise 17.20
+
+> Write your own version of the program to validate phone numbers.
+
+[validate phone numbers](ex17.19.20/main.cpp)
+
+## Exercise 12.21
+
+> Rewrite your phone number program from § 8.3.2 (p. 323) to use the valid function defined in this section.
+
+[validate phone numbers](ex17.21/main.cpp)
+
+## Exercise 12.22
+
+> Rewrite your phone program so that it allows any number of whitespace characters to separate the three parts of a phone number.
+
+[validate phone numbers](ex17.22/ex17.22/main.cpp)
+
+## Exercise 12.28
+
+>  Write a function that generates and returns a uniformly distributed random unsigned int each time it is called.
+
+[uniformly distribution](ex17.28.29.30/main.cpp)
+
+## Exercise 12.29
+
+> Allow the user to supply a seed as an optional argument to the function you wrote in the previous exercise.
+
+[uniformly distribution](ex17.28.29.30/main.cpp)
+
+## Exercise 12.30
+
+> Revise your function again this time to take a minimum and maximum value for the numbers that the function should return.
+
+[uniformly distribution](ex17.28.29.30/main.cpp)
+
