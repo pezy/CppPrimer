@@ -128,31 +128,31 @@ Because `std::accumulate`'s third parameter is the initial value of the sum. It'
 
 [validate phone numbers](ex17.19.20/main.cpp)
 
-## Exercise 12.21
+## Exercise 17.21
 
 > Rewrite your phone number program from § 8.3.2 (p. 323) to use the valid function defined in this section.
 
 [validate phone numbers](ex17.21/main.cpp)
 
-## Exercise 12.22
+## Exercise 17.22
 
 > Rewrite your phone program so that it allows any number of whitespace characters to separate the three parts of a phone number.
 
 [validate phone numbers](ex17.22/ex17.22/main.cpp)
 
-## Exercise 12.28
+## Exercise 17.28
 
 >  Write a function that generates and returns a uniformly distributed random unsigned int each time it is called.
 
 [uniformly distribution](ex17.28.29.30/main.cpp)
 
-## Exercise 12.29
+## Exercise 17.29
 
 > Allow the user to supply a seed as an optional argument to the function you wrote in the previous exercise.
 
 [uniformly distribution](ex17.28.29.30/main.cpp)
 
-## Exercise 12.30
+## Exercise 17.30
 
 > Revise your function again this time to take a minimum and maximum value for the numbers that the function should return.
 
