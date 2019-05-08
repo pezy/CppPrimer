@@ -212,7 +212,7 @@ Copy constructor and copy-assignment operator should dynamically allocate memory
 
 ## [Exercise 13.31](ex13_31.h)
 
-## xercise 13.32
+## Exercise 13.32
 
 > Would the pointer-like version of `HasPtr` benefit from defining a swap function? If so, what is the benefit? If not, why not?
 
