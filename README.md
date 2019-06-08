@@ -5,6 +5,7 @@
 [![](https://img.shields.io/badge/%E4%B8%AD%E6%96%87-%E8%AE%A8%E8%AE%BA%E5%8C%BA-yellowgreen.svg)](https://github.com/ReadingLab/Discussion-for-Cpp)
 [![Slack](https://img.shields.io/badge/Slack-join-brightgreen.svg)](https://join.slack.com/t/cppprimers/shared_invite/enQtMjg4NzQ4NjU4NzczLTZiNWMxOGM0MDRjNzNkMGJhNjYxZjQ3NGFmYmRhZWVlYTI4YTBhMTE3NDhlYzNlYTM3OTA3MzU2MjhhYTE2YWI)
 [![Thanks](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/pezy)
+[![Open Source Helpers](https://www.codetriage.com/pezy/cppprimer/badges/users.svg)](https://www.codetriage.com/pezy/cppprimer)
 
 ## Notes
 
@@ -37,7 +38,7 @@
   - [Chapter 17. Specialized Library Facilities](ch17/README.md)
   - [Chapter 18. Tools for Large Programs](ch18/README.md)
   - Chapter 19. Specialized Tools and Techniques
-  
+
 ## Contributions
 
 [![](https://sourcerer.io/fame/pezy/pezy/CppPrimer/images/0)](https://sourcerer.io/fame/pezy/pezy/CppPrimer/links/0)[![](https://sourcerer.io/fame/pezy/pezy/CppPrimer/images/1)](https://sourcerer.io/fame/pezy/pezy/CppPrimer/links/1)[![](https://sourcerer.io/fame/pezy/pezy/CppPrimer/images/2)](https://sourcerer.io/fame/pezy/pezy/CppPrimer/links/2)[![](https://sourcerer.io/fame/pezy/pezy/CppPrimer/images/3)](https://sourcerer.io/fame/pezy/pezy/CppPrimer/links/3)[![](https://sourcerer.io/fame/pezy/pezy/CppPrimer/images/4)](https://sourcerer.io/fame/pezy/pezy/CppPrimer/links/4)[![](https://sourcerer.io/fame/pezy/pezy/CppPrimer/images/5)](https://sourcerer.io/fame/pezy/pezy/CppPrimer/links/5)[![](https://sourcerer.io/fame/pezy/pezy/CppPrimer/images/6)](https://sourcerer.io/fame/pezy/pezy/CppPrimer/links/6)[![](https://sourcerer.io/fame/pezy/pezy/CppPrimer/images/7)](https://sourcerer.io/fame/pezy/pezy/CppPrimer/links/7)
