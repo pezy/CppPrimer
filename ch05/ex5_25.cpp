@@ -22,6 +22,8 @@ int main(void)
             cin >> c;
             if (!cin || c == 'n')
                 break;
+            else
+                cout << "Input two integers: ";
         }
     }
 
