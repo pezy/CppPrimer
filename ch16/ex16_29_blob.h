@@ -237,7 +237,7 @@ template <typename T> inline BlobPtr<T>& BlobPtr<T>::operator++()
 template <typename T> inline BlobPtr<T>& BlobPtr<T>::operator--()
 {
     --curr;
-    check(-1, "decrement past begin of Blob<T>Ptr");
+    check(curr, "decrement past begin of Blob<T>Ptr");
     return *this;
 }
 
@@ -382,7 +382,7 @@ template <typename T> inline ConstBlobPtr<T>& ConstBlobPtr<T>::operator++()
 template <typename T> inline ConstBlobPtr<T>& ConstBlobPtr<T>::operator--()
 {
     --curr;
-    check(-1, "decrement past begin of ConstBlob<T>Ptr");
+    check(curr, "decrement past begin of ConstBlob<T>Ptr");
     return *this;
 }
 
