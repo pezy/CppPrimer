@@ -4,18 +4,24 @@
 
 int main()
 {
-    int small = 0, big = 0;
-    std::cout << "please input two integers:";
-    std::cin >> small >> big;
+    std::cout << "Please enter two integers:" << std::endl;
 
-    if (small > big) {
-        int tmp = small;
-        small = big;
-        big = tmp;
+    int a = 0;
+    int b = 0;
+    int small = 0;
+    int large = 0;
+    std::cin >> a >> b;
+    
+    large = a;
+    small = b;
+    
+    while (b > large) {
+        small = a;
+        large = b;
     }
-
-    while (small <= big) {
-        std::cout << small << " ";
+    
+    while (small <= large) {
+        std::cout << small << "  ";
         ++small;
     }
     std::cout << std::endl;
