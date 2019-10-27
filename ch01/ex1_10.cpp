@@ -1,6 +1,6 @@
 // prints the numbers from ten down to zero.(use while)
 
-#include <iostream>
+#include <bits/stdc++.h>
 
 int main()
 {
