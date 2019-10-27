@@ -1,6 +1,6 @@
 // sum the numbers from 50 to 100 (use while)
 
-#include <iostream>
+#include <bits/stdc++.h>
 
 int main()
 {
