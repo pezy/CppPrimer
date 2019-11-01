@@ -336,10 +336,11 @@ Then, the answers:
 > The library `max` function has two function parameters and returns the larger of its arguments. This function has one template type parameter. Could you call `max` passing it an int and a double? If so, how? If not, why not?
 
 Yes. Specify the parameter explicitly:
-> ```cpp
-> int a = 6; double b = 6.1231;
-> std::cout << std::max<long double>(a, b) << std::endl;
-> ```
+```cpp
+int a = 6; double b = 6.1231;
+std::cout << std::max<long double>(a, b) << std::endl;
+```
+  
 > Normal conversions also apply for arguments whose template type parameter is explicitly specified.
 
 ## Exercise 16.38
@@ -394,10 +395,12 @@ More safer solution: <[Better `sum`](ex16_41_sum.cpp)>
 > (b) g(ci);
 > (c) g(i * ci);
 > ```
-
-- (a) T: `int&`        val: `int& &&`       -> `int &`
-- (b) T: `const int&`  val: `const int& &&` -> `const int &`
-- (c) T: `int`         val: `int &&`
+  
+```cpp
+//T: int&        val: int& &&        -> int &
+//T: const int&  val: const int& &&  -> const int &
+//T: int         val: int &&
+```
 
 > When we pass an lvalue `int` to a function parameter that is an rvalue reference to a template type parameter `T&&`, the compiler deduces the template type parameter as the argument’s lvalue reference type `int &`. 
 
@@ -443,17 +446,17 @@ Since C++11, [`std::allocator::construct`](http://en.cppreference.com/w/cpp/memo
 ## Exercise 16.49
 
 > Explain what happens in each of the following calls:
-```cpp
-template <typename T> void f(T);                   //1
-template <typename T> void f(const T*);            //2
-template <typename T> void g(T);                   //3
-template <typename T> void g(T*);                  //4
-int i = 42, *p = &i;
-const int ci = 0, *p2 = &ci;
-g(42); g(p); g(ci); g(p2);
-f(42); f(p); f(ci); f(p2);
-```
-> Answer:
+>```cpp
+>template <typename T> void f(T);                   //1
+>template <typename T> void f(const T*);            //2
+>template <typename T> void g(T);                   //3
+>template <typename T> void g(T*);                  //4
+>int i = 42, *p = &i;
+>const int ci = 0, *p2 = &ci;
+>g(42); g(p); g(ci); g(p2);
+>f(42); f(p); f(ci); f(p2);
+>```
+  
 ```cpp
 g(42);  // type: int(rvalue) call template 3  T: int          instantiation: void g(int)
 g(p);   // type: int *       call template 4  T: int          instantiation: void g(int *)
@@ -467,6 +470,7 @@ f(p2);  // type: const int * call template 2  T：int          instantiation: vo
 ```
 
 ## Exercise 16.50
+
 > Define the functions from the previous exercise so that they print an identifying message. Run the code from that exercise. If the calls behave differently from what you expected, make sure you understand why.
 
 [overload template](ex16_50_overload_template.cpp)
@@ -474,6 +478,7 @@ f(p2);  // type: const int * call template 2  T：int          instantiation: vo
 ## Exercise 16.51
 
 > Determine what sizeof...(Args) and sizeof...(rest) return for each call to foo in this section.
+
 ```cpp
 template <typename T, typename ... Args>
 void foo(const T & t, const Args & ... rest);
@@ -485,8 +490,85 @@ foo("hi");         // input in Args: None                         sizeof...(Args
 foo(i, s, s, d);   // input in Args: string, string, double       sizeof...(Args): 3  sizeof...(rest): 3
 ```
 
-# Exercise 16.52
+## Exercise 16.52
+
 > Write a program to check your answer to the previous question.
 
 [variadic template](ex16_52_variadic_template.cpp)
+
+## Exercise 16.54
+
+> What happens if we call print on a type that doesn’t have an << operator?
+
+Error:
+```cpp
+std::vector<int> v = {1, 2};
+print(v);
+// error: no match for ‘operator<<’ (operand types are ‘std::ostream {aka std::basic_ostream<char>}’
+// and const std::vector<int>’)
+//          return os << t << endl;
+```
+
+## Exercise 16.58
+
+> Write the emplace_back function for your StrVec class and for the Vec class that you wrote for the exercises in 16.1.2 (p. 668).
+
+[emplace_back](ex16_58_emplace.cpp)
+
+## Exercise 16.59
+
+> Assuming s is a string, explain svec.emplace_back(s).
+
+```cpp
+template <typename T>
+template <typename ... Args>
+inline void Vec<T>::emplace_back(Args && ... args)
+{
+    chk_n_alloc();
+    alloc.construct(first_free++, std::forward<Args>(args)...);
+}
+Vec<std::string> vs;
+std::string s = "asd";
+vs.emplace_back(s);
+// Think (Args && ... args) as (T && t) for only one parameter is passed to the template parameter pack.
+// 1: T is deduced as (int &). see Exercise 16.42.
+// 2: std::forward<T>(t) returns type (T &&):   (int &) ->  (int & &&) collapse to (int &).
+// 3: call copy constructor of std::string because the second parameter's type is lvalue reference(int &).
+```
+
+## Exercise 16.61
+
+> Define your own version of make_shared.
+
+[make_shared](ex16_61_make_shared.cpp)
+
+## Exercise 16.63
+
+> Define a function template to count the number of occurrences of a given value in a vector.
+Test your program by passing it a vector of doubles, a vector of ints, and a vector of strings.
+
+[count template](ex16_63_count_template.cpp)
+
+## Exercise 16.64
+
+> Write a specialized version of the template from the previous exercise to handle vector<const char*> and 
+a program that uses this specialization.
+
+[template specialization](ex16_64_template_specialization.cpp)
+
+## Exercise 16.65
+
+> In § 16.3 (p. 698) we defined overloaded two versions of debug_rep one had a const char* 
+and the other a char* parameter. Rewrite these functions as specializations.
+
+[debug_rep specialization](ex16_65_debug_rep.cpp)
+
+## Exercise 16.67
+
+> Would defining these specializations affect function matching for debug_rep? If so, how? If not, why not?
+
+No. It's just an instantiation of the original function template.
+
+> Specializations instantiate a template; they do not overload it. As a result, 
+specializations do not affect function matching.
 
