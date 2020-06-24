@@ -457,12 +457,12 @@ f(42); f(p); f(ci); f(p2);
 ```cpp
 g(42);  // type: int(rvalue) call template 3  T: int          instantiation: void g(int)
 g(p);   // type: int *       call template 4  T: int          instantiation: void g(int *)
-g(ci);  // type: const int   call template 3  T: const int    instantiation: void g(const int)
+g(ci);  // type: const int   call template 3  T: int          instantiation: void g(int)
 g(p2);  // type: const int * call template 4  T: const int    instantiation: void g(const int *)
 f(42);  // type: int(rvalue) call template 1  T: int          instantiation: void f(int)
 f(p);   // type: int *       call template 1  T: int *        instantiation: void f(int *)
 // f(int *) is an exact match for p(int *) while f(const int *) has a conversion from int * to const int *.
-f(ci);  // type: const int   call template 1  T: const int    instantiation: void f(const int)
+f(ci);  // type: const int   call template 1  T: int          instantiation: void f(int)
 f(p2);  // type: const int * call template 2  T：int          instantiation: void f(const int *)
 ```
 
