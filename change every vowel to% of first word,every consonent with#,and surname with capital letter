@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+int main()
+{
+    char ch[10],ch2[10],ch3[10];
+    int x,y,z;
+    cout<<"\n\n\n******************************************************************\n\n";
+    cout << "pl!!!! enter a sentence " << endl;
+    cin>>ch;
+    cin>>ch2;
+    cin>>ch3;
+    x=strlen(ch);
+    y=strlen(ch2);
+    z=strlen(ch3);
+    for (int j=0;j<x;j++)
+    {
+        if(ch[j]=='a'||ch[j]=='e'||ch[j]=='i'||ch[j]=='o'||ch[j]=='u')
+        {
+
+            ch[j]='%';
+        }
+    }
+        for (int i=0;i<y;i++)
+    {
+        if(ch2[i]=='b'||ch2[i]=='c'||ch2[i]=='d'||ch2[i]=='f'||ch2[i]=='g'||ch2[i]=='h'||ch2[i]=='j'||ch2[i]=='k'||ch2[i]=='l'||ch2[i]=='m'||ch2[i]=='n'||ch2[i]=='p'||ch2[i]=='q'||ch2[i]=='r'||ch2[i]=='s'||ch2[i]=='t'||ch2[i]=='v'||ch2[i]=='w'||ch2[i]=='x'||ch2[i]=='y'||ch2[i]=='z')
+
+            {
+                ch2[i]='#';
+            }
+
+    }
+        for (int j=0;j<z;j++)
+    {
+
+            ch3[j]=toupper(ch3[j]);
+
+    }
+    cout<<ch<<","<<ch2<<","<<ch3;
+    cout<<"\n\n made by VIVEK KUMAR UPADHYAY";
+
+    return 0;
+}
