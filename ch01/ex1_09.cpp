@@ -2,17 +2,24 @@
 
 #include <iostream>
 
+using namespace std; 
+
+//“using namespace std” means we use the namespace named std. “std” is an abbreviation for standard. 
+//If we don’t want to use this line of code, we can use the things in this namespace like this. std::cout, std::endl.
+//If this namespace is not used, then computer finds for the cout, cin and endl etc.. Computer cannot identify those and therefore it throws errors.
+
+
 int main()
 {
     int sum = 0, val = 50;
     while (val <= 100) {
-        sum += val;
-        ++val;
+        sum += val; //shorthand for sum=sum+val
+        ++val; //increments the value of val by 1.
     }
 
-    std::cout << "the sum is: " << sum << std::endl;
+    cout << "The sum is: " << sum << endl;
 
     return 0;
 }
 
-// output: the sum is: 3825
+// output: The sum is: 3825
