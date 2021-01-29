@@ -7,13 +7,17 @@
 #include <iostream>
 #include <string>
 
-int main(int argc, char** argv)
+int main(int argc, char* argv)
 {
-    std::string str;
-    for (int i = 1; i != argc; ++i) {
-        str += argv[i];
-        str += " ";
-    }
+    std::cout << "enter the no of times string to be concatenated :";
+    std::cin >> argc;
+    std::cout << "enter the string to be concatenated";
+    std::cin >> argv;
 
-    std::cout << str << std::endl;
+    std::string str = argv;
+    
+    for (int i = 1; i < argc; i++) {
+         str  += argv;  //str =str + argv;
+    }
+    std::cout << "Concatenated string is : " << str;
 }
