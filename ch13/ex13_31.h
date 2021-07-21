@@ -50,6 +50,9 @@ void swap(HasPtr& lhs, HasPtr& rhs)
 {
     lhs.swap(rhs);
 }
+//Function swap(HasPtr&, HasPtr&) is actually never used. The notice is printed because '=' is called, and 'sort' doesn't call swap(HasPtr&, HasPtr&) at all. 
+//I saw a comment that might be the reason:
+//swap(HasPtr&, HasPtr&) is used in quicksort, but 'sort' won't use quicksort when there are not enough elements in the container(insertionsort is used instead).
 
 bool operator<(const HasPtr& lhs, const HasPtr& rhs)
 {
