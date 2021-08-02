@@ -12,7 +12,7 @@ The C and C++ standards do not specify the representation of float, double and l
 
 **Usage**:
 
-- Use `int` for integer arithmetic. `short` is usually too small and, in practice,`long` often has the same size as `int`. If your data values are larger than the minimum guaranteed size of an `int`, then use `long long`. (In a word: short < **int** < long < long long)
+- Use `int` for integer arithmetic. `short` is usually too small and, in practice,`long` often has the same size as `int`. If your data values are larger than the maximum guaranteed size of an `int`, then use `long long`. (In a word: short < **int** < long < long long)
 
 - Use an unsigned type when you know that the values cannot be negative. (In a word: no negative, unsigned.)
 
