@@ -20,7 +20,7 @@ int main() {
     }
 
     // code for if you wanted to print with for loop:
-    /*
+    /* _
     //for (int i = small; i < big+1; i++) {
     //    std::cout << i << std::endl;
     //}*/
