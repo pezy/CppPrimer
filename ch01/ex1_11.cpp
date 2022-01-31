@@ -1,24 +1,28 @@
-// Print each number in the range specified by two integers.
-
 #include <iostream>
 
-int main()
-{
+int main() {
     int small = 0, big = 0;
-    std::cout << "please input two integers:";
+    std::cout << "Please input two integers:";
     std::cin >> small >> big;
 
-    if (small > big) {
-        int tmp = small;
+    while (small > big) {
+        int temp = small;
         small = big;
-        big = tmp;
+        big = temp;
     }
+    // The numbers are now switch to proper big and small if necessary
+
+
 
     while (small <= big) {
-        std::cout << small << " ";
-        ++small;
+        std::cout << small << std::endl;
+        small++;
     }
-    std::cout << std::endl;
 
+    // code for if you wanted to print with for loop:
+    /* _
+    //for (int i = small; i < big+1; i++) {
+    //    std::cout << i << std::endl;
+    //}*/
     return 0;
 }
