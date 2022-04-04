@@ -45,7 +45,8 @@ public:
 
     void reset(T* q = nullptr) noexcept
     {
-        deleter_(q);
+        deleter_(q);        // Error: should relase old obj pointed by ptr
+        // deleter_(ptr);   // Corrected !!
         ptr_ = q;
     }
 
