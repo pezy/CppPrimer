@@ -150,7 +150,7 @@ template <typename T> BlobPtr<T> Blob<T>::begin()
 
 template <typename T> BlobPtr<T> Blob<T>::end()
 {
-    return BlobPtr<T>(*this, data->size());
+    return BlobPtr<T>(*this, data->size() - 1);
 }
 
 template <typename T> ConstBlobPtr<T> Blob<T>::cbegin() const
@@ -160,7 +160,7 @@ template <typename T> ConstBlobPtr<T> Blob<T>::cbegin() const
 
 template <typename T> ConstBlobPtr<T> Blob<T>::cend() const
 {
-    return ConstBlobPtr<T>(*this, data->size());
+    return ConstBlobPtr<T>(*this, data->size() - 1);
 }
 
 template <typename T> inline void Blob<T>::pop_back()
