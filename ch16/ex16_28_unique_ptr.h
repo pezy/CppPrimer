@@ -45,7 +45,7 @@ public:
 
     void reset(T* q = nullptr) noexcept
     {
-        deleter_(q);
+        deleter_(_ptr);
         ptr_ = q;
     }
 
